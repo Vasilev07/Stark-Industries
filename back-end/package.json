@@ -1,0 +1,33 @@
+{
+  "name": "stark-industries-back-end",
+  "version": "1.0.0",
+  "description": "Telerik Alpha JS Final Project Back-end",
+  "main": "server.js",
+  "scripts": {
+    "start-linux": "cd app && node server.js",
+    "migrate-linux": "cd app/db && ../../node_modules/.bin/sequelize db:migrate && cd ../.. ",
+    "add-migration-linux": "cd app/db && node ../../node_modules/sequelize-auto-migrations/bin/makemigration.js && cd ../.. ",
+    "start-windows": "node server.js",
+    "migrate-windows": "../back-end/node_modules/.bin/sequelize db:migrate",
+    "add-migration-windows": "node ../back-end/node_modules/sequelize-auto-migrations/bin/makemigration.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vasilev07/Stark-Industries.git"
+  },
+  "author": "Georgi Vasilev && Vladimir Tumbev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vasilev07/Stark-Industries/issues"
+  },
+  "homepage": "https://github.com/Vasilev07/Stark-Industries#readme",
+  "dependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6",
+    "sequelize-auto-migrations": "^1.0.2",
+    "sequelize-cli": "^4.0.0"
+  }
+}
