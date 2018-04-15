@@ -4,7 +4,7 @@ class UsersController {
         this.data = data;
     }
 
-    createNewUser(userObj, role) {
+    async createNewUser(userObj, role) {
         const password = userObj.password;
         let hashPassword = null;
         const hasher = new Cryptography();
@@ -16,7 +16,7 @@ class UsersController {
             id,
         } = this.data.users.getByValue('name', role);
         hashPassword = hasher.hashPassword(password);
-        userObj.password = hashPassword;
+        userObj.password = await hashPassword;
         userObj.roleId = id;
 
         const newUser = this.data.users.create(userObj);
