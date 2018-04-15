@@ -23,8 +23,11 @@
   "homepage": "https://github.com/Vasilev07/Stark-Industries#readme",
   "dependencies": {
     "babel-eslint": "^8.2.3",
+    "body-parser": "^1.18.2",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.6",
     "sequelize-auto-migrations": "^1.0.2",
