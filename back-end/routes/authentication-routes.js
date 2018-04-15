@@ -1,6 +1,12 @@
 const passport = require('passport');
+// const {
+//     Router,
+// } = require('express');
+const UserController = require('../controllers/users-controller');
 
-const init = (app) => {
+const init = (app, data) => {
+    // const router = new Router();
+    const controller = new UserController(data);
     app.get('/login', (req, res) => {
         res.render('../views/home');
     });
@@ -23,6 +29,14 @@ const init = (app) => {
     app.get('/logout', (req, res) => {
         req.logout();
         req.redirect('/');
+    });
+    app.get('/register', (req, res) => {
+        res.render('../views/home');
+    });
+    app.post('/register', async (req, res) => {
+        const userObj = req.body;
+        await controller.users.createNewUser(userObj, userObj.role);
+        res.redirect('/login');
     });
 };
 

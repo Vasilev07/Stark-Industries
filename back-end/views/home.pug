@@ -15,3 +15,25 @@ html(lang='en')
         input(type='password', name='password')
       div
         input(type='submit', value='Log In')
+    | Register
+    form(action='/register', method='post')
+        div
+            label FirstName:
+            input(type='text', name='firstName')
+        div
+            label LastName:
+            input(type='text', name='lastName')
+        div
+            label Username:
+            input(type='text', name='userName')
+        div
+            label email:
+            input(type='email', name='email')
+        div
+            label role:
+            input(type='text', name='role')
+        div
+            label Password:
+            input(type='password', name='password')
+        div
+            input(type='submit', value='Log In')
