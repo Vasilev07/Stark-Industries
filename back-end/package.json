@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Vasilev07/Stark-Industries#readme",
   "dependencies": {
     "babel-eslint": "^8.2.3",
+    "bcrypt": "^2.0.0",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "eslint": "^4.19.1",
