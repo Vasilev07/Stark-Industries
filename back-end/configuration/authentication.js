@@ -8,15 +8,10 @@ const Strategy = require('passport-local').Strategy;
 
 const Crypto = require('../controllers/cryptography-controller');
 
-const users = [{
-    username: 'Pesho',
-    password: '123456',
-}];
-
-const init = (app) => {
+const init = (app, data) => {
     passport.use(new Strategy(
-        (username, password, done) => {
-            const user = users.find((dbUser) => dbUser.username === username);
+        async (username, password, done) => {
+            const user = await data.users.getByValue('userName', username);
 
             const comparePasswords = new Crypto().comparePasswords;
 
@@ -25,8 +20,13 @@ const init = (app) => {
                     message: 'Incorrect username.',
                 });
             }
-            const checkIfPassMatch = comparePasswords(password, user.password);
-            if (user.password !== password) {
+            console.log(username);
+            console.log(password);
+            const checkIfPassMatch = await comparePasswords(password,
+                user.password);
+            console.log(checkIfPassMatch);
+
+            if (!checkIfPassMatch) {
                 return done(null, false, {
                     message: 'Incorrect password.',
                 });
@@ -39,8 +39,8 @@ const init = (app) => {
         done(null, user.username);
     });
 
-    passport.deserializeUser((username, done) => {
-        const user = users.find((dbUser) => dbUser.username === username);
+    passport.deserializeUser(async (username, done) => {
+        const user = await data.users.getByValue('userName', username);
         if (!user) {
             return done(new Error('invalid user'));
         }

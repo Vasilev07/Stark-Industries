@@ -9,8 +9,8 @@ class UsersController {
         let hashPassword = null;
         const hasher = new Cryptography();
         if (role === 'owner') {
-            throw new Error('Tony Stark is already'+
-            ' the owner of Stark Industries');
+            throw new Error('Tony Stark is already' +
+                ' the owner of Stark Industries');
         }
         const {
             id,
