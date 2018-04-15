@@ -15,7 +15,7 @@ const users = [{
 
 const init = (app) => {
     passport.use(new Strategy(
-        (username, password, done) => {
+        async (username, password, done) => {
             const user = users.find((dbUser) => dbUser.username === username);
 
             const comparePasswords = new Crypto().comparePasswords;
@@ -25,8 +25,12 @@ const init = (app) => {
                     message: 'Incorrect username.',
                 });
             }
-            const checkIfPassMatch = comparePasswords(password, user.password);
-            if (user.password !== password) {
+            console.log(username);
+            console.log(password);
+            const checkIfPassMatch = await comparePasswords(password, user.password);
+            console.log(checkIfPassMatch);
+
+            if (!checkIfPassMatch) {
                 return done(null, false, {
                     message: 'Incorrect password.',
                 });
