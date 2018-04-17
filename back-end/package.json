@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start-linux": "cd app && node server.js",
-    "migrate-linux": "cd app/db && ../../node_modules/.bin/sequelize db:migrate && cd ../.. ",
-    "add-migration-linux": "cd app/db && node ../../node_modules/sequelize-auto-migrations/bin/makemigration.js && cd ../.. ",
+    "seed-all-linux": "cd ./db && ../node_modules/.bin/sequelize db:seed:all",
+    "migrate-linux": "cd ./db && ../node_modules/.bin/sequelize db:migrate",
+    "add-migration-linux": "cd ./db && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js",
     "start-windows": "node server.js",
     "migrate-windows": "../back-end/node_modules/.bin/sequelize db:migrate",
     "add-migration-windows": "node ../back-end/node_modules/sequelize-auto-migrations/bin/makemigration.js"

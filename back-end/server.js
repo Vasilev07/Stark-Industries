@@ -3,7 +3,8 @@ const app = express();
 const data = require('./data/data');
 
 require('./configuration/express').init(app);
-require('./configuration/authentication').init(app, data);
+// require('./configuration/authentication').init(app, data);
+require('./configuration/jwt-strategy').init(app, data);
 require('./routes').init(app, data);
 
 
