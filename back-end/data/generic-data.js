@@ -15,9 +15,12 @@ class Data {
         });
     }
     getByValue(columnName, value) {
+        // const where = {
+        //     columnName: value,
+        // }
         return this.model.find({
             where: {
-                columnName: value,
+                [columnName]: value,
             },
         });
     }

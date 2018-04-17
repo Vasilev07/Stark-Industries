@@ -1,16 +1,18 @@
 const passport = require('passport');
-// const {
-//     Router,
-// } = require('express');
-const UserController = require('../controllers/users-controller');
+const {
+    Router,
+} = require('express');
+const UsersController = require('../controllers/users-controller');
 
 const init = (app, data) => {
-    // const router = new Router();
-    const controller = new UserController(data);
-    app.get('/login', (req, res) => {
+    const router = new Router();
+    const controller = new UsersController(data);
+    app.use('', router);
+    router
+    .get('/login', (req, res) => {
         res.render('../views/home');
-    });
-    app.post('/login', (req, res, next) => {
+    })
+    .post('/login', (req, res, next) => {
         passport.authenticate('local', (err, user, info) => {
             if (err) {
                 return next(err);
@@ -25,17 +27,19 @@ const init = (app, data) => {
                 return res.redirect('/');
             })(req, res, next);
         });
-    });
-    app.get('/logout', (req, res) => {
+    })
+    .get('/logout', (req, res) => {
         req.logout();
         req.redirect('/');
-    });
-    app.get('/register', (req, res) => {
+    })
+    .get('/register', (req, res) => {
         res.render('../views/home');
-    });
-    app.post('/register', async (req, res) => {
+    })
+    .post('/register', async (req, res) => {
         const userObj = req.body;
-        await controller.users.createNewUser(userObj, userObj.role);
+        // console.log(controller);
+        // console.log(controller.data);
+        await controller.createNewUser(userObj, userObj.role);
         res.redirect('/login');
     });
 };

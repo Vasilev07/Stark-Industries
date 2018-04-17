@@ -14,7 +14,7 @@ class UsersController {
         }
         const {
             id,
-        } = this.data.users.getByValue('name', role);
+        } = await this.data.roles.getByValue('name', role);
         hashPassword = hasher.hashPassword(password);
         userObj.password = await hashPassword;
         userObj.roleId = id;
