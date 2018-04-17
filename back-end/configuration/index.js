@@ -1,9 +1,13 @@
-/* eslint-disable*/
-const port = process.env.PORT || 3001;
-/* eslint-enable*/
-const secret = `A small yellow rabbit hops all 
-day in a black orchard with huge butterflies passing by.`;
+const {
+    PORT,
+    JWT_SECRET,
+    JWT_ISS,
+    JWT_EXPIRE_TIME,
+} = require('./config');
+
 module.exports = {
-    port,
-    secret,
+    PORT,
+    JWT_SECRET,
+    JWT_ISS,
+    JWT_EXPIRE_TIME,
 };
