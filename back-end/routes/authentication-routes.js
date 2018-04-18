@@ -12,7 +12,8 @@ const init = (app, data) => {
     .get('/login', (req, res) => {
         res.render('../views/home');
     })
-    .post('/login', (req, res, next) => {
+    .post('/login',(req, res, next) => {
+        req.headers.Authorization
         passport.authenticate('local', (err, user, info) => {
             if (err) {
                 return next(err);

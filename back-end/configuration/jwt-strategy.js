@@ -12,7 +12,7 @@ const Crypto = require('../controllers/cryptography-controller');
 
 const init = (app, data) => {
     return new JwtStrategy(opts, (jwtPayload, done) => {
-        const userFound = data.users.getById(jwtPayload.id);
+        const userFound = data.users.getById(jwtPayload.sub);
         console.log(userFound);
         if (userFound) {
             return done(null, userFound);
