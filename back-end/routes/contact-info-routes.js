@@ -25,7 +25,7 @@ const init = (app, data) => {
                 throw new Error('Access: Denied.');
             }
             res.status(200).end();
-        })
+        });
 };
 
 module.exports = {
