@@ -5,7 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const init = (app) => {
+const init = (app, data) => {
     if (typeof app.use !== 'function' ||
         typeof app.set !== 'function') {
         throw new Error('Invalid app');

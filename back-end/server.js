@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const data = require('./data/data');
+const data = require('./data');
 
 require('./configuration/express').init(app);
 // require('./configuration/authentication').init(app, data);

@@ -1,8 +1,8 @@
 const passport = require('passport');
-// const {
-//     Router,
-// } = require('express');
-const UserController = require('../controllers/users-controller');
+const {
+    Router,
+} = require('express');
+const UsersController = require('../controllers/users-controller');
 
 const init = (app, data) => {
     // // const router = new Router();
