@@ -4,7 +4,8 @@ class ApplicationController {
     }
 
     async createNewApplication(userInformation, userApplication, jobId) {
-        const userApplications = await this.data.application.getAllUserIds(userInformation.id);
+        const userApplications = await this.data.application
+            .getAllUserIds(userInformation.id);
         const allJobsApplicationsIds = [];
         userApplications.map((application) => {
             allJobsApplicationsIds.push(application.jobId);
@@ -21,9 +22,21 @@ class ApplicationController {
             };
 
             const newApplication = await this.data.application.create(userObj);
-
-            return newApplication;
+            return {
+                newApplication,
+            };
         }
+    }
+
+    async getNumberOfApplications(userId) {
+        const userApplications = await this.data.application
+            .getAllUserIds(userId);
+        const allJobsApplicationsIds = [];
+        userApplications.map((application) => {
+            allJobsApplicationsIds.push(application.jobId);
+        });
+        console.log(allJobsApplicationsIds);
+        return allJobsApplicationsIds.length;
     }
 }
 

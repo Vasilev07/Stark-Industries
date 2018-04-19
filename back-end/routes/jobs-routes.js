@@ -34,12 +34,12 @@ const init = (app, data) => {
             const userApplication = req.body;
             const jobId = req.params;
             const createApplication = await applicationController.createNewApplication(userInformation, userApplication, jobId);
-            if (createApplication) {
+            if (createApplication.newApplication) {
                 res.status(200).end();
             } else {
                 res.status(401).send(new Error('Already applied for this job'));
             }
-        })
+        });
 };
 
 module.exports = {
