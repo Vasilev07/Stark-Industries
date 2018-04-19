@@ -11,8 +11,6 @@ const opts = {
 const init = (app, data) => {
     return new JwtStrategy(opts, (jwtPayload, done) => {
         const userFound = data.users.getByValue('userName', jwtPayload.sub);
-        console.log(jwtPayload);
-        console.log(userFound);
         if (userFound) {
             return done(null, userFound);
         }
