@@ -14,6 +14,15 @@ class Data {
             },
         });
     }
+
+    getAllUserIds(id) {
+        return this.model.findAll({
+            where: {
+                UserId: id,
+            },
+        });
+    }
+
     getByValue(columnName, value) {
         // const where = {
         //     columnName: value,
