@@ -1,4 +1,3 @@
-const passport = require('passport');
 const {
     Router,
 } = require('express');

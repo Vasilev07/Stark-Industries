@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const uuid = require('uuid/v4');
+// const uuid = require('uuid/v4');
 const jwt = require('jwt-simple');
 const moment = require('moment');
 
@@ -25,7 +25,6 @@ class AuthenticationController {
             const hashedPassword = bcrypt.hash(req.body.password, 10);
             user.password = await hashedPassword;
             await this.data.users.create(user);
-            console.log(user);
             res.status(200).end();
         } else {
             res.status(401).send({
@@ -35,10 +34,8 @@ class AuthenticationController {
     }
 
     async login(req, res) {
-        console.log(req.body);
         const userFound = await this.data.users
             .getByValue('userName', req.body.userName);
-            console.log(userFound);
         if (userFound) {
             bcrypt
                 .compare(req.body.password,
@@ -49,7 +46,7 @@ class AuthenticationController {
                             const payload = {
                                 sub: userFound.id,
                                 email: userFound.email,
-                                role: userFound.role,
+                                role: userFound.roleId,
                                 exp: expire,
                                 iss: config.JWT_ISS,
                             };

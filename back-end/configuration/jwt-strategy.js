@@ -9,8 +9,9 @@ const opts = {
 };
 
 const init = (app, data) => {
-    return new JwtStrategy(opts, (jwtPayload, done) => {
-        const userFound = data.users.getByValue('userName', jwtPayload.sub);
+    return new JwtStrategy(opts, async (jwtPayload, done) => {
+        const userFound = await data.users.getById(jwtPayload.sub);
+        // console.log(userFound);
         if (userFound) {
             return done(null, userFound);
         }

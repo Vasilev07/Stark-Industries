@@ -1,3 +1,4 @@
+const passport = require('passport');
 const {
     Router,
 } = require('express');
@@ -17,15 +18,21 @@ const init = (app, data) => {
                 primaryAddress,
             });
         })
-        .post('/contact', async (req, res) => {
+        .get('/test', passport.authenticate('jwt', { session: false }),
+        async (req, res) => {
+            console.log(req.user.roleId);
+            // const token = req.headers.authorization.split(' ')[1];
+            res.status(200).end();
+        })
+        .post('/contact', passport.authenticate('jwt', { session: false }), async (req, res) => {
             const newAddress = req.body;
-            if (req.isAuthenticated() && req.user.role >= 2) {
+            if (req.user.roleId >= 2) {
                 await controller.createNewContact(newAddress);
             } else {
                 throw new Error('Access: Denied.');
             }
             res.status(200).end();
-        })
+        });
 };
 
 module.exports = {
