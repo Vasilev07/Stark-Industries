@@ -10,10 +10,10 @@ const init = (app, data) => {
     app.use('', router);
     router
         .get('/login', (req, res) => {
-            res.render('../views/home.pug');
+            res.render('../back-end/views/home');
         })
         .get('/register', (req, res) => {
-            res.render('../views/home.pug');
+            res.render('../back-end/views/home');
         })
         .post('/login', async (req, res) => {
             await controller.login(req, res);
