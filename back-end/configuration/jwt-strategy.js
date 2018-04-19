@@ -8,7 +8,7 @@ const opts = {
     issuer: config.JWT_ISS,
 };
 
-const init = (app, data) => {
+const initLogged = (app, data) => {
     return new JwtStrategy(opts, async (jwtPayload, done) => {
         const userFound = await data.users.getById(jwtPayload.sub);
         // console.log(userFound);
@@ -20,6 +20,22 @@ const init = (app, data) => {
     });
 };
 
+const initAdmin = (app, data) => {
+    return new JwtStrategy(opts, async (jwtPayload, done) => {
+        const userFound = await data.users.getById(jwtPayload.sub);
+        // console.log(userFound);
+        if (userFound) {
+            if (userFound.roleId >= 2) {
+                return done(null, userFound);
+            }
+            return done('Access Denied', false);
+        }
+
+        return done('Not authenticated', false);
+    });
+};
+
 module.exports = {
-    init,
+    initLogged,
+    initAdmin,
 };

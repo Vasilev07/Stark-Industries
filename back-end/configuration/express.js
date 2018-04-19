@@ -24,7 +24,8 @@ const init = (app, data) => {
     app.use(morgan('combined'));
     app.use(cors());
     // IF ISSUES WITH STRATEGY INSTANCE CHECK BELLOW LINE
-    passport.use(strategy.init(app, data));
+    passport.use('jwt', strategy.initLogged(app, data));
+    passport.use('jwt-admin', strategy.initAdmin(app, data));
     app.set('view engine', 'pug');
 };
 
