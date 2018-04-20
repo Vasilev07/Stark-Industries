@@ -2,12 +2,16 @@
 module.exports = (sequelize, DataTypes) => {
   const application = sequelize.define('application', {
     cv: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    comment: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     coverLetter: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   }, {});
   application.associate = (models) => {

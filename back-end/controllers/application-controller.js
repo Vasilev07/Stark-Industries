@@ -16,6 +16,7 @@ class ApplicationController {
             const userObj = {
                 cv: userApplication.cv,
                 coverLetter: userApplication.coverLetter,
+                comment: userApplication.comment,
                 jobId: +jobId.id,
                 UserId: userInformation.id,
             };

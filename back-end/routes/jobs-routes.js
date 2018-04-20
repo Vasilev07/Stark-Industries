@@ -34,7 +34,7 @@ const init = (app, data) => {
             const userApplication = req.body;
             const jobId = req.params;
             try {
-                const applicationCreated = await applicationController
+                await applicationController
                     .createNewApplication(userInformation,
                         userApplication, jobId);
                 res.status(200).end();
