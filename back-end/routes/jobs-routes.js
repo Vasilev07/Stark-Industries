@@ -33,12 +33,13 @@ const init = (app, data) => {
             const userInformation = req.user;
             const userApplication = req.body;
             const jobId = req.params;
-            const createApplication = await applicationController
-            .createNewApplication(userInformation, userApplication, jobId);
-            if (createApplication) {
+            try {
+                await applicationController
+                    .createNewApplication(userInformation,
+                        userApplication, jobId);
                 res.status(200).end();
-            } else {
-                res.status(401).send(new Error('Already applied for this job'));
+            } catch (error) {
+                res.json(error.toString());
             }
         });
 };

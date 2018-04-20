@@ -13,6 +13,10 @@
                     "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
+                "comment": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.STRING"
+                },
                 "coverLetter": {
                     "allowNull": false,
                     "seqType": "Sequelize.STRING"
