@@ -11,9 +11,7 @@ class ApplicationController {
             allJobsApplicationsIds.push(application.jobId);
         });
         const ifApplicationExists = allJobsApplicationsIds.indexOf(jobId);
-        if (ifApplicationExists < 0) {
-            throw new Error('You have already applied for this job');
-        } else {
+        if (ifApplicationExists === -1) {
             const userObj = {
                 cv: userApplication.cv,
                 coverLetter: userApplication.coverLetter,
@@ -21,10 +19,9 @@ class ApplicationController {
                 UserId: userInformation.id,
             };
 
-            const newApplication = await this.data.application.create(userObj);
-            return {
-                newApplication,
-            };
+            await this.data.application.create(userObj);
+        } else {
+            throw new Error('You have already applied for this job');
         }
     }
 

@@ -33,8 +33,9 @@ const init = (app, data) => {
             const userInformation = req.user;
             const userApplication = req.body;
             const jobId = req.params;
+           console.log(userInformation);
             const createApplication = await applicationController.createNewApplication(userInformation, userApplication, jobId);
-            if (createApplication.newApplication) {
+            if (createApplication) {
                 res.status(200).end();
             } else {
                 res.status(401).send(new Error('Already applied for this job'));
