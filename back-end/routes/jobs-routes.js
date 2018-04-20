@@ -19,12 +19,12 @@ const init = (app, data) => {
         })
         .get('/carrers/jobDetails/:id', async (req, res) => {
             const jobId = req.params.id;
-            const allJobsById = await controller.getAllJobsById(jobId);
+            const allJobsById = await controller.getJobById(jobId);
             res.send(allJobsById);
         })
         .get('/carrers/jobDetails/:id/apply', async (req, res) => {
             const jobId = req.params.id;
-            const allJobsById = await controller.getAllJobsById(jobId);
+            const allJobsById = await controller.getJobById(jobId);
             res.send(allJobsById);
         })
         .post('/carrers/jobDetails/:id/apply', passport.authenticate('jwt', {
