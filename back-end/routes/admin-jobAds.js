@@ -47,6 +47,17 @@ const init = (app, data) => {
             } else {
                 res.status(422).end();
             }
+        })
+        .get('/admin/careers/jobDetails/:id/applications', passport
+        .authenticate('jwt-admin', { session: false }), async (req, res) => {
+            const jobId = req.params.id;
+            const allApplicationsForJob =
+            await controller.getAllApplicationsForAJob(jobId);
+            if (allApplicationsForJob) {
+                res.status(200).send(allApplicationsForJob);
+            } else {
+                res.status(401).end();
+            }
         });
 };
 

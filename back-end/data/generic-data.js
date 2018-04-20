@@ -33,6 +33,16 @@ class Data {
             },
         });
     }
+    getAllByValue(columnName, value) {
+        // const where = {
+        //     columnName: value,
+        // }
+        return this.model.findAll({
+            where: {
+                [columnName]: value,
+            },
+        });
+    }
 
     findCreateFind(columnName, value) {
         return this.model.findCreateFind({

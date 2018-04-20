@@ -45,5 +45,28 @@ class JobsController {
         }
         return null;
     }
+
+    async getAllApplicationsForAJob(jobId) {
+        let allJobApplications =
+        await this.data.application.getAllByValue('jobId', jobId);
+        if (allJobApplications.length > 0) {
+            allJobApplications = allJobApplications
+            .map((application) => application.dataValues);
+            allJobApplications =
+            await Promise.all(allJobApplications.map(async (application) => {
+                const {
+                    firstName,
+                    lastName,
+                    email,
+                } = await this.data.users.getById(application.UserId);
+                application.firstName = firstName;
+                application.lastName = lastName;
+                application.email = email;
+                return application;
+            }));
+            return allJobApplications;
+        }
+        return null;
+    }
 }
 module.exports = JobsController;
