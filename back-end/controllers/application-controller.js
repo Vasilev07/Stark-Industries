@@ -10,7 +10,8 @@ class ApplicationController {
         userApplications.map((application) => {
             allJobsApplicationsIds.push(application.jobId);
         });
-        const ifApplicationExists = allJobsApplicationsIds.indexOf(jobId);
+        const ifApplicationExists = await allJobsApplicationsIds
+            .indexOf(+jobId.id);
         if (ifApplicationExists === -1) {
             const userObj = {
                 cv: userApplication.cv,
@@ -32,7 +33,6 @@ class ApplicationController {
         userApplications.map((application) => {
             allJobsApplicationsIds.push(application.jobId);
         });
-        console.log(allJobsApplicationsIds);
         return allJobsApplicationsIds.length;
     }
 }
