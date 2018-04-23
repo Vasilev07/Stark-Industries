@@ -49,6 +49,7 @@ h1:before {
   right: -74px;
   top: -10px;
   width: 0;
+  margin-right: 44px;
 }
 h1:after {
   animation: after-glow 2s ease-out infinite alternate;
@@ -61,6 +62,7 @@ h1:after {
   top: 24px;
   transform: rotate(-47deg);
   width: 0;
+  margin-right: 45px;
 }
 
 /* =========================================
@@ -70,7 +72,9 @@ Log in form
   animation: input-entry 3s ease-in;
   z-index: 4;
 }
-
+.stark-login {
+    opacity: 0.9;
+}
 .stark-login form {
   animation: form-entry 3s ease-in-out;
   background: #111;
@@ -279,13 +283,15 @@ Animation Keyframes
   }
   40% {
     width: 0;
-    /* height: 220px; */
+    height: 220px;
     border: 6px solid #00a4a2;
     opacity: 1;
     padding: 0;
   }
+  90% {
+    height: 395px;
+  }
   100% {
-    /* height: 220px; */
     width: 500px;
   }
 }
