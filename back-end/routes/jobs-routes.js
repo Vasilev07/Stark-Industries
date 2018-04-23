@@ -13,21 +13,21 @@ const init = (app, data) => {
     const applicationController = new ApplicationController(data);
     app.use('', router);
     router
-        .get('/carrers', async (req, res) => {
+        .get('careers', async (req, res) => {
             const allJobs = await controller.getAllJobs();
             res.send(allJobs);
         })
-        .get('/carrers/jobDetails/:id', async (req, res) => {
+        .get('/careers/jobDetails/:id', async (req, res) => {
             const jobId = req.params.id;
             const allJobsById = await controller.getJobById(jobId);
             res.send(allJobsById);
         })
-        .get('/carrers/jobDetails/:id/apply', async (req, res) => {
+        .get('/careers/jobDetails/:id/apply', async (req, res) => {
             const jobId = req.params.id;
             const allJobsById = await controller.getJobById(jobId);
             res.send(allJobsById);
         })
-        .post('/carrers/jobDetails/:id/apply', passport.authenticate('jwt', {
+        .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {
             session: false,
         }), async (req, res) => {
             const userInformation = req.user;
