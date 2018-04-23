@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Job } from '../models/job';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { CareersService } from '../core/careers.service';
+import { Job } from '../models/job';
 
 @Component({
-  selector: 'app-careers',
+  selector: 'stark-careers',
   templateUrl: './careers.component.html',
   styleUrls: ['./careers.component.css']
 })

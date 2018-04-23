@@ -1,0 +1,27 @@
+.spaceFiller {
+    flex: 0.9 1 auto;
+}
+a {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.spaceFillerSide {
+    flex: 0.1 1 auto;
+}
+.navtoolbar {
+    background-color: white;
+    box-shadow: 5px 5px 3px #888888;
+    margin-bottom: 10px;
+}
+
+.mat-raised-button:hover {
+    color: #8bd3fb;
+}
+
+.icon-button {
+    max-width: 50px;
+    margin-right: 10px;
+}
+.mainLogo {
+    max-width: 200px;
+}
