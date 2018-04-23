@@ -8,12 +8,15 @@ import { AppConfig } from './config/app.config';
 import { HomeComponent } from './home/home.component';
 import { CareersComponent } from './careers/careers.component';
 import { CoreModule } from './core/core.module';
-
+import { LoginComponent } from './auth/login.component';
+import { RegisterComponent } from './auth/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CareersComponent
+    CareersComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
