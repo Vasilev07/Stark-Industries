@@ -13,7 +13,7 @@ const init = (app, data) => {
     const applicationController = new ApplicationController(data);
     app.use('', router);
     router
-        .get('careers', async (req, res) => {
+        .get('/careers', async (req, res) => {
             const allJobs = await controller.getAllJobs();
             res.send(allJobs);
         })
