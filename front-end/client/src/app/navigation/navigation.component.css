@@ -9,13 +9,20 @@ a {
     flex: 0.1 1 auto;
 }
 .navtoolbar {
-    background-color: white;
-    box-shadow: 5px 5px 3px #888888;
+    background-color: black;
+    box-shadow: 0px 1px 0px #00fffc;
     margin-bottom: 10px;
 }
 
-.mat-raised-button:hover {
-    color: #8bd3fb;
+.mat-button {
+    background-color: black;
+    color: white;
+}
+.mat-button:hover {
+    color: #00fffc;
+    background-color: black;
+    transform: scale(1.1);
+    transition: 0.5s all;
 }
 
 .icon-button {
@@ -25,3 +32,8 @@ a {
 .mainLogo {
     max-width: 200px;
 }
+
+/* .mainLogo:hover {
+    max-width: 200px;
+    background-image: url('../../assets/hover-logo.png')
+} */
