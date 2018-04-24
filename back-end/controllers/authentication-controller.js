@@ -25,7 +25,23 @@ class AuthenticationController {
             const hashedPassword = bcrypt.hash(req.body.password, 10);
             user.password = await hashedPassword;
             await this.data.users.create(user);
-            res.status(200).end();
+
+            const expire = moment(new Date())
+                .add(config.JWT_EXPIRE_TIME, 'minutes').unix();
+
+            const payload = {
+                sub: user.id,
+                email: user.email,
+                role: user.roleId,
+                exp: expire,
+                iss: config.JWT_ISS,
+            };
+            const secret = config.JWT_SECRET;
+            const token = jwt.encode(payload, secret);
+            res.status(200).send({
+                token,
+                message: 'User regitered!',
+            });
         } else {
             res.status(401).send({
                 err: 'User already exists',
@@ -34,6 +50,7 @@ class AuthenticationController {
     }
 
     async login(req, res) {
+        console.log(req.body);
         const userFound = await this.data.users
             .getByValue('userName', req.body.userName);
         if (userFound) {
@@ -55,6 +72,7 @@ class AuthenticationController {
 
                             res.status(200).send({
                                 token,
+                                message: 'User successfully logged in!',
                             });
                         } else {
                             res.status(401).send({

@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../core/auth.service';
+import { UserLoginModel } from '../models/users/userLoginModel';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor() { }
+    constructor(private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+    private login(user: UserLoginModel): void {
+        this.authService.login(user).subscribe((x) => localStorage.setItem('access_token', x.token));
+    }
 
 }

@@ -21,7 +21,6 @@ header {
 .video-wrap {
   widows: 100%;
   overflow: hidden;
-  z-index: 0;
 }
 .video-wrap video {
     min-width: 100%;

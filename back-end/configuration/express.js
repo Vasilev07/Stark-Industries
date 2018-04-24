@@ -14,6 +14,7 @@ const init = (app, data) => {
         typeof app.set !== 'function') {
         throw new Error('Invalid app');
     }
+    app.use(cors());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true,
@@ -22,7 +23,6 @@ const init = (app, data) => {
     app.use('/static', express.static(path.join(__dirname, '../../public')));
     // not sure if we will use public att all
     app.use(morgan('combined'));
-    app.use(cors());
     // IF ISSUES WITH STRATEGY INSTANCE CHECK BELLOW LINE
     passport.use('jwt', strategy.initLogged(app, data));
     passport.use('jwt-admin', strategy.initAdmin(app, data));
