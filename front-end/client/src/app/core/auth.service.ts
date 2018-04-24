@@ -5,28 +5,45 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs/Observable';
 
-import { User } from '../models/user';
+import { AccessToken } from '../models/core/accessToken';
+import { UserLoginModel } from '../models/users/userLoginModel';
+import { UserRegisterModel } from '../models/users/userRegisterModel';
 import { AppConfig } from './../config/app.config';
-import { HttpOptions } from './../models/core/http-options';
+import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Injectable()
 export class AuthService {
-  constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) {}
-  public register(user: User, options?: HttpOptions): Observable < object > {
-    return this.http.post(`${this.appConfig.apiUrl}/register`, user, options);
-  }
+    constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService, private router: Router) { }
+    public register(user: UserRegisterModel): Observable<AccessToken> {
+        return this.http.post<AccessToken>(`${this.appConfig.apiUrl}/register`, user);
+    }
 
-  public login(user: User, options?: HttpOptions): Observable < object > {
-    return this.http.post(`${this.appConfig.apiUrl}/login`, user, options);
-  }
+    public login(user: UserLoginModel): Observable<AccessToken> {
+        return this.http.post<AccessToken>(`${this.appConfig.apiUrl}/login`, user);
+    }
 
-  public isAuthenticated(): boolean {
-    const token = this.jwtService.tokenGetter();
-    const decoded = this.jwtService.decodeToken(token);
-    return !!token && !this.jwtService.isTokenExpired(token) && decoded.iss === this.appConfig.jwt_issuer;
-  }
+    public isAuthenticated(): boolean {
+        const token = this.jwtService.tokenGetter();
+        const decoded = this.jwtService.decodeToken(token);
+        return !!token && !this.jwtService.isTokenExpired(token) && decoded.iss === this.appConfig.jwt_issuer;
+    }
 
-  public logout(): void {
-    localStorage.removeItem('access_token');
-  }
+    public isAdmin(): boolean{
+        const token = this.jwtService.tokenGetter();
+        const decoded = this.jwtService.decodeToken(token);
+
+        return decoded.roleId >= 2;
+    }
+
+    public logout(): void {
+        localStorage.removeItem('access_token');
+    }
+
+    public userName(): string {
+       const token = localStorage.getItem('access_token');
+       const decodedToken = this.jwtService.decodeToken(token);
+       const email = decodedToken.email;
+        return email;
+    } 
 }

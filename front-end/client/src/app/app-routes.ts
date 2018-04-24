@@ -9,7 +9,6 @@ export const ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'careers', component: CareersComponent},
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
 
 ];
