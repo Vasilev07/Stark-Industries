@@ -12,10 +12,7 @@ import { AppConfig } from './config/app.config';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { NavigationModule } from './navigation/navigation.module';
-
-export const tokenGetter = () => {
-    return localStorage.getItem('access_token');
-};
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -25,20 +22,14 @@ export const tokenGetter = () => {
     CareersComponent,
   ],
   imports: [
-    ToastrModule.forRoot(),
     BrowserModule,
     NavigationModule,
     FormsModule,
     CoreModule,
     HttpClientModule,
     AppRoutingModule,
-    JwtModule.forRoot({
-        config: {
-            tokenGetter,
-            whitelistedDomains: ['localhost:8000'],
-            blacklistedRoutes: [],
-        },
-    }),
+    BrowserAnimationsModule,
+    
   ],
   providers: [AppConfig],
   bootstrap: [AppComponent],

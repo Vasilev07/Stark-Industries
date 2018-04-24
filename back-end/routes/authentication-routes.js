@@ -9,12 +9,6 @@ const init = (app, data) => {
     const controller = new AuthenticationController(data);
     app.use('', router);
     router
-        .get('/login', (req, res) => {
-            res.render('../views/home');
-        })
-        .get('/register', (req, res) => {
-            res.render('../views/home');
-        })
         .post('/login', async (req, res) => {
             await controller.login(req, res);
         })

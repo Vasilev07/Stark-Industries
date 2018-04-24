@@ -20,11 +20,13 @@
     </div>
     <span class="spaceFiller"></span>
     <div fxShow="true" fxHide.lt-md="true">
-      <a ng-if="!isAuth()" [routerLink]="['/auth/login']" routerLinkActive mat-button>Login</a>
-      <a ng-if="!isAuth()" [routerLink]="['/auth/register']" routerLinkActive mat-button>Register</a>
+      <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{loggedUser}}</a>
+      <a *ngIf="isAuth()" (click)="logout()" [routerLink]="['/']" routerLinkActive mat-button>Logout</a>
+      <a *ngIf="!isAuth()" [routerLink]="['/auth/login']" routerLinkActive mat-button>Login</a>
+      <a *ngIf="!isAuth()" [routerLink]="['/auth/register']" routerLinkActive mat-button>Register</a>
     </div>
   </mat-toolbar>
-<!-- 
+  <!-- 
   <mat-sidenav-container fxFlexFill class="example-container" style="z-index: 9999;">
     <mat-sidenav #sidenav fxLayout="column">
       <span class="spaceFillerSide"></span>

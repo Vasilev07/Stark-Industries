@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { UserLoginModel } from '../models/users/userLoginModel';
-import { AuthService } from './../core/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -10,10 +12,18 @@ import { AuthService } from './../core/auth.service';
 })
 export class LoginComponent {
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) { }
 
     private login(user: UserLoginModel): void {
-        this.authService.login(user).subscribe((x) => localStorage.setItem('access_token', x.token));
+        this.authService.login(user).subscribe((data) => {
+            localStorage.setItem('access_token', data.token);
+            this.toastr.success(`${user.userName} registered!`);
+            this.router.navigate(['/home']);
+    },
+        (err: HttpErrorResponse)=> {
+            if (err.status === 401) {
+                this.toastr.error(err.error.err);
+            }
+        });
     }
-
 }

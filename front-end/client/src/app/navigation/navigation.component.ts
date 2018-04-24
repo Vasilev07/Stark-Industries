@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'stark-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
     public imgSrc: string = '../../assets/hover-logo.png';
 
-    constructor() { }
+    constructor(private router: Router, private authService: AuthService, private jwtService: JwtHelperService ) { }
 
-    ngOnInit() {
+    private loggedUser: string = this.authService.userName();
+
+    public isAuth(): boolean {
+        return this.authService.isAuthenticated();
     }
 
     public onMouseOver(): void {
@@ -21,4 +28,8 @@ export class NavigationComponent implements OnInit {
         this.imgSrc = '../../assets/logo.png';
     }
 
+    public logout(): void {
+        localStorage.removeItem('access_token');
+        this.router.navigate(['/']);
+    }
 }
