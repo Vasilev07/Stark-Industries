@@ -6,10 +6,10 @@
   </div>
   <section class="stark-login">
 
-    <form #f="ngForm" (ngSubmit)="login(f.value)">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
       <div id="fade-box">
-        <input type="text" name="userName" id="userName" placeholder="Username" required ngModel>
-        <input type="password" name="password" placeholder="Password" required ngModel>
+        <input type="text" id="userName" placeholder="Username" required [formControl]="loginForm.controls['userName']">
+        <input type="password" placeholder="Password" required [formControl]="loginForm.controls['password']">
 
         <button>Log In</button>
       </div>

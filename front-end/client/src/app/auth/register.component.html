@@ -5,16 +5,30 @@
     </h1>
   </div>
   <section class="stark-login">
-
-    <form #f="ngForm" (ngSubmit)="register(f.value)">
+    <form [formGroup]="registrationForm" (ngSubmit)="register(registrationForm.value)">
       <div id="fade-box">
-        <input type="text" name="userName" id="username" placeholder="Username" required ngModel>
-        <input type="text" name="firstName" placeholder="First Name" required ngModel>
-        <input type="text" name="lastName" placeholder="Last Name" required ngModel>
-        <input type="text" name="email" placeholder="E-mail" required ngModel>
-        <input type="password" name="password" placeholder="Password" required ngModel>
+        <input type="text" id="username" maxlength="10" placeholder="Username" required [formControl]="registrationForm.controls['userName']">
+        <input type="text" placeholder="First Name" required [formControl]="registrationForm.controls['firstName']">
+        <input type="text" placeholder="Last Name" required [formControl]="registrationForm.controls['lastName']">
+        <input type="text" placeholder="E-mail" required [formControl]="registrationForm.controls['email']" [pattern]="emailPattern">
+        <div *ngIf="registrationForm.controls['email'].touched && registrationForm.controls['email'].hasError('maxlength')">
+            Maximum of 1024 characters
+          </div>
+        <div *ngIf="email.errors">
+          <div *ngIf="email.errors.pattern">INCORRECT EMAIL</div>
+        </div>
 
-        <button type="submit">Register</button>
+        <input type="password" placeholder="Password" required [formControl]="registrationForm.controls['password']" [pattern]="passwordPattern">
+        <div *ngIf="registrationForm.controls['password'].touched && registrationForm.controls['password'].hasError('maxlength')">
+          Maximum of 256 characters
+        </div>
+        <div *ngIf="password.errors">
+          <!-- <div *ngIf="registrationForm.controls.password.errors.MatchPassword">Passwords not matching</div> -->
+          <div *ngIf="password.errors.pattern">Password must contain upperase,digit,special symbols</div>
+        </div>
+        <input type="password" placeholder="Confirm Password" required [formControl]="registrationForm.controls['confirmPassword']">
+
+        <button [disabled]='!registrationForm.valid' type="submit">Register</button>
       </div>
     </form>
   </section>

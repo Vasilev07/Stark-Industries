@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
     
     constructor(private router: Router, private authService: AuthService, private jwtService: JwtHelperService ) { }
     
-    private loggedUser: string = this.authService.userName();
+    // private loggedUser: string = this.authService.userName();
 
     ngOnInit() {
     }

@@ -40,10 +40,11 @@ export class AuthService {
         localStorage.removeItem('access_token');
     }
 
-    public userName(): string {
-       const token = localStorage.getItem('access_token');
-       const decodedToken = this.jwtService.decodeToken(token);
-       const email = decodedToken.email;
-        return email;
-    } 
+    // public userName(): string {
+    //    const token = localStorage.getItem('access_token');
+    //    const decodedToken = this.jwtService.decodeToken(token);
+    //    const email = decodedToken.email;
+    //    console.log(email);
+    //     return email;
+    // } 
 }

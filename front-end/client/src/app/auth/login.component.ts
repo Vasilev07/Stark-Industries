@@ -4,16 +4,24 @@ import { UserLoginModel } from '../models/users/userLoginModel';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+    public loginForm: FormGroup;
 
-    constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) { }
+    constructor(private authService: AuthService, private toastr: ToastrService, private router: Router, private formBuilder:FormBuilder) { }
 
+    ngOnInit(){
+        this.loginForm = this.formBuilder.group({
+            userName: '',
+            password: '',
+        });
+    }
     private login(user: UserLoginModel): void {
         this.authService.login(user).subscribe((data) => {
             localStorage.setItem('access_token', data.token);
