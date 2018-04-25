@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../core/auth.service';
-import { UserLoginModel } from '../models/users/userLoginModel';
-import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
+import { UserLoginModel } from '../models/users/userLoginModel';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit{
     public loginForm: FormGroup;

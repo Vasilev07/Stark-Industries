@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-
-import { CareersService } from './careers.service';
-import { AuthService } from './auth.service';
-import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
+import { ToastrModule } from 'ngx-toastr';
 
+import { AuthService } from './auth.service';
+import { CareersService } from './careers.service';
+import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
 
 export const tokenGetter = () => {
   return localStorage.getItem('access_token');
