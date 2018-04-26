@@ -1,0 +1,16 @@
+<div class="container" >
+    <div class="map-container">
+
+    </div>
+    <div class="contactsList" *ngFor="let contact of contacts">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>{{primaryAddress.icon}}</mat-icon> {{primaryAddress.name}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            {{primaryAddress.value}}
+            {{primaryAddress.longtitude}}, {{primaryAddress.latitude}}
+        </mat-expansion-panel>
+    </div>
+</div>

@@ -18,12 +18,6 @@ const init = (app, data) => {
                 primaryAddress,
             });
         })
-        .get('/test', passport.authenticate('jwt', { session: false }),
-            async (req, res) => {
-                console.log(req.user.roleId);
-                // const token = req.headers.authorization.split(' ')[1];
-                res.status(200).end();
-            })
         .post('/contact',
         passport.authenticate('jwt-admin', { session: false }),
          async (req, res) => {

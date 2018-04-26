@@ -127,6 +127,18 @@
                     "allowNull": false,
                     "seqType": "Sequelize.BOOLEAN"
                 },
+                "isMappable": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "longtitude": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "latitude": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.FLOAT"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"

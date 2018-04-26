@@ -16,11 +16,12 @@
       <!-- The following menu items will be hidden on both SM and XS screen sizes -->
       <a [routerLink]="['/home']" routerLinkActive mat-button>Home</a>
       <a [routerLink]="['/careers']" routerLinkActive mat-button>Careers</a>
-      <a [routerLink]="['/contact']" routerLinkActive mat-button>Contact</a>
+      <a [routerLink]="['/contact/contact']" routerLinkActive mat-button>Contact</a>
     </div>
     <span class="spaceFiller"></span>
     <div fxShow="true" fxHide.lt-md="true">
-      <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{loggedUser}}</a>
+
+      <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{ loggedUser?.firstName }} {{ loggedUser?.lastName}}</a>
       <a *ngIf="isAuth()" (click)="logout()" [routerLink]="['/']" routerLinkActive mat-button>Logout</a>
       <a *ngIf="!isAuth()" [routerLink]="['/auth/login']" routerLinkActive mat-button>Login</a>
       <a *ngIf="!isAuth()" [routerLink]="['/auth/register']" routerLinkActive mat-button>Register</a>

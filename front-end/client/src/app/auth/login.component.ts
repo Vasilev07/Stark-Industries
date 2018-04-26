@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+import { AuthService } from '../core/auth.service';
 import { UserLoginModel } from '../models/users/userLoginModel';
 
 @Component({
@@ -26,4 +27,5 @@ export class LoginComponent {
             }
         });
     }
+
 }

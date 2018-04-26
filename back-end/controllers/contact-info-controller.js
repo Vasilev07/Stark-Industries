@@ -14,7 +14,6 @@ class ContactInfoController {
                 contact.dataValues.userName = userName;
                 return contact.dataValues;
             }));
-        console.log(allContactInfo);
         return allContactInfo;
     }
     async getPrimaryAddress(condition = 'oldest') {
@@ -39,19 +38,19 @@ class ContactInfoController {
     }
 
     async createNewContact(contactObject) {
-        const keys = Object.keys(contactObject);
-        keys.forEach((key) => {
-            if (key !== 'id' ||
-                key !== 'name' ||
-                key !== 'value' ||
-                key !== 'icon' ||
-                key !== 'isPrimary' ||
-                key !== 'createdAt' ||
-                key !== 'updatedAt' ||
-                key !== 'UserId') {
-                throw new Error('All fields are mandatory!');
-            }
-        });
+        // const keys = Object.keys(contactObject);
+        // keys.forEach((key) => {
+        //     if (key !== 'id' ||
+        //         key !== 'name' ||
+        //         key !== 'value' ||
+        //         key !== 'icon' ||
+        //         key !== 'isPrimary' ||
+        //         key !== 'createdAt' ||
+        //         key !== 'updatedAt' ||
+        //         key !== 'UserId') {
+        //         throw new Error('All fields are mandatory!');
+        //     }
+        // });
         const newContact = this.data.contactInfo.create(contactObject);
         return newContact;
     }

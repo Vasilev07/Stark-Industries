@@ -4,6 +4,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AuthService } from './auth.service';
 import { CareersService } from './careers.service';
+import { ContactService } from './contact.service';
 import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
 
 export const tokenGetter = () => {
@@ -11,7 +12,7 @@ export const tokenGetter = () => {
 };
 
 @NgModule({
-  imports:[
+  imports: [
     ToastrModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -22,9 +23,10 @@ export const tokenGetter = () => {
   }),
   ],
   providers: [
-    {provide: CareersService, useClass: CareersService},
-    {provide: AuthService, useClass: AuthService},
-    {provide: AlreadyLoggedInGuard, useClass: AlreadyLoggedInGuard},
-  ]
+      {provide: AlreadyLoggedInGuard, useClass: AlreadyLoggedInGuard},
+      {provide: AuthService, useClass: AuthService},
+      {provide: ContactService, useClass: ContactService},
+      {provide: CareersService, useClass: CareersService},
+  ],
 })
 export class CoreModule { }
