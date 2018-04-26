@@ -19,6 +19,8 @@ export class NavigationComponent implements OnInit {
     public authenticated: boolean = this.isAuth();
 
     constructor(private router: Router, private authService: AuthService, private jwtService: JwtHelperService ) { }
+    
+    // private loggedUser: string = this.authService.userName();
 
     public ngOnInit(): void {
         const authenticated = this.isAuth();

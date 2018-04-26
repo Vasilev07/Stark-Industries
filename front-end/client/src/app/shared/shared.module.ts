@@ -14,7 +14,14 @@ import {
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from '../app-routing.module';
+import {
+    animate,
+    state,
+    style,
+    transition,
+    trigger,
+} from '@angular/animations';
+import { PasswordValidatorDirective } from './password-validator.directive';
 
 @NgModule({
   imports: [
@@ -33,7 +40,7 @@ import { AppRoutingModule } from '../app-routing.module';
     MatTooltipModule,
     MatIconModule,
   ],
-  declarations: [],
+  declarations: [PasswordValidatorDirective],
   exports: [
     CommonModule,
     FormsModule,
