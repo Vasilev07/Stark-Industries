@@ -5,6 +5,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthService } from './auth.service';
 import { CareersService } from './careers.service';
 import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
+import { PatternValidatorService } from './pattern.validator.service';
 
 export const tokenGetter = () => {
   return localStorage.getItem('access_token');
@@ -25,6 +26,7 @@ export const tokenGetter = () => {
     {provide: CareersService, useClass: CareersService},
     {provide: AuthService, useClass: AuthService},
     {provide: AlreadyLoggedInGuard, useClass: AlreadyLoggedInGuard},
+    {provide: PatternValidatorService, useClass: PatternValidatorService},
   ]
 })
 export class CoreModule { }

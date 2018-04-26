@@ -12,23 +12,20 @@
         <input type="text" placeholder="Last Name" required [formControl]="registrationForm.controls['lastName']">
         <input type="text" placeholder="E-mail" required [formControl]="registrationForm.controls['email']" [pattern]="emailPattern">
         <div *ngIf="registrationForm.controls['email'].touched && registrationForm.controls['email'].hasError('maxlength')">
-            Maximum of 1024 characters
-          </div>
-        <div *ngIf="email.errors">
-          <div *ngIf="email.errors.pattern">INCORRECT EMAIL</div>
+          Maximum of 1024 characters
         </div>
-
+        <div *ngIf="email.hasError('email')">INCORRECT EMAIL</div>
         <input type="password" placeholder="Password" required [formControl]="registrationForm.controls['password']" [pattern]="passwordPattern">
         <div *ngIf="registrationForm.controls['password'].touched && registrationForm.controls['password'].hasError('maxlength')">
           Maximum of 256 characters
         </div>
-        <div *ngIf="password.errors">
-          <!-- <div *ngIf="registrationForm.controls.password.errors.MatchPassword">Passwords not matching</div> -->
-          <div *ngIf="password.errors.pattern">Password must contain upperase,digit,special symbols</div>
+        <div *ngIf="password.hasError('pattern')">
+          Password must contain upperase,digit,special symbols
         </div>
         <input type="password" placeholder="Confirm Password" required [formControl]="registrationForm.controls['confirmPassword']">
-
-        <button [disabled]='!registrationForm.valid' type="submit">Register</button>
+        <div style='color:#ff7355' *ngIf="registrationForm.get(['password']).value != registrationForm.get(['confirmPassword']).value && registrationForm.get(['confirm_password']).value != null">
+            Password does not match</div>
+        <button type="submit">Register</button>
       </div>
     </form>
   </section>

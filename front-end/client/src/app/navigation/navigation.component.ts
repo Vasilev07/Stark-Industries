@@ -16,7 +16,7 @@ export class NavigationComponent {
     
     // private loggedUser: string = this.authService.userName();
 
-    private loggedUser: string = this.authService.userName();
+    // private loggedUser: string = this.authService.userName();
 
     public isAuth(): boolean {
         return this.authService.isAuthenticated();
