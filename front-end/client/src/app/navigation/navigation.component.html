@@ -9,23 +9,16 @@
       <a [routerLink]="['/home']" routerLinkActive>
         <!-- <img class="mainLogo" (mouseover)="true ? src='../../assets/hover-logo.png' : src='../../assets/logo.png'">     -->
         <img class="mainLogo" [src]="imgSrc" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
-
       </a>
     </div>
     <div fxShow="true" fxHide.lt-md="true">
       <!-- The following menu items will be hidden on both SM and XS screen sizes -->
       <a [routerLink]="['/home']" routerLinkActive mat-button>Home</a>
-<<<<<<< HEAD
       <a [routerLink]="['/careers']" routerLinkActive mat-button>Careers</a>
       <a [routerLink]="['/contact']" routerLinkActive mat-button>Contact</a>
-=======
-      <a [routerLink]="['/careers/careers']" routerLinkActive mat-button>Careers</a>
-      <a [routerLink]="['/contact/contact']" routerLinkActive mat-button>Contact</a>
->>>>>>> 373223ee0b0d796ec8fa5ce6468368c3ba160cd2
     </div>
     <span class="spaceFiller"></span>
     <div fxShow="true" fxHide.lt-md="true">
-
       <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{ loggedUser?.firstName }} {{ loggedUser?.lastName}}</a>
       <a *ngIf="isAuth()" (click)="logout()" [routerLink]="['/']" routerLinkActive mat-button>Logout</a>
       <a *ngIf="!isAuth()" [routerLink]="['/auth/login']" routerLinkActive mat-button>Login</a>

@@ -1,6 +1,6 @@
 .header {
   /* margin-top: 20px; */
-  color: #00FFFF;
+  color: #000;
 }
 
 .map {
@@ -16,4 +16,5 @@
 
 .contactHeader {
     color: white;
+    box-shadow: 0 0 15px #00fffd;
 }

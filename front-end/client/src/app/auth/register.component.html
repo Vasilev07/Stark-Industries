@@ -10,7 +10,7 @@
         <input type="text" id="username" maxlength="10" placeholder="Username" required [formControl]="registrationForm.controls['userName']">
         <input type="text" placeholder="First Name" required [formControl]="registrationForm.controls['firstName']">
         <input type="text" placeholder="Last Name" required [formControl]="registrationForm.controls['lastName']">
-        <input type="text" placeholder="E-mail" required [formControl]="registrationForm.controls['email']" [pattern]="emailPattern">
+        <input type="text" placeholder="E-mail" required [formControl]="registrationForm.controls['email']">
         <div *ngIf="registrationForm.controls['email'].touched && registrationForm.controls['email'].hasError('maxlength')">
           Maximum of 1024 characters
         </div>

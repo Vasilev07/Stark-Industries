@@ -7,5 +7,4 @@ import { RegisterComponent } from '../register.component';
 export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent, canActivate: [AlreadyLoggedInGuard] },
-
 ];
