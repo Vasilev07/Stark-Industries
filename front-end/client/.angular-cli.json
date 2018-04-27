@@ -19,8 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "stark",
       "styles": [
-        "styles.css",
-        "../node_modules/ngx-toastr/toastr.css"
+        "../node_modules/ngx-toastr/toastr.css",
+        "styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

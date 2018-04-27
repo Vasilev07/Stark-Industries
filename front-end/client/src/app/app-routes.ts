@@ -7,5 +7,6 @@ export const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
   {path: 'contact', loadChildren: './contact/contact.module#ContactModule'},
+  {path: 'careers', loadChildren: './careers/careers.module#CareersModule'},
 
 ];

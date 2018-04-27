@@ -21,7 +21,6 @@ import {
     transition,
     trigger,
 } from '@angular/animations';
-import { PasswordValidatorDirective } from './password-validator.directive';
 
 @NgModule({
   imports: [
@@ -39,7 +38,7 @@ import { PasswordValidatorDirective } from './password-validator.directive';
     MatTooltipModule,
     MatIconModule,
   ],
-  declarations: [PasswordValidatorDirective],
+  declarations: [],
   exports: [
     CommonModule,
     FormsModule,

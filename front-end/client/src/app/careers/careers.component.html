@@ -1,3 +1,35 @@
-<ul *ngFor="let job of jobs">
-  <li>{{job.id}}</li>
-</ul>
+<h1 class="header">Open Positions</h1>
+<div class="container" fxLayout="row">
+  <div fxLayout="column" class="content" fxFlex="60%">
+    <div class="container">
+      <mat-list *ngFor="let job of jobs">
+        <mat-list-item class="job-title">
+          <h3>
+            <a>{{job.title}}</a>
+          </h3>
+        </mat-list-item>
+        <mat-list-item class="job-title">
+          <h3>
+            <a>{{job.title}}</a>
+          </h3>
+        </mat-list-item>
+        <mat-list-item class="job-title">
+          <h3>
+            <a>{{job.title}}</a>
+          </h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start center" class="content" fxFlex="25%">
+    <mat-form-field>
+      <input matInput placeholder="Search" (input)="onSearch()" [(ngModel)]="search">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select (change)="onChange()" [(ngModel)]="order" placeholder="Select Order">
+        <mat-option value="asc">Ascending</mat-option>
+        <mat-option value="desc">Descending</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

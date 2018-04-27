@@ -1,11 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormBuilder, FormGroup } from '@angular/forms';
+=======
+>>>>>>> 373223ee0b0d796ec8fa5ce6468368c3ba160cd2
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { AuthService } from '../core/auth.service';
 import { UserLoginModel } from '../models/users/userLoginModel';
+import { AuthService } from '../core/auth.service';
 
 @Component({
     selector: 'app-login',

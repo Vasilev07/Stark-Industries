@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { CareersService } from './careers.service';
 import { ContactService } from './contact.service';
 import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
+import { PatternValidatorService } from './pattern.validator.service';
 
 export const tokenGetter = () => {
   return localStorage.getItem('access_token');
@@ -23,10 +24,11 @@ export const tokenGetter = () => {
   }),
   ],
   providers: [
-      {provide: AlreadyLoggedInGuard, useClass: AlreadyLoggedInGuard},
-      {provide: AuthService, useClass: AuthService},
-      {provide: ContactService, useClass: ContactService},
-      {provide: CareersService, useClass: CareersService},
-  ],
+    {provide: AuthService, useClass: AuthService},
+    {provide: AlreadyLoggedInGuard, useClass: AlreadyLoggedInGuard},
+    {provide: PatternValidatorService, useClass: PatternValidatorService},
+    {provide: ContactService, useClass: ContactService},
+    {provide: CareersService, useClass: CareersService},
+  ]
 })
 export class CoreModule { }
