@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
-    longtitude: {
+    latitude: {
         type: DataTypes.FLOAT,
         allowNull: true,
     },
-    latitude: {
+    longtitude: {
         type: DataTypes.FLOAT,
         allowNull: true,
     },

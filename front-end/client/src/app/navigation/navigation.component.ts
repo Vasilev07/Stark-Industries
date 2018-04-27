@@ -1,25 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthService } from '../core/auth.service';
+import { LoggedUserModel } from '../models/users/loggedUserModel';
 
 @Component({
-  selector: 'stark-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css'],
+    selector: 'stark-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, DoCheck {
 
-    public loggedUser: object;
+    public loggedUser: LoggedUserModel;
     public firstName: string;
     public lastName: string;
     public imgSrc: string = '../../assets/hover-logo.png';
 
     public authenticated: boolean = this.isAuth();
 
-    constructor(private router: Router, private authService: AuthService, private jwtService: JwtHelperService ) { }
-    
+    constructor(private router: Router, private authService: AuthService, private jwtService: JwtHelperService) { }
+
     // private loggedUser: string = this.authService.userName();
 
     public ngOnInit(): void {
@@ -43,5 +44,12 @@ export class NavigationComponent implements OnInit {
     public logout(): void {
         localStorage.removeItem('access_token');
         this.router.navigate(['/']);
+    }
+
+    public ngDoCheck(): void {
+        const authenticated = this.isAuth();
+        if (authenticated) {
+            this.loggedUser = this.authService.userName();
+        }
     }
 }

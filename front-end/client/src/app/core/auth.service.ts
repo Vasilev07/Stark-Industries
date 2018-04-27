@@ -10,6 +10,7 @@ import { AccessToken } from '../models/core/accessToken';
 import { UserLoginModel } from '../models/users/userLoginModel';
 import { UserRegisterModel } from '../models/users/userRegisterModel';
 import { AppConfig } from './../config/app.config';
+import { LoggedUserModel } from '../models/users/loggedUserModel';
 
 @Injectable()
 export class AuthService {
@@ -39,7 +40,7 @@ export class AuthService {
         localStorage.removeItem('access_token');
     }
 
-    public userName(): object {
+    public userName(): LoggedUserModel {
     // public userName(): string {
     //    const token = localStorage.getItem('access_token');
     //    const decodedToken = this.jwtService.decodeToken(token);
@@ -47,7 +48,7 @@ export class AuthService {
     //    console.log(email);
     //     return email;
     // }
-        const token = localStorage.getItem('access_token');
+        const token = this.jwtService.tokenGetter();
         const decodedToken = this.jwtService.decodeToken(token);
         const firstName = decodedToken.firstName;
         const lastName = decodedToken.lastName;

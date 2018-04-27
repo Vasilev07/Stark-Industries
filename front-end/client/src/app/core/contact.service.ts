@@ -19,7 +19,7 @@ export class ContactService {
      * getAllContacts
      */
     public getAllContacts(): Observable<ContactApiModel> {
-        return this.httpClient.get(`${this.appConfig.apiUrl}/contact`).map((data) => (data) as ContactApiModel);
+        return this.httpClient.get<ContactApiModel>(`${this.appConfig.apiUrl}/contact`);
     }
 
     public createNewContact(newContact: ContactCreateModel): void {

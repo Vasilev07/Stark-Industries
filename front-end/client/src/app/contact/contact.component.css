@@ -1,3 +1,19 @@
-.container {
+.header {
+  /* margin-top: 20px; */
+  color: #00FFFF;
+}
+
+.map {
+  color: #00FFFF;
+  border: 6px solid #00a4a2;
+  box-shadow: 0 0 15px #00fffd;
+}
+
+.contact {
+    border: 6px solid #00a4a2;
+    box-shadow: 0 0 15px #00fffd;
+}
+
+.contactHeader {
     color: white;
 }

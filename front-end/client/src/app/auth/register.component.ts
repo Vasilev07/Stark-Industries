@@ -1,29 +1,10 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  ToastrService
-} from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
-import {
-  AuthService
-} from '../core/auth.service';
-import {
-  UserRegisterModel
-} from '../models/users/userRegisterModel';
-import {
-  FormGroup,
-  AbstractControl,
-  FormBuilder,
-  Validators
-} from '@angular/forms';
-import {
-  HttpResponse
-} from '@angular/common/http';
-import {
-  PasswordValidatorDirective
-} from '../shared/password-validator.directive';
+import { AuthService } from '../core/auth.service';
+import { UserRegisterModel } from '../models/users/userRegisterModel';
+import { PasswordValidatorDirective } from '../shared/password-validator.directive';
 
 @Component({
   selector: 'app-register',
@@ -33,8 +14,8 @@ import {
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
 
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$";
+//   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+//   passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$";
 
   constructor(private authService: AuthService, private toastr: ToastrService, private formBuilder: FormBuilder) {}
   ngOnInit() {
@@ -42,9 +23,9 @@ export class RegisterComponent implements OnInit {
       userName: '',
       firstName: '',
       lastName: '',
-      email: ['', [Validators.pattern(this.emailPattern), Validators.maxLength(1024)]],
-      password: ['', [Validators.pattern(this.passwordPattern), Validators.maxLength(256)]],
-      confirmPassword: ['',Validators.required, PasswordValidatorDirective],
+      email: ['', [ Validators.maxLength(1024)]],
+      password: ['', [ Validators.maxLength(256)]],
+      confirmPassword: ['', [Validators.required]],
     }
     // {
     //   validator: PasswordValidatorDirective.MatchPassword
