@@ -17,6 +17,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
+    isMappable: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
+    longtitude: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
+    latitude: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
   }, {});
   contactInfo.associate = (models) => {
     // associations can be defined here

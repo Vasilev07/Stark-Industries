@@ -18,6 +18,7 @@ export class CareersComponent implements OnInit {
   ngOnInit() {
     this.careerService.getAll().subscribe((data) => {
       this.jobs = data;
+      console.log(this.jobs);
     })
   }
 }

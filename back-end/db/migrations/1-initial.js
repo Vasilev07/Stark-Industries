@@ -16,8 +16,8 @@ var Sequelize = require('sequelize');
 
 var info = {
     "revision": 1,
-    "name": "noname",
-    "created": "2018-04-20T08:59:24.542Z",
+    "name": "initial",
+    "created": "2018-04-26T10:28:42.484Z",
     "comment": ""
 };
 
@@ -277,6 +277,18 @@ var migrationCommands = [{
                 "isPrimary": {
                     "type": Sequelize.BOOLEAN,
                     "allowNull": false
+                },
+                "isMappable": {
+                    "type": Sequelize.BOOLEAN,
+                    "allowNull": false
+                },
+                "longtitude": {
+                    "type": Sequelize.FLOAT,
+                    "allowNull": true
+                },
+                "latitude": {
+                    "type": Sequelize.FLOAT,
+                    "allowNull": true
                 },
                 "createdAt": {
                     "type": Sequelize.DATE,

@@ -1,11 +1,25 @@
 .header {
   margin-top: 20px;
-  color: #00FFFF;
+  color: black;
 }
 
 .job-title {
-  color: #00FFFF;
-  border: 1px solid #00FFFF;
+  color: black;
+  border: 1px solid black;
   padding: 20px;
   border-radius: 4px;
+}
+
+.form {
+  color: black;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: black;
+  margin-top: 20px;
+}
+
+md-input-container .md-input {
+  color: rgba(255, 255, 255, 0.87);
+  border-color: rgba(254, 253, 103, 0.82);
 }

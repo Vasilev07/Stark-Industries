@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
@@ -12,7 +13,6 @@ import {
     MatTooltipModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '../app-routing.module';
 
 import {
     animate,
@@ -35,8 +35,8 @@ import {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    AppRoutingModule,
     MatTooltipModule,
+    MatIconModule,
   ],
   declarations: [],
   exports: [
@@ -51,8 +51,8 @@ import {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    AppRoutingModule,
     MatTooltipModule,
+    MatIconModule,
   ],
 })
 export class SharedModule { }

@@ -32,6 +32,8 @@ class AuthenticationController {
             const payload = {
                 sub: user.id,
                 email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 role: user.roleId,
                 exp: expire,
                 iss: config.JWT_ISS,
@@ -64,6 +66,8 @@ class AuthenticationController {
                                 sub: userFound.id,
                                 email: userFound.email,
                                 role: userFound.roleId,
+                                firstName: userFound.firstName,
+                                lastName: userFound.lastName,
                                 exp: expire,
                                 iss: config.JWT_ISS,
                             };
