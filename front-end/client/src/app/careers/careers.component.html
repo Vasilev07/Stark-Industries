@@ -2,34 +2,34 @@
 <div class="container" fxLayout="row">
   <div fxLayout="column" class="content" fxFlex="60%">
     <div class="container">
-      <mat-list *ngFor="let job of jobs">
+      <mat-list *ngFor="let job of filteredJobs">
         <mat-list-item class="job-title">
           <h3>
             <a>{{job.title}}</a>
           </h3>
         </mat-list-item>
-        <mat-list-item class="job-title">
-          <h3>
-            <a>{{job.title}}</a>
-          </h3>
-        </mat-list-item>
-        <mat-list-item class="job-title">
-          <h3>
-            <a>{{job.title}}</a>
-          </h3>
-        </mat-list-item>
+        <br>
       </mat-list>
     </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="start center" class="content" fxFlex="25%">
+
     <mat-form-field>
-      <input matInput placeholder="Search" (input)="onSearch()" [(ngModel)]="search">
+      <input matInput placeholder="Filter by keyword" [(ngModel)]="search">
     </mat-form-field>
+
     <mat-form-field>
-      <mat-select (change)="onChange()" [(ngModel)]="order" placeholder="Select Order">
-        <mat-option value="asc">Ascending</mat-option>
-        <mat-option value="desc">Descending</mat-option>
+      <mat-select matInput (change)="onChange()" [(ngModel)]="byType" placeholder="Job type">
+        <mat-option>None</mat-option>
+        <mat-option value="{{job.type}}" *ngFor="let job of jobs">{{job.type}}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Date filter" [matDatepicker]="myDatepicker" name="date" [(ngModel)]="date" (dateChange)="dateChange($event)" >
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+
   </div>
 </div>
