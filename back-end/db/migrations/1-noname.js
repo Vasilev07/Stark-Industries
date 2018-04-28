@@ -16,8 +16,8 @@ var Sequelize = require('sequelize');
 
 var info = {
     "revision": 1,
-    "name": "initial",
-    "created": "2018-04-26T10:28:42.484Z",
+    "name": "noname",
+    "created": "2018-04-28T09:48:45.231Z",
     "comment": ""
 };
 
@@ -282,11 +282,11 @@ var migrationCommands = [{
                     "type": Sequelize.BOOLEAN,
                     "allowNull": false
                 },
-                "longtitude": {
+                "latitude": {
                     "type": Sequelize.FLOAT,
                     "allowNull": true
                 },
-                "latitude": {
+                "longtitude": {
                     "type": Sequelize.FLOAT,
                     "allowNull": true
                 },

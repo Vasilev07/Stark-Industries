@@ -131,11 +131,11 @@
                     "allowNull": false,
                     "seqType": "Sequelize.BOOLEAN"
                 },
-                "longtitude": {
+                "latitude": {
                     "allowNull": true,
                     "seqType": "Sequelize.FLOAT"
                 },
-                "latitude": {
+                "longtitude": {
                     "allowNull": true,
                     "seqType": "Sequelize.FLOAT"
                 },

@@ -7,6 +7,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { AccessToken } from '../models/core/accessToken';
+import { Roles } from '../models/roles.enum';
+import { LoggedUserModel } from '../models/users/loggedUserModel';
 import { UserLoginModel } from '../models/users/userLoginModel';
 import { UserRegisterModel } from '../models/users/userRegisterModel';
 import { AppConfig } from './../config/app.config';
@@ -30,17 +32,24 @@ export class AuthService {
     }
 
     public isAdmin(): boolean {
-        const token = this.jwtService.tokenGetter();
-        const decoded = this.jwtService.decodeToken(token);
-
-        return decoded.roleId >= 2;
+        const authenticated = this.isAuthenticated();
+        if (authenticated) {
+            const token = this.jwtService.tokenGetter();
+            const decoded = this.jwtService.decodeToken(token);
+            let admin = false;
+            if (decoded.role >= Roles.admin) {
+                admin = true;
+            }
+            return admin;
+        }
+        return false;
     }
 
     public logout(): void {
         localStorage.removeItem('access_token');
     }
 
-    public userName(): object {
+    public userName(): LoggedUserModel {
     // public userName(): string {
     //    const token = localStorage.getItem('access_token');
     //    const decodedToken = this.jwtService.decodeToken(token);
@@ -48,12 +57,11 @@ export class AuthService {
     //    console.log(email);
     //     return email;
     // }
-        const token = localStorage.getItem('access_token');
+        const token = this.jwtService.tokenGetter();
         const decodedToken = this.jwtService.decodeToken(token);
         const firstName = decodedToken.firstName;
         const lastName = decodedToken.lastName;
         const email = decodedToken.email;
-        console.log(decodedToken);
         const loggedUserInfo = {
             firstName,
             lastName,

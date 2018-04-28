@@ -1,3 +1,4 @@
+import { CdkTableModule } from '@angular/cdk/table';
 import { NgModule } from '@angular/core';
 import {
     MatAutocompleteModule,
@@ -70,6 +71,7 @@ import {
     MatToolbarModule,
     MatFormFieldModule,
     MatTooltipModule,
+    CdkTableModule,
   ],
   declarations: [],
   exports: [
@@ -106,6 +108,7 @@ import {
     MatToolbarModule,
     MatFormFieldModule,
     MatTooltipModule,
+    CdkTableModule,
   ],
 })
 export class MatModuleModule { }

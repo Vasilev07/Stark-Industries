@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ContactService } from '../core/contact.service';
 import { ContactGetModel } from '../models/contacts/contactGetModel';

@@ -1,17 +1,29 @@
-<div class="container" >
-    <div class="map-container">
+<h1 class="header">CONTACTS</h1>
 
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="start start" class="content">
+    <div class="map" fxFlex="50%">
+      <agm-map [longitude]='displayLongtitude' [latitude]='displayLatitude' style="height: 300px;">
+        <agm-marker [longitude]='displayLongtitude' [latitude]='displayLatitude'></agm-marker>
+      </agm-map>
     </div>
-    <div class="contactsList" *ngFor="let contact of contacts">
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon>{{primaryAddress.icon}}</mat-icon> {{primaryAddress.name}}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            {{primaryAddress.value}}
-            {{primaryAddress.longtitude}}, {{primaryAddress.latitude}}
-            <mat-checkbox></mat-checkbox>
+    <div fxFlex="10%"></div>
+    <div fxLayout="column">
+      <div class="contactsContainer" fxFlex="40%" *ngFor="let contact of contacts">
+        <br>
+        <mat-expansion-panel class="contact">
+          <mat-expansion-panel-header class="contactHeader">
+            <mat-panel-title>
+              <mat-icon>{{contact.icon}}</mat-icon>{{ contact.name }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <p>Address: {{contact.value}}</p>
+            <p>Longtidue: {{contact.longtitude}}</p>
+            <p>Lantidue: {{contact.latitude}}</p>
+          </div>
         </mat-expansion-panel>
+      </div>
     </div>
+  </div>
 </div>

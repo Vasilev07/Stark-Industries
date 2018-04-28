@@ -5,11 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../auth.service';
 
 @Injectable()
-export class AlreadyLoggedInGuard implements CanActivate {
-
+export class IsAdminGuard implements CanActivate {
     constructor(private authService: AuthService) { }
-
     public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        return !this.authService.isAuthenticated();
+        return this.authService.isAdmin();
     }
 }

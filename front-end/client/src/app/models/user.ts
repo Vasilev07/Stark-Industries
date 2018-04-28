@@ -1,3 +1,5 @@
+import { Roles } from './roles.enum';
+
 export class User {
     public id: number;
     public userName: string;
@@ -8,5 +10,6 @@ export class User {
     public password: string;
     public createdAt: string;
     public updatedAt: string;
-    public roleId: number;
+    public roleId: Roles;
+    public applicationsCount: number;
 }
