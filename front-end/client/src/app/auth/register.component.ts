@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../core/auth.service';
-import { PatternValidatorService } from '../core/pattern.validator.service';
 import { UserRegisterModel } from '../models/users/userRegisterModel';
 
 @Component({
@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit {
 
     passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
-    constructor(private authService: AuthService, private toastr: ToastrService, private formBuilder: FormBuilder) { }
+    constructor(private authService: AuthService, private toastr: ToastrService,
+        private formBuilder: FormBuilder, private router: Router) { }
     ngOnInit() {
         this.registrationForm = this.formBuilder.group({
             userName: '',
@@ -41,11 +42,10 @@ export class RegisterComponent implements OnInit {
     }
 
     private register(user: UserRegisterModel): void {
-        console.log(user);
-        console.log(this.registrationForm);
         this.authService.register(this.registrationForm.value).subscribe((data) => {
             localStorage.setItem('access_token', data.token);
-            this.toastr.success(`Success! Welcome to Stark Industries ${user.firstName} ${user.lastName}`)
+            this.toastr.success(`Success! Welcome to Stark Industries ${user.firstName} ${user.lastName}`);
+            this.router.navigate(['/home']);
         });
     }
     // passwordMatchValidator(g: FormGroup) {

@@ -8,7 +8,6 @@ require('./configuration/express').init(app, data);
 
 require('./routes').init(app, data);
 
-
 app.get('/', (req, res) => {
     res.send('It works!');
 });

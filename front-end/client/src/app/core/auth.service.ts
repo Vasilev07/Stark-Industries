@@ -7,10 +7,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { AccessToken } from '../models/core/accessToken';
+import { Roles } from '../models/roles.enum';
+import { LoggedUserModel } from '../models/users/loggedUserModel';
 import { UserLoginModel } from '../models/users/userLoginModel';
 import { UserRegisterModel } from '../models/users/userRegisterModel';
 import { AppConfig } from './../config/app.config';
-import { LoggedUserModel } from '../models/users/loggedUserModel';
 
 @Injectable()
 export class AuthService {
@@ -30,10 +31,17 @@ export class AuthService {
     }
 
     public isAdmin(): boolean {
-        const token = this.jwtService.tokenGetter();
-        const decoded = this.jwtService.decodeToken(token);
-
-        return decoded.roleId >= 2;
+        const authenticated = this.isAuthenticated();
+        if (authenticated) {
+            const token = this.jwtService.tokenGetter();
+            const decoded = this.jwtService.decodeToken(token);
+            let admin = false;
+            if (decoded.role >= Roles.admin) {
+                admin = true;
+            }
+            return admin;
+        }
+        return false;
     }
 
     public logout(): void {
@@ -53,7 +61,6 @@ export class AuthService {
         const firstName = decodedToken.firstName;
         const lastName = decodedToken.lastName;
         const email = decodedToken.email;
-        console.log(decodedToken);
         const loggedUserInfo = {
             firstName,
             lastName,
