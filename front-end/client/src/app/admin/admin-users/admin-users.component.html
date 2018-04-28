@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="table-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort matSortActive="name">
 
     <!--- Note that these columns can be defined in any order.
@@ -6,8 +6,8 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> User Id </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> User Id </mat-header-cell>
+      <mat-cell *matCellDef="let user" [ngClass]="'idContainer'"> {{user.id}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
@@ -29,20 +29,26 @@
     </ng-container>
 
     <ng-container matColumnDef="applicationsCount">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Number of Applications </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.applicationsCount}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> Number of Applications </mat-header-cell>
+      <mat-cell *matCellDef="let user" [ngClass]="'idContainer'"> {{user.applicationsCount}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="roleId">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Role </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.roleId}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> Role </mat-header-cell>
+      <mat-cell *matCellDef="let user" [ngClass]="'idContainer'"> {{user.roleId}} </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    <mat-paginator #paginator
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 20]"
-    [showFirstLastButtons]="true">
-    </mat-paginator>
   </mat-table>
+  <div [ngClass]="'tableFooter'">
+    <div [ngClass]="'searchFilter'">
+      <mat-form-field>
+        <input matInput (keyup)="searchTable($event.target.value)" placeholder="Search the table">
+      </mat-form-field>
+    </div>
+    <div [ngClass]="'paginator'">
+      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+      </mat-paginator>
+    </div>
+  </div>
 </div>

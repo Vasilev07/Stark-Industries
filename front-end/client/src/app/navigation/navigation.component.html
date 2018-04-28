@@ -17,21 +17,6 @@
       <a [routerLink]="['/careers']" routerLinkActive mat-button>Careers</a>
       <a [routerLink]="['/contact']" routerLinkActive mat-button>Contact</a>
     </div>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Personal data
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
-      </mat-expansion-panel>
     <span class="spaceFiller"></span>
     <div fxShow="true" fxHide.lt-md="true">
       <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{ loggedUser?.firstName }} {{ loggedUser?.lastName}}</a>

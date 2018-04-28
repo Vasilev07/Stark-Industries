@@ -9,7 +9,7 @@ import { User } from '../../models/user';
     templateUrl: './admin-users.component.html',
     styleUrls: ['./admin-users.component.css'],
 })
-export class AdminUsersComponent implements OnInit, AfterViewInit {
+export class AdminUsersComponent implements OnInit {
 
     public users: User[] = [];
     public dataSource;
@@ -23,10 +23,11 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
             this.dataSource = new MatTableDataSource(this.users);
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
-            console.log(this.users);
         });
     }
-    public ngAfterViewInit(): void {
-        // this.dataSource.paginator = this.paginator;
-    }
+
+    public searchTable(searchValue: string): void {
+        const formattedSearchValue = searchValue.trim().toLowerCase(); // Remove whitespace
+        this.dataSource.filter = formattedSearchValue;
+      }
 }
