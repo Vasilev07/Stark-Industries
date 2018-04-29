@@ -8,16 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './config/app.config';
 import { CoreModule } from './core/core.module';
-import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 import { NavigationModule } from './navigation/navigation.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,
+    HomeModule,
     NavigationModule,
     FormsModule,
     CoreModule,
