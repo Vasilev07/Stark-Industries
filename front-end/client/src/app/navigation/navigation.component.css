@@ -37,3 +37,7 @@ a {
 .mainLogo {
     margin-top: -14px;
 }
+
+.adminNav {
+    text-align: center !important;
+}

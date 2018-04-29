@@ -1,31 +1,44 @@
 <div style="z-index: 9999;">
   <mat-toolbar class="navtoolbar" layout-align="center center">
-    <div fxShow="true" fxHide.gt-sm="true">
-      <!-- <a (click)="sidenav.toggle()"> -->
+    <mat-toolbar-row>
+      <div fxShow="true" fxHide.gt-sm="true">
+        <!-- <a (click)="sidenav.toggle()"> -->
         <!-- <img class="icon-button" src="../../assets/button.png" alt="" style="background-color: white">
-      </a> -->
-    </div>
-    <div>
-      <a [routerLink]="['/home']" routerLinkActive>
-        <!-- <img class="mainLogo" (mouseover)="true ? src='../../assets/hover-logo.png' : src='../../assets/logo.png'">     -->
-        <img class="mainLogo" [src]="imgSrc" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
-      </a>
-    </div>
-    <div fxShow="true" fxHide.lt-md="true">
-      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-      <a [routerLink]="['/home']" routerLinkActive mat-button>Home</a>
-      <a [routerLink]="['/careers']" routerLinkActive mat-button>Careers</a>
-      <a [routerLink]="['/contact']" routerLinkActive mat-button>Contact</a>
-    </div>
-    <span class="spaceFiller"></span>
-    <div fxShow="true" fxHide.lt-md="true">
-      <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{ loggedUser?.firstName }} {{ loggedUser?.lastName}}</a>
-      <a *ngIf="isAuth()" (click)="logout()" [routerLink]="['/']" routerLinkActive mat-button>Logout</a>
-      <a *ngIf="!isAuth()" [routerLink]="['/auth/login']" routerLinkActive mat-button>Login</a>
-      <a *ngIf="!isAuth()" [routerLink]="['/auth/register']" routerLinkActive mat-button>Register</a>
-    </div>
+                    </a> -->
+      </div>
+      <div>
+        <a [routerLink]="['/home']" routerLinkActive>
+          <!-- <img class="mainLogo" (mouseover)="true ? src='../../assets/hover-logo.png' : src='../../assets/logo.png'">     -->
+          <img class="mainLogo" [src]="imgSrc" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
+        </a>
+      </div>
+      <div fxShow="true" fxHide.lt-md="true">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a [routerLink]="['/home']" routerLinkActive mat-button>Home</a>
+        <a [routerLink]="['/careers']" routerLinkActive mat-button>Careers</a>
+        <a [routerLink]="['/contact']" routerLinkActive mat-button>Contact</a>
+      </div>
+      <a mat-button *ngIf="isAdmin()" (click)="toggleAdminNav()">Admin</a>
+      <span class="spaceFiller"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a *ngIf="isAuth()" [routerLink]="['/']" mat-button>Hello, {{ loggedUser?.firstName }} {{ loggedUser?.lastName}}</a>
+        <a *ngIf="isAuth()" (click)="logout()" [routerLink]="['/']" routerLinkActive mat-button>Logout</a>
+        <a *ngIf="!isAuth()" [routerLink]="['/auth/login']" routerLinkActive mat-button>Login</a>
+        <a *ngIf="!isAuth()" [routerLink]="['/auth/register']" routerLinkActive mat-button>Register</a>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row [ngClass]="'adminNav'" *ngIf="adminNavVisible" fxLayout="row" fxLayoutAlign="center center">
+      <div fxShow="true" fxHide.lt-md="true">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a [routerLink]="['/admin/users']" routerLinkActive mat-button>Users</a>
+        <a [routerLink]="['/admin/careers']" routerLinkActive mat-button>Jobs</a>
+        <a [routerLink]="['/admin/applications']" routerLinkActive mat-button>Job Applications</a>
+        <a [routerLink]="['/admin/links']" routerLinkActive mat-button>Links</a>
+        <a [routerLink]="['/admin/contacts']" routerLinkActive mat-button>Contacts</a>
+      </div>
+    </mat-toolbar-row>
   </mat-toolbar>
-  
+
   <!-- <mat-sidenav-container fxFlexFill class="example-container" style="z-index: 9999;">
     <mat-sidenav #sidenav fxLayout="column">
       <span class="spaceFillerSide"></span>
