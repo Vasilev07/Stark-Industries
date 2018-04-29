@@ -11,7 +11,7 @@ import { LoggedUserModel } from '../models/users/loggedUserModel';
     styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit, DoCheck {
-
+    public adminNavVisible: boolean = false;
     public loggedUser: LoggedUserModel;
     public firstName: string;
     public lastName: string;
@@ -29,9 +29,14 @@ export class NavigationComponent implements OnInit, DoCheck {
             this.loggedUser = this.authService.userName();
         }
     }
-
+    public toggleAdminNav(): void {
+        this.adminNavVisible = !this.adminNavVisible;
+    }
     public isAuth(): boolean {
         return this.authService.isAuthenticated();
+    }
+    public isAdmin(): boolean {
+        return this.authService.isAdmin();
     }
     public onMouseOver(): void {
         this.imgSrc = '../../assets/hover-logo.png';

@@ -1,7 +1,7 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    min-width: 80vh;
+    max-height: 85vh;
     max-width: 80vw;
     margin: 10px auto;
     align-content: center;
@@ -38,7 +38,7 @@
 
   .tableFooter{
       display: flex;
-      padding: 10px;
+      padding: 5px;
       background-color: white;
       border-top: 2px solid #00a4a2;
       box-shadow: 0 0 10px #00fffd;
@@ -57,4 +57,12 @@
 
   .paginator {
       margin: auto;
+  }
+
+  .noData {
+      background-color: white;
+      text-align: center;
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
   }
