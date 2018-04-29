@@ -3,11 +3,7 @@
   <div fxLayout="column" class="content" fxFlex="60%">
     <div class="container">
       <mat-list *ngFor="let job of filteredJobs">
-        <mat-list-item class="job-title">
-          <h3>
-            <a>{{job.title}}</a>
-          </h3>
-        </mat-list-item>
+        <stark-careers-view [job]="job"></stark-careers-view>
         <br>
       </mat-list>
     </div>
@@ -34,7 +30,5 @@
     </div>
   </div>
 </div>
-<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>

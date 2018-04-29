@@ -5,6 +5,8 @@ import { CareersRoutingModule } from './routing/careers-routing.module';
 import { MatModuleModule } from '../shared/mat.module.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
+import { JobDetailsComponent } from './job-details/job-details.component';
+import { CareersViewComponent } from './careers-view.component';
 
 @NgModule({
   imports: [
@@ -14,6 +16,6 @@ import { FormsModule } from '@angular/forms';
     FlexLayoutModule,
     FormsModule
   ],
-  declarations: [CareersComponent]
+  declarations: [CareersComponent, JobDetailsComponent, CareersViewComponent]
 })
 export class CareersModule { }

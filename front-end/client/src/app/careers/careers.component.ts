@@ -2,7 +2,8 @@ import {
   Component,
   Input,
   OnInit,
-  DoCheck
+  DoCheck,
+  ViewChild
 } from '@angular/core';
 
 import {
@@ -17,36 +18,42 @@ import {
 import {
   EventEmitter
 } from 'events';
-import {
-  type
-} from 'os';
+
+import { MatPaginator } from '@angular/material';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'stark-careers',
   templateUrl: './careers.component.html',
   styleUrls: ['./careers.component.css']
 })
-export class CareersComponent implements OnInit, DoCheck {
-
+export class CareersComponent implements OnInit{
 
   @Input()
-  jobs: Job[] = [];
-  filteredJobs: Job[] = [];
-  jobCategories = [];
-
-  date: string = '';
-  byType: string = '';
-  search: string = '';
+  public jobs: Job[] = [];
+  public filteredJobs: Job[] = [];
+  public jobCategories = [];
+  public date: string = '';
+  public byType: string = '';
+  public search: string = '';
 
   selectedDate: number;
+  
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
-  constructor(private careerService: CareersService) {}
+  constructor(private careerService: CareersService, private authService: AuthService) {}
 
   ngOnInit() {
     this.careerService.getAll().subscribe((data) => {
+      if(this.authService.isAdmin()){
       this.jobs = data;
       this.filteredJobs = data;
       this.filterRepeatingJobsCat();
+      } else {
+        this.jobs = data.filter((job) => job.status === 'active');
+        this.filteredJobs = this.jobs;
+        this.filterRepeatingJobsCat();
+      }
     });
   }
 
