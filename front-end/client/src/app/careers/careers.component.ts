@@ -13,7 +13,7 @@ import {
   Job
 } from '../models/job';
 import {
-  MatDatepickerInputEvent
+  MatDatepickerInputEvent, MatTableDataSource
 } from '@angular/material';
 import {
   EventEmitter
@@ -37,6 +37,8 @@ export class CareersComponent implements OnInit{
   public byType: string = '';
   public search: string = '';
 
+  public dataSource;
+
   selectedDate: number;
   
   @ViewChild(MatPaginator) public paginator: MatPaginator;
@@ -47,6 +49,8 @@ export class CareersComponent implements OnInit{
     this.careerService.getAll().subscribe((data) => {
       if(this.authService.isAdmin()){
       this.jobs = data;
+      this.dataSource = new MatTableDataSource(this.jobs);
+      setTimeout(() => this.dataSource.paginator = this.paginator);
       this.filteredJobs = data;
       this.filterRepeatingJobsCat();
       } else {
