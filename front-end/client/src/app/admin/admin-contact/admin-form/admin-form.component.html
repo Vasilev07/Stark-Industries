@@ -6,36 +6,42 @@
     <mat-form-field>
       <label for="name">Name</label>
       <br>
-      <input matInput type="text" id="name" [formControl]="form.controls['name']" [value]='name'>
+      <input matInput type="text" #nameField id="name" [formControl]="form.controls['name']" [value]='name || ""'>
+      <mat-hint align="end">{{nameField.value?.length || 0 }}/ 128</mat-hint>
     </mat-form-field>
-    <div class="alert alert-danger" *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('required'))">
+    <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('required'))">
       This field is required!
-    </div>
-    <div class="alert alert-danger" *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('maxlength') || form.controls['name'].hasError('minlength'))">
+    </mat-error>
+    <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('maxlength') || form.controls['name'].hasError('minlength'))">
       Name must be between 2 and 128 characters long.
-    </div>
+    </mat-error>
     <mat-form-field>
       <label for="value">Value</label>
       <br>
-      <textarea matInput type="text" id="value" [formControl]="form.controls['value']" [value]='value'></textarea>
+      <textarea matInput type="text" #valueField id="value" [formControl]="form.controls['value']" [value]='value || ""'></textarea>
+      <mat-hint align="end">{{valueField.value?.length || 0 }}/ 1024</mat-hint>
     </mat-form-field>
-    <div class="alert alert-danger" *ngIf="form.controls['value'].touched && form.controls['value'].hasError('required')">
+    <mat-error *ngIf="form.controls['value'].touched && form.controls['value'].hasError('required')">
       This field is required!
-    </div>
-    <div class="alert alert-danger" *ngIf="form.controls['value'].touched && (form.controls['value'].hasError('maxlength') || form.controls['value'].hasError('minlength'))">
+    </mat-error>
+    <mat-error *ngIf="form.controls['value'].touched && (form.controls['value'].hasError('maxlength') || form.controls['value'].hasError('minlength'))">
       Name must be between 2 and 1024 characters long.
-    </div>
+    </mat-error>
     <mat-form-field>
-      <label for="icon">Icon</label>
+      <span class="tooltip" matTooltip="This field uses material icons, pick a name from https://material.io/icons/ and write it in the field"
+        matTooltipPosition="below" matTooltipHideDelay="1000">
+        <label for="icon">Icon</label>
+      </span>
       <br>
-      <input matInput type="text" id="icon" [formControl]="form.controls['icon']" [value]='icon'>
+      <input matInput type="text" id="icon" [formControl]="form.controls['icon']" [value]='icon || ""'>
     </mat-form-field>
-    <div class="alert alert-danger" *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('required')">
+
+    <mat-error *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('required')">
       This field is required!
-    </div>
-    <div class="alert alert-danger" *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('minlength')">
+    </mat-error>
+    <mat-error *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('minlength')">
       Name must be at least 2 characters long.
-    </div>
+    </mat-error>
     <mat-form-field>
       <label for="isPrimary">Is Address Primary?</label>
       <br>
@@ -44,9 +50,9 @@
         <mat-option value="false">No</mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="alert alert-danger" *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
+    <mat-error *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
       This field is required!
-    </div>
+    </mat-error>
     <mat-form-field>
       <label for="isMappable">Is Address Mappable?</label>
       <br>
@@ -55,9 +61,9 @@
         <mat-option value="false">No</mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="alert alert-danger" *ngIf="form.controls['isMappable'].touched && form.controls['isMappable'].hasError('required') && !form.controls['isMappable'].value">
+    <mat-error *ngIf="form.controls['isMappable'].touched && form.controls['isMappable'].hasError('required') && !form.controls['isMappable'].value">
       This field is required!
-    </div>
+    </mat-error>
     <mat-form-field *ngIf="mappable.value === 'true'">
       <label for="longtitude">Longtitude</label>
       <br>

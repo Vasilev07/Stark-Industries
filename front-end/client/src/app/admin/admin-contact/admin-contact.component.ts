@@ -1,14 +1,18 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
+import { AdminContactService } from '../../core/admin-services/admin-contact.service';
 import { ContactService } from '../../core/contact.service';
 import { ContactGetModel } from '../../models/contacts/contactGetModel';
+import { AdminDeleteDialogComponent } from './admin-delete-dialog/admin-delete-dialog.component';
 
 @Component({
-  selector: 'stark-admin-contact',
-  templateUrl: './admin-contact.component.html',
-  styleUrls: ['./admin-contact.component.css'],
+    selector: 'stark-admin-contact',
+    templateUrl: './admin-contact.component.html',
+    styleUrls: ['./admin-contact.component.css'],
 })
 export class AdminContactComponent implements OnInit {
     public contacts: ContactGetModel[] = [];
@@ -17,7 +21,11 @@ export class AdminContactComponent implements OnInit {
 
     @ViewChild(MatSort) public sort: MatSort;
     @ViewChild(MatPaginator) public paginator: MatPaginator;
-    constructor(private contactGetService: ContactService, private router: Router) { }
+    constructor(
+        private contactGetService: ContactService,
+        private router: Router, private popup: MatDialog,
+        private adminContactService: AdminContactService,
+        private toastr: ToastrService) { }
 
     public ngOnInit(): void {
         this.contactGetService.getAllContacts().subscribe((data) => {
@@ -40,5 +48,29 @@ export class AdminContactComponent implements OnInit {
     public goToUpdateForm(id: number): void {
         this.router.navigate([`/admin/contacts/form/${id}`]);
     }
-
+    public deleteContact(id: number, table: any): void {
+        const dialogRef = this.popup.open(AdminDeleteDialogComponent, {
+            width: '300px',
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.adminContactService.deleteContact(id).subscribe(
+                    (res) => {
+                        this.toastr.success(`Contact deleted!`);
+                        console.log(table);
+                        // setTimeout(()=> table.renderRows());
+                        let i = null;
+                        const contacToRemove = this.dataSource.data.find((contact, index) => {
+                            i = index;
+                            return contact.id === id;
+                        });
+                        this.dataSource.data.splice(i, 1);
+                        this.dataSource.paginator = this.paginator;
+                    },
+                    (err: HttpErrorResponse) => {
+                        this.toastr.error(`Server error: ${err}`);
+                    });
+            }
+        });
+    }
 }
