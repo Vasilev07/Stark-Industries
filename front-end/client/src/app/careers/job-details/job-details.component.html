@@ -5,6 +5,6 @@
     <mat-list class="description">{{jobDetail?.description}}</mat-list>
   </div>
   <div class="buttonHoler" fxFLex="20%">
-      <button mat-button class="apply-button">Apply</button>
+      <button (click)="navigateTo(jobDetail?.id)" mat-button class="apply-button">Apply</button>
   </div>
 </div>

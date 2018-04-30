@@ -25,4 +25,7 @@ export class JobDetailsComponent implements OnInit {
     })
   }
 
+  public navigateTo(jobId: number): void{
+    this.router.navigate([`careers/jobDetails/${jobId}/apply`]);
+  }
 }

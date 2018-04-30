@@ -4,9 +4,10 @@ import { CareersComponent } from './careers.component';
 import { CareersRoutingModule } from './routing/careers-routing.module';
 import { MatModuleModule } from '../shared/mat.module.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { CareersViewComponent } from './careers-view.component';
+import { JobApplicationComponent } from './job-application/job-application.component';
 
 @NgModule({
   imports: [
@@ -14,8 +15,9 @@ import { CareersViewComponent } from './careers-view.component';
     CareersRoutingModule,
     MatModuleModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: [CareersComponent, JobDetailsComponent, CareersViewComponent]
+  declarations: [CareersComponent, JobDetailsComponent, CareersViewComponent, JobApplicationComponent]
 })
 export class CareersModule { }
