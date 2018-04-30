@@ -1,0 +1,67 @@
+form {
+    /* border: 6px solid #00a4a2;
+    box-shadow: 0 0 15px #00fffd; */
+    border-radius: 5px;
+    display: inline-block;
+    /* height: 220px; */
+    margin: auto;
+    position: relative;
+    z-index: 4;
+    width: 500px;
+    /* margin-top: 20px; */
+}
+
+button {
+    background: #222;
+    /* background: linear-gradient(#333333, #222222); */
+    box-sizing: content-box;
+    border: 1px solid #444;
+    border-left-color: #000;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 #000;
+    color: #fff;
+    display: block;
+    font-family: 'Cabin', helvetica, arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    text-shadow: 0 -1px 0 #000;
+    width: 250px;
+    transition: 0.5s all;
+}
+
+button:disabled {
+    background-color: darkgray;
+    color: lightgray;
+}
+
+.alert {
+    background-color: red;
+    color: white;
+    padding: 10px 10px;
+}
+
+::ng-deep .mat-input-element, .mat-input-infix, .mat-form-field-lable, .mat-input-placeholder, .mat-focused, .mat-input-ripple {
+    color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline {
+    color: #00a4a2;
+    background-color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline:focus {
+    color: #00fffd;
+    background-color: #00fffd;
+}
+::ng-deep .mat-input-underline.mat-form-field-underline:active {
+    color: #00fffd;
+}
+
+label {
+    margin-bottom: 10px;
+}

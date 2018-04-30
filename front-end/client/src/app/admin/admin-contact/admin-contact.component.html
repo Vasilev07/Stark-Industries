@@ -1,0 +1,62 @@
+<div class="container">
+  <h2>Contacts</h2>
+  <div class="createContainer">
+    <a mat-button (click)="goToCreateForm()">Create</a>
+  </div>
+  <div class="table-container mat-elevation-z8">
+    <div [ngClass]="'noData'" *ngIf="contacts.length === 0">
+      <p>No Data Available, yet!</p>
+    </div>
+    <mat-table #table [dataSource]="dataSource" matSort matSortActive="name">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> Id </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'idContainer'"> {{contact.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'nameContainer'"> Name </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'nameContainer'"> {{contact.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="value">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'valueContainer'"> Value </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'valueContainer'"> {{contact.value}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="isPrimary">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'booleanContainer'"> isPrimary </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'booleanContainer'"> {{contact.isPrimary}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="isMappable">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'booleanContainer'"> isMappable </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'booleanContainer'"> {{contact.isMappable}}</mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="createdAt">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'createdContainer'"> Created </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'createdContainer'"> {{contact.createdAt | date: "fullDate"}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'actionsContainer'"> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let contact" [ngClass]="'actionsContainer'">
+          <a mat-button (click)="goToUpdateForm(contact.id)">Edit</a>
+          <a mat-button>Delete</a>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div [ngClass]="'tableFooter'" *ngIf="dataSource">
+      <div [ngClass]="'searchFilter'" *ngIf="contacts.length > 1">
+        <mat-form-field>
+          <input matInput (keyup)="searchTable($event.target.value)" placeholder="Search the table">
+        </mat-form-field>
+      </div>
+      <div [ngClass]="'paginator'">
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" *ngIf="contacts.length > 10">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

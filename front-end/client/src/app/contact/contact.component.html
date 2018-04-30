@@ -18,9 +18,10 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
-            <p>Address: {{contact.value}}</p>
-            <p>Longtidue: {{contact.longtitude}}</p>
-            <p>Lantidue: {{contact.latitude}}</p>
+            <p *ngIf="contact.isMappable">Address: {{contact.value}}</p>
+            <p *ngIf="!contact.isMappable">{{contact.value}}</p>
+            <p *ngIf="contact.longtitude !== 0">Longtidue: {{contact.longtitude}}</p>
+            <p *ngIf="contact.latitude !== 0">Latitude: {{contact.latitude}}</p>
           </div>
         </mat-expansion-panel>
       </div>

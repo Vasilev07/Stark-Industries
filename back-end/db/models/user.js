@@ -27,14 +27,9 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
     const {
-        contactInfo,
         application,
-        button,
-        role,
     } = models;
-    User.hasMany(contactInfo);
     User.hasMany(application);
-    User.hasMany(button);
   };
   return User;
 };

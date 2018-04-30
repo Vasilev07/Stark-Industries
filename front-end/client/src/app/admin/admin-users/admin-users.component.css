@@ -1,3 +1,15 @@
+.container {
+    margin: 0 auto;
+    max-width: 80vw;
+}
+h2 {
+    font-size: 30px;
+    color: #00a4a2;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
 .table-container {
     display: flex;
     flex-direction: column;
@@ -16,11 +28,12 @@
     /* max-height: 800px; */
   }
 
-  .mat-header-cell {
+::ng-deep .mat-header-cell {
       margin: 0 10px;
       /* color: white !important; */
       font-weight: bold;
       text-align: center;
+      font-size: 14px;
   }
   .mat-header-cell:hover {
     color: #00a4a2 !important;
@@ -38,7 +51,7 @@
 
   .tableFooter{
       display: flex;
-      padding: 5px;
+      /* padding: 5px; */
       background-color: white;
       border-top: 2px solid #00a4a2;
       box-shadow: 0 0 10px #00fffd;
