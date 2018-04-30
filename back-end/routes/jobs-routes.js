@@ -3,7 +3,29 @@ const {
     Router,
 } = require('express');
 const passport = require('passport');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads');
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname);
+    },
+});
 
+const upload = multer({
+    storage,
+});
+
+const uploadFields = upload.fields([{
+        name: 'cv',
+        maxCount: 1,
+    },
+    {
+        name: 'coverLetter',
+        maxCount: 1,
+    },
+]);
 const JobsController = require('../controllers/jobs-controller');
 const ApplicationController = require('../controllers/application-controller');
 
@@ -29,14 +51,17 @@ const init = (app, data) => {
         })
         .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {
             session: false,
-        }), async (req, res) => {
+        }), uploadFields, async (req, res) => {
+            console.log(req);
+            const cvFile = req.files.cv[0];
+            const coverFile = req.files.coverLetter[0];
             const userInformation = req.user;
             const userApplication = req.body;
             const jobId = req.params;
             try {
                 await applicationController
                     .createNewApplication(userInformation,
-                        userApplication, jobId);
+                        userApplication, jobId, cvFile, coverFile);
                 res.status(200).end();
             } catch (error) {
                 res.json(error.toString());

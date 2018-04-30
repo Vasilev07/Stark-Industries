@@ -22,4 +22,9 @@ export class CareersService {
     public getById(id): Observable<Job> {
         return this.httpClient.get<Job>(`${this.appConfig.apiUrl}/careers/jobDetails/${id}`);
     }
+
+    public createNewApplication(userApplication: any, jobId): Observable<Job> {
+        console.log(`${this.appConfig.apiUrl}/careers/jobDetails/${jobId}/apply`);
+       return this.httpClient.post<Job>(`${this.appConfig.apiUrl}/careers/jobDetails/${jobId}/apply`, userApplication);
+    }
 }

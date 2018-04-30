@@ -3,7 +3,7 @@ class ApplicationController {
         this.data = data;
     }
 
-    async createNewApplication(userInformation, userApplication, jobId) {
+    async createNewApplication(userInformation, userApplication, jobId, cvFile, coverFile) {
         const userApplications = await this.data.application
             .getAllUserIds(userInformation.id);
         const allJobsApplicationsIds = [];
@@ -14,8 +14,8 @@ class ApplicationController {
             .indexOf(+jobId.id);
         if (ifApplicationExists === -1) {
             const userObj = {
-                cv: userApplication.cv,
-                coverLetter: userApplication.coverLetter,
+                cv: cvFile,
+                coverLetter: coverFile,
                 comment: userApplication.comment,
                 jobId: +jobId.id,
                 UserId: userInformation.id,
