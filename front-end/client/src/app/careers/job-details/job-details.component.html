@@ -1,0 +1,10 @@
+<div class="container" fxLayout="row">
+  <div class="holder" fxLayout="column" fxFlex="70%">
+    <h1 class="header">{{jobDetail?.title}}</h1>
+    <span>Created: {{jobDetail?.createdAt | date: "short"}}</span>
+    <mat-list class="description">{{jobDetail?.description}}</mat-list>
+  </div>
+  <div class="buttonHoler" fxFLex="20%">
+      <button mat-button class="apply-button">Apply</button>
+  </div>
+</div>

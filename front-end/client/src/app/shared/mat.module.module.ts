@@ -32,7 +32,8 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule, 
+    MatFormFieldModule,
 } from '@angular/material';
 
 @NgModule({
@@ -68,6 +69,7 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
+    MatFormFieldModule,
     MatTooltipModule,
     CdkTableModule,
   ],
@@ -104,6 +106,7 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
+    MatFormFieldModule,
     MatTooltipModule,
     CdkTableModule,
   ],

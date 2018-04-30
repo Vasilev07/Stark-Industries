@@ -11,22 +11,35 @@ h2 {
     margin-bottom: 0px;
 }
 .table-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 85vh;
-    max-width: 80vw;
-    margin: 10px auto;
-    align-content: center;
-    border: 6px solid #00a4a2;
-    box-shadow: 0 0 15px #00fffd;
-  }
-  
-  .mat-table {
-    color: #00fffd;
-    /* background-color: black; */
-    overflow: auto;
-    /* max-height: 800px; */
-  }
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  max-width: 80vw;
+  margin: 10px auto;
+  align-content: center;
+  border: 6px solid #00a4a2;
+  box-shadow: 0 0 15px #00fffd;
+}
+
+.mat-table {
+  color: #00fffd;
+  /* background-color: black; */
+  overflow: auto;
+  /* max-height: 800px; */
+}
+
+.mat-header-cell {
+  margin: 0 10px;
+  /* color: white !important; */
+  font-weight: bold;
+  text-align: center;
+}
+
+.mat-header-cell:hover {
+  color: #00a4a2 !important;
+  transform: scale(1.03);
+  transition: 0.2s;
+}
 
 ::ng-deep .mat-header-cell {
       margin: 0 10px;
@@ -40,14 +53,6 @@ h2 {
     transform: scale(1.03);
     transition: 0.2s;
 }
-  .mat-cell {
-      margin: 0 10px;
-      /* color: #00FFFF; */
-  }
-  .idContainer {
-      flex: 0 0 95px;
-      /* text-align: center; */
-  }
 
   .tableFooter{
       display: flex;
@@ -58,24 +63,33 @@ h2 {
       text-align: center;
   }
 
-  .searchFilter {
-    text-align: center;
-    margin: auto;
-  }
+.tableFooter {
+  display: flex;
+  padding: 5px;
+  background-color: white;
+  border-top: 2px solid #00a4a2;
+  box-shadow: 0 0 10px #00fffd;
+  text-align: center;
+}
 
-  .mat-form-field {
-    font-size: 16px;
-    width: 100%;
-  }
+.searchFilter {
+  text-align: center;
+  margin: auto;
+}
 
-  .paginator {
-      margin: auto;
-  }
+.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
 
-  .noData {
-      background-color: white;
-      text-align: center;
-      color: red;
-      font-weight: bold;
-      font-size: 20px;
-  }
+.paginator {
+  margin: auto;
+}
+
+.noData {
+  background-color: white;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}

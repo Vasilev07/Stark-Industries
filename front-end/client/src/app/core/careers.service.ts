@@ -18,4 +18,8 @@ export class CareersService {
     public getAll(): Observable<Job[]> {
         return this.httpClient.get(`${this.appConfig.apiUrl}/careers`).map((x) => (x) as Job[]);
     }
+
+    public getById(id): Observable<Job> {
+        return this.httpClient.get<Job>(`${this.appConfig.apiUrl}/careers/jobDetails/${id}`);
+    }
 }

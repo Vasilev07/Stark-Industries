@@ -1,35 +1,34 @@
 <h1 class="header">Open Positions</h1>
 <div class="container" fxLayout="row">
-  <div fxLayout="column" class="content" fxFlex="60%">
-    <div class="container">
-      <mat-list *ngFor="let job of jobs">
-        <mat-list-item class="job-title">
-          <h3>
-            <a>{{job.title}}</a>
-          </h3>
-        </mat-list-item>
-        <mat-list-item class="job-title">
-          <h3>
-            <a>{{job.title}}</a>
-          </h3>
-        </mat-list-item>
-        <mat-list-item class="job-title">
-          <h3>
-            <a>{{job.title}}</a>
-          </h3>
-        </mat-list-item>
+  <div fxLayout="column" fxFlex="100%" class="content">
+    <div class="container" >
+      <mat-list *ngFor="let job of filteredJobs" >
+        <stark-careers-view [job]="job"></stark-careers-view>
+        <br>
       </mat-list>
     </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="start center" class="content" fxFlex="25%">
+
     <mat-form-field>
-      <input matInput placeholder="Search" (input)="onSearch()" [(ngModel)]="search">
+      <input matInput placeholder="Filter by keyword" [(ngModel)]="search" (keyup)="filterBySearch()">
     </mat-form-field>
+
     <mat-form-field>
-      <mat-select (change)="onChange()" [(ngModel)]="order" placeholder="Select Order">
-        <mat-option value="asc">Ascending</mat-option>
-        <mat-option value="desc">Descending</mat-option>
+      <mat-select matInput (change)="onChange()" [(ngModel)]="byType" placeholder="Job type">
+        <mat-option value="{{category.type}}" *ngFor="let category of jobCategories">{{category.type}}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Date filter" [matDatepicker]="myDatepicker" name="date" [(ngModel)]="date" (dateChange)="dateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <div class="row offset-8 resetFilters">
+      <button (click)="clearFilter()" mat-icon-button>Reset</button>
+    </div>
   </div>
 </div>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

@@ -16,6 +16,7 @@ import { AppConfig } from './../config/app.config';
 @Injectable()
 export class AuthService {
     constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService, private router: Router) { }
+    
     public register(user: UserRegisterModel): Observable<AccessToken> {
         return this.http.post<AccessToken>(`${this.appConfig.apiUrl}/register`, user);
     }

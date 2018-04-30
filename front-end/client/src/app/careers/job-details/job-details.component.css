@@ -23,6 +23,20 @@ md-input-container .md-input {
   color: rgba(255, 255, 255, 0.87);
   border-color: rgba(254, 253, 103, 0.82);
 }
+
 mat-paginator.mat-paginator-container {
   background-color: red !important;
+}
+
+.description {
+  border: 6px solid #00a4a2;
+  box-shadow: 0 0 15px #00fffd;
+  margin-top: 30px;
+}
+
+::ng-deep .apply-button {
+  border: 1px solid rgba(169, 169, 169, 0.096) !important;
+  padding: 0 60px;
+  margin: 25px;
+  background-color: rgba(169, 169, 169, 0.87);
 }
