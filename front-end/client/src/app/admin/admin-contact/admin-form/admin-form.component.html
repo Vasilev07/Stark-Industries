@@ -1,0 +1,73 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+  <h2 fxFlex="20">
+    Create/Edit Contact Details
+  </h2>
+  <form novalidate [formGroup]="form" fxFlex="60" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="onSubmit(form.value)">
+    <mat-form-field>
+      <label for="name">Name</label>
+      <br>
+      <input matInput type="text" id="name" [formControl]="form.controls['name']" [value]='name'>
+    </mat-form-field>
+    <div class="alert alert-danger" *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('required'))">
+      This field is required!
+    </div>
+    <div class="alert alert-danger" *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('maxlength') || form.controls['name'].hasError('minlength'))">
+      Name must be between 2 and 128 characters long.
+    </div>
+    <mat-form-field>
+      <label for="value">Value</label>
+      <br>
+      <textarea matInput type="text" id="value" [formControl]="form.controls['value']" [value]='value'></textarea>
+    </mat-form-field>
+    <div class="alert alert-danger" *ngIf="form.controls['value'].touched && form.controls['value'].hasError('required')">
+      This field is required!
+    </div>
+    <div class="alert alert-danger" *ngIf="form.controls['value'].touched && (form.controls['value'].hasError('maxlength') || form.controls['value'].hasError('minlength'))">
+      Name must be between 2 and 1024 characters long.
+    </div>
+    <mat-form-field>
+      <label for="icon">Icon</label>
+      <br>
+      <input matInput type="text" id="icon" [formControl]="form.controls['icon']" [value]='icon'>
+    </mat-form-field>
+    <div class="alert alert-danger" *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('required')">
+      This field is required!
+    </div>
+    <div class="alert alert-danger" *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('minlength')">
+      Name must be at least 2 characters long.
+    </div>
+    <mat-form-field>
+      <label for="isPrimary">Is Address Primary?</label>
+      <br>
+      <mat-select matInput id="isPrimary" [formControl]="form.controls['isPrimary']" [value]='isPrimary'>
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="alert alert-danger" *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
+      This field is required!
+    </div>
+    <mat-form-field>
+      <label for="isMappable">Is Address Mappable?</label>
+      <br>
+      <mat-select #mappable id="isMappable" name="mappable" [formControl]="form.controls['isMappable']" [value]='isMappable'>
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="alert alert-danger" *ngIf="form.controls['isMappable'].touched && form.controls['isMappable'].hasError('required') && !form.controls['isMappable'].value">
+      This field is required!
+    </div>
+    <mat-form-field *ngIf="mappable.value === 'true'">
+      <label for="longtitude">Longtitude</label>
+      <br>
+      <input matInput id="longtitude" type="number" [value]='longtitude'>
+    </mat-form-field>
+    <mat-form-field *ngIf="mappable.value === 'true'">
+      <label for="Latitude">Latitude</label>
+      <br>
+      <input matInput id="latitude" type="number" [value]='latitude'>
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>

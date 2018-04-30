@@ -12,7 +12,6 @@ module.exports = {
             longtitude: -73.984961,
             createdAt: new Date(),
             updatedAt: new Date(),
-            UserId: 1,
         },
         {
             name: 'LA Facilities',
@@ -24,7 +23,6 @@ module.exports = {
             latitude: -118.383915,
             createdAt: new Date(),
             updatedAt: new Date(),
-            UserId: 1,
         }], {});
     },
 

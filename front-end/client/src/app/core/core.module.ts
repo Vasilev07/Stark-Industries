@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 
+import { AdminContactService } from './admin-services/admin-contact.service';
 import { AdminUsersService } from './admin-services/admin-users.service';
 import { AuthService } from './auth.service';
 import { CareersService } from './careers.service';
@@ -33,6 +34,7 @@ export const tokenGetter = () => {
         { provide: CareersService, useClass: CareersService },
         { provide: IsAdminGuard, useClass: IsAdminGuard },
         { provide: AdminUsersService, useClass: AdminUsersService },
-    ]
+        { provide: AdminContactService, useClass: AdminContactService},
+    ],
 })
 export class CoreModule { }

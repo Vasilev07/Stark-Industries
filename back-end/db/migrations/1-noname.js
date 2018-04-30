@@ -5,23 +5,117 @@ var Sequelize = require('sequelize');
 /**
  * Actions summary:
  *
+ * createTable "buttons", deps: []
+ * createTable "contactInfos", deps: []
  * createTable "jobs", deps: []
  * createTable "roles", deps: []
  * createTable "Users", deps: [roles]
  * createTable "applications", deps: [jobs, Users]
- * createTable "buttons", deps: [Users]
- * createTable "contactInfos", deps: [Users]
  *
  **/
 
 var info = {
     "revision": 1,
-    "name": "noname",
-    "created": "2018-04-28T09:48:45.231Z",
+    "name": "initial",
+    "created": "2018-04-30T12:01:20.244Z",
     "comment": ""
 };
 
 var migrationCommands = [{
+        fn: "createTable",
+        params: [
+            "buttons",
+            {
+                "id": {
+                    "type": Sequelize.INTEGER,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "allowNull": false
+                },
+                "name": {
+                    "type": Sequelize.STRING,
+                    "allowNull": true
+                },
+                "targetURL": {
+                    "type": Sequelize.STRING,
+                    "allowNull": true
+                },
+                "iconURL": {
+                    "type": Sequelize.STRING,
+                    "allowNull": true
+                },
+                "type": {
+                    "type": Sequelize.STRING,
+                    "allowNull": true
+                },
+                "hidden": {
+                    "type": Sequelize.BOOLEAN,
+                    "allowNull": true
+                },
+                "createdAt": {
+                    "type": Sequelize.DATE,
+                    "allowNull": false
+                },
+                "updatedAt": {
+                    "type": Sequelize.DATE,
+                    "allowNull": false
+                }
+            },
+            {}
+        ]
+    },
+    {
+        fn: "createTable",
+        params: [
+            "contactInfos",
+            {
+                "id": {
+                    "type": Sequelize.INTEGER,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "allowNull": false
+                },
+                "name": {
+                    "type": Sequelize.STRING,
+                    "allowNull": false
+                },
+                "value": {
+                    "type": Sequelize.STRING,
+                    "allowNull": false
+                },
+                "icon": {
+                    "type": Sequelize.STRING,
+                    "allowNull": false
+                },
+                "isPrimary": {
+                    "type": Sequelize.BOOLEAN,
+                    "allowNull": false
+                },
+                "isMappable": {
+                    "type": Sequelize.BOOLEAN,
+                    "allowNull": false
+                },
+                "latitude": {
+                    "type": Sequelize.FLOAT,
+                    "allowNull": true
+                },
+                "longtitude": {
+                    "type": Sequelize.FLOAT,
+                    "allowNull": true
+                },
+                "createdAt": {
+                    "type": Sequelize.DATE,
+                    "allowNull": false
+                },
+                "updatedAt": {
+                    "type": Sequelize.DATE,
+                    "allowNull": false
+                }
+            },
+            {}
+        ]
+    },
+    {
         fn: "createTable",
         params: [
             "jobs",
@@ -183,120 +277,6 @@ var migrationCommands = [{
                         "key": "id"
                     },
                     "allowNull": true
-                },
-                "UserId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "SET NULL",
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "allowNull": true
-                }
-            },
-            {}
-        ]
-    },
-    {
-        fn: "createTable",
-        params: [
-            "buttons",
-            {
-                "id": {
-                    "type": Sequelize.INTEGER,
-                    "autoIncrement": true,
-                    "primaryKey": true,
-                    "allowNull": false
-                },
-                "name": {
-                    "type": Sequelize.STRING,
-                    "allowNull": true
-                },
-                "targetURL": {
-                    "type": Sequelize.STRING,
-                    "allowNull": true
-                },
-                "iconURL": {
-                    "type": Sequelize.STRING,
-                    "allowNull": true
-                },
-                "type": {
-                    "type": Sequelize.STRING,
-                    "allowNull": true
-                },
-                "hidden": {
-                    "type": Sequelize.BOOLEAN,
-                    "allowNull": true
-                },
-                "createdAt": {
-                    "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "updatedAt": {
-                    "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "UserId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "SET NULL",
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "allowNull": true
-                }
-            },
-            {}
-        ]
-    },
-    {
-        fn: "createTable",
-        params: [
-            "contactInfos",
-            {
-                "id": {
-                    "type": Sequelize.INTEGER,
-                    "autoIncrement": true,
-                    "primaryKey": true,
-                    "allowNull": false
-                },
-                "name": {
-                    "type": Sequelize.STRING,
-                    "allowNull": false
-                },
-                "value": {
-                    "type": Sequelize.STRING,
-                    "allowNull": false
-                },
-                "icon": {
-                    "type": Sequelize.STRING,
-                    "allowNull": false
-                },
-                "isPrimary": {
-                    "type": Sequelize.BOOLEAN,
-                    "allowNull": false
-                },
-                "isMappable": {
-                    "type": Sequelize.BOOLEAN,
-                    "allowNull": false
-                },
-                "latitude": {
-                    "type": Sequelize.FLOAT,
-                    "allowNull": true
-                },
-                "longtitude": {
-                    "type": Sequelize.FLOAT,
-                    "allowNull": true
-                },
-                "createdAt": {
-                    "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "updatedAt": {
-                    "type": Sequelize.DATE,
-                    "allowNull": false
                 },
                 "UserId": {
                     "type": Sequelize.INTEGER,

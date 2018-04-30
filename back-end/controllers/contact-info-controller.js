@@ -7,11 +7,6 @@ class ContactInfoController {
         let allContactInfo = await this.data.contactInfo.getAll();
         allContactInfo = await Promise.all(allContactInfo
             .map(async (contact) => {
-                const {
-                    userName,
-                } =
-                await this.data.users.getById(contact.UserId);
-                contact.dataValues.userName = userName;
                 return contact.dataValues;
             }));
         return allContactInfo;
@@ -36,7 +31,14 @@ class ContactInfoController {
         const primaryAddress = primaryAddresses[0];
         return primaryAddress;
     }
-
+    async getContactById(id) {
+        let contact = await this.data.contactInfo.getById(id);
+        if (contact) {
+            contact = contact.dataValues;
+            return contact;
+            }
+        return null;
+    }
     async createNewContact(contactObject) {
         // const keys = Object.keys(contactObject);
         // keys.forEach((key) => {
@@ -53,6 +55,24 @@ class ContactInfoController {
         // });
         const newContact = this.data.contactInfo.create(contactObject);
         return newContact;
+    }
+    async updateExistingContact(contactObj, id) {
+        let updatedContact = await this.data.update(contactObj, id);
+        if (updatedContact) {
+            updatedContact = updatedContact.map((contact) => {
+                return contact.dataValues;
+            });
+            return updatedContact;
+        }
+        return null;
+    }
+
+    async deleteContact(id) {
+        const result = await this.data.delete(id);
+        if (result) {
+            return result;
+        }
+        return null;
     }
 }
 

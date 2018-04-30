@@ -10,5 +10,4 @@ export class ContactGetModel {
 
     public createdAt: string;
     public updatedAt: string;
-    public UserId: number;
 }

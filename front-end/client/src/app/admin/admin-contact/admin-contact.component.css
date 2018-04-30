@@ -1,0 +1,141 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  max-width: 80vw;
+  margin: 10px auto;
+  align-content: center;
+  border: 6px solid #00a4a2;
+  box-shadow: 0 0 15px #00fffd;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 80vw;
+}
+.createContainer {
+    /* margin: 0 auto; */
+    background-color: white;
+    display: flex;
+    border: 2px solid #00a4a2;
+    box-shadow: 0 0 10px #00fffd;
+    width: 110px;
+    border-radius: 5%;    
+    /* height: 100px; */
+}
+.createContainer a {
+    background-color: #00a4a2;
+    display: flex;
+    font-size: 18px;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #00FFFF;
+    text-shadow: 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000;
+}
+h2 {
+    font-size: 30px;
+    color: #00a4a2;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000;
+}
+.createContainer a:hover {
+    color: #00FFFF;
+}
+::ng-deep .mat-table {
+  color: #00fffd;
+  /* background-color: black; */
+  overflow: auto;
+  /* max-height: 800px; */
+}
+
+.mat-header-cell {
+  margin: 0 10px;
+  /* color: white !important; */
+  font-weight: bold;
+  text-align: center;
+}
+
+.mat-header-cell:hover {
+  color: #00a4a2 !important;
+  transform: scale(1.03);
+  transition: 0.2s;
+}
+
+::ng-deep .mat-cell {
+  margin: 0 10px;
+  /* color: #00FFFF; */
+  /* flex: 0 0 auto; */
+  /* color: #00FFFF; */
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .mat-header-cell {
+  margin: 0 10px;
+  /* flex: 0 0 auto; */
+  /* color: #00FFFF; */
+  font-weight: bold;
+  font-size: 16px;
+  
+  /* background-color: black; */
+  display: flex;
+  justify-content: center;
+}
+
+/* .idContainer {
+  flex: 0 0 80px !important;
+}
+
+.actionsContainer {
+
+}
+
+.booleanContainer {
+  flex: 0 0 100px;
+}
+
+.nameContainer {
+  flex: 0 0 150px;
+}
+
+.valueContainer {
+  flex: 0 0 250px;
+}
+
+.createdContainer {
+  flex: 0 0 80px;
+} */
+
+::ng-deep .tableFooter {
+  display: flex;
+  padding: 5px;
+  background-color: white;
+  color: #00FFFF;
+  border-top: 2px solid #00a4a2;
+  box-shadow: 0 0 10px #00fffd;
+  text-align: center;
+}
+
+.searchFilter {
+  text-align: center;
+  margin: auto;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
+
+.paginator {
+  margin: auto;
+}
+
+.noData {
+  background-color: white;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}

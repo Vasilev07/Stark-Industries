@@ -10,7 +10,6 @@ module.exports = {
       hidden: false,
       createdAt: new Date(),
       updatedAt: new Date(),
-      userId: 1,
     }], {});
   },
 
@@ -23,7 +22,6 @@ module.exports = {
       hidden: false,
       createdAt: new Date(),
       updatedAt: new Date(),
-      userId: 1,
     }], {});
   },
 };

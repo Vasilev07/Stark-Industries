@@ -25,8 +25,6 @@ export class ContactService {
     public createNewContact(newContact: ContactCreateModel): void {
         const authenticated = this.authService.isAuthenticated();
         const isAdmin = this.authService.isAdmin();
-        const userId = this.authService.getUserId();
-        newContact.UserId = userId;
         this.httpClient.post(`${this.appConfig.apiUrl}/contact`, newContact);
     }
 }

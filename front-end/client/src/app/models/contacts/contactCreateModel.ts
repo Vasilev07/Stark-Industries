@@ -6,5 +6,4 @@ export class ContactCreateModel {
     public isMappable: boolean;
     public longtitude: number;
     public latitude: number;
-    public UserId: number;
 }
