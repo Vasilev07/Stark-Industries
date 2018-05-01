@@ -82,7 +82,7 @@ export class AdminFormComponent implements OnInit {
         } else {
             this.adminContactService.updateContact(contact, this.paramsId).subscribe(
                 (res) => {
-                    this.toastr.success(`Contact with ${this.paramsId} has been updated`);
+                    this.toastr.success(`Contact ${this.contactToEdit.name} has been updated`);
                     this.router.navigate([`/admin/contacts`]);
                 },
                 (err: HttpErrorResponse) => {

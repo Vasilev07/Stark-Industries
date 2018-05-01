@@ -57,7 +57,7 @@ class ContactInfoController {
         return newContact;
     }
     async updateExistingContact(contactObj, id) {
-        let updatedContact = await this.data.update(contactObj, id);
+        let updatedContact = await this.data.contactInfo.update(contactObj, id);
         if (updatedContact) {
             updatedContact = updatedContact.map((contact) => {
                 return contact.dataValues;
@@ -68,7 +68,7 @@ class ContactInfoController {
     }
 
     async deleteContact(id) {
-        const result = await this.data.delete(id);
+        const result = await this.data.contactInfo.delete(id);
         if (result) {
             return result;
         }

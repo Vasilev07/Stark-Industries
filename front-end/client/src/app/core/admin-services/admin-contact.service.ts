@@ -24,7 +24,7 @@ export class AdminContactService {
     public updateContact(contact: ContactCreateModel, id: number): Observable<ContactCreateModel> {
         return this.http.put<ContactCreateModel>(`${this.appConfig.apiUrl}/contact/${id}`, contact);
     }
-    public deleteContact(id: number): void {
-        this.http.delete(`${this.appConfig.apiUrl}/contact/${id}`);
+    public deleteContact(id: number): Observable<any> {
+       return this.http.delete(`${this.appConfig.apiUrl}/contact/${id}`);
     }
 }

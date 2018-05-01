@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatModuleModule } from '../shared/mat.module.module';
 import { AdminContactComponent } from './admin-contact/admin-contact.component';
+import { AdminDeleteDialogComponent } from './admin-contact/admin-delete-dialog/admin-delete-dialog.component';
 import { AdminFormComponent } from './admin-contact/admin-form/admin-form.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminRoutingModule } from './routing/admin-routing.module';
@@ -18,6 +19,7 @@ import { AdminRoutingModule } from './routing/admin-routing.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [AdminUsersComponent, AdminContactComponent, AdminFormComponent],
+  entryComponents: [AdminDeleteDialogComponent],
+  declarations: [AdminUsersComponent, AdminContactComponent, AdminFormComponent, AdminDeleteDialogComponent],
 })
 export class AdminModule { }

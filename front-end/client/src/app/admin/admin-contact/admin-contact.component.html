@@ -41,7 +41,7 @@
         <mat-header-cell *matHeaderCellDef [ngClass]="'actionsContainer'"> Actions </mat-header-cell>
         <mat-cell *matCellDef="let contact" [ngClass]="'actionsContainer'">
           <a mat-button (click)="goToUpdateForm(contact.id)">Edit</a>
-          <a mat-button>Delete</a>
+          <a mat-button (click)="deleteContact(contact.id, table)">Delete</a>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
