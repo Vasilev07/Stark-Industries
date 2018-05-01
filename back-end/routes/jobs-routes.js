@@ -26,6 +26,7 @@ const uploadFields = upload.fields([{
         maxCount: 1,
     },
 ]);
+
 const JobsController = require('../controllers/jobs-controller');
 const ApplicationController = require('../controllers/application-controller');
 
@@ -46,18 +47,20 @@ const init = (app, data) => {
         })
         .get('/careers/jobDetails/:id/apply', async (req, res) => {
             const jobId = req.params.id;
-            const allJobsById = await controller.getJobById(jobId);
+            const allJobsById = await applicationController.getAllJobApplications(jobId);
             res.send(allJobsById);
         })
         .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {
             session: false,
         }), uploadFields, async (req, res) => {
-            console.log(req);
-            const cvFile = req.files.cv[0];
-            const coverFile = req.files.coverLetter[0];
+            console.log(req.body);
+            const cvFile = req.files.cv[0].path;
+            const coverFile = req.files.coverLetter[0].path;
             const userInformation = req.user;
             const userApplication = req.body;
             const jobId = req.params;
+            console.log(cvFile);
+            console.log('-'.repeat(40));
             try {
                 await applicationController
                     .createNewApplication(userInformation,

@@ -1,3 +1,19 @@
 .application-form-holder{
-    margin: 0 auto;
+    margin-top: 50px;
 }
+
+.label-input{
+    margin-top: 16px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}   

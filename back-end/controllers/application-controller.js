@@ -12,6 +12,7 @@ class ApplicationController {
         });
         const ifApplicationExists = await allJobsApplicationsIds
             .indexOf(+jobId.id);
+
         if (ifApplicationExists === -1) {
             const userObj = {
                 cv: cvFile,
@@ -35,6 +36,12 @@ class ApplicationController {
             allJobsApplicationsIds.push(application.jobId);
         });
         return allJobsApplicationsIds.length;
+    }
+
+    async getAllJobApplications(jobId) {
+        const allApplications = await this.data.application
+            .getAllByValue('jobId', jobId);
+        return allApplications;
     }
 }
 
