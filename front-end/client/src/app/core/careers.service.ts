@@ -27,4 +27,6 @@ export class CareersService {
         console.log(`${this.appConfig.apiUrl}/careers/jobDetails/${jobId}/apply`);
        return this.httpClient.post<Job>(`${this.appConfig.apiUrl}/careers/jobDetails/${jobId}/apply`, userApplication);
     }
+
+    
 }

@@ -13,18 +13,18 @@ class JobsController {
         return JobById;
     }
     async createJobAd(jobAdObj) {
-        const keys = Object.keys(jobAdObj);
-        keys.forEach((key) => {
-            if (key !== 'id' ||
-                key !== 'title' ||
-                key !== 'type' ||
-                key !== 'description' ||
-                key !== 'status' ||
-                key !== 'createdAt' ||
-                key !== 'updatedAt') {
-                throw new Error('All fields are mandatory!');
-            }
-        });
+        // const keys = Object.keys(jobAdObj);
+        // keys.forEach((key) => {
+        //     if (key !== 'id' ||
+        //         key !== 'title' ||
+        //         key !== 'type' ||
+        //         key !== 'description' ||
+        //         key !== 'status' ||
+        //         key !== 'createdAt' ||
+        //         key !== 'updatedAt') {
+        //         throw new Error('All fields are mandatory!');
+        //     }
+        // });
         const newJobAd = await this.data.jobs.create(jobAdObj);
         return newJobAd;
     }

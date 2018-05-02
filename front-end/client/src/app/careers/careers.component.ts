@@ -13,52 +13,70 @@ import {
   Job
 } from '../models/job';
 import {
-  MatDatepickerInputEvent, MatTableDataSource
+  MatDatepickerInputEvent,
+  MatTableDataSource,
+  PageEvent
 } from '@angular/material';
 import {
   EventEmitter
 } from 'events';
 
-import { MatPaginator } from '@angular/material';
-import { AuthService } from '../core/auth.service';
+import {
+  MatPaginator
+} from '@angular/material';
+import {
+  AuthService
+} from '../core/auth.service';
 
 @Component({
   selector: 'stark-careers',
   templateUrl: './careers.component.html',
   styleUrls: ['./careers.component.css']
 })
-export class CareersComponent implements OnInit{
+export class CareersComponent implements OnInit {
 
   @Input()
   public jobs: Job[] = [];
+  public paginatedJobs: Job[] = [];
   public filteredJobs: Job[] = [];
   public jobCategories = [];
   public date: string = '';
   public byType: string = '';
   public search: string = '';
+  public pageSize: number = 5;
 
-  public dataSource;
-
+  public pageIndex: number = 5;
+  public length: number;
   selectedDate: number;
-  
+
   @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(private careerService: CareersService, private authService: AuthService) {}
 
   ngOnInit() {
     this.careerService.getAll().subscribe((data) => {
-      if(this.authService.isAdmin()){
-      this.jobs = data;
-      this.dataSource = new MatTableDataSource(this.jobs);
-      setTimeout(() => this.dataSource.paginator = this.paginator);
-      this.filteredJobs = data;
-      this.filterRepeatingJobsCat();
+      if (this.authService.isAdmin()) {
+        this.jobs = data;
+        this.filteredJobs = data;
+        this.filterRepeatingJobsCat();
+        this.length = this.jobs.length;
+        this.paginatedJobs = this.jobs.slice(0, this.pageSize);
       } else {
         this.jobs = data.filter((job) => job.status === 'active');
         this.filteredJobs = this.jobs;
         this.filterRepeatingJobsCat();
+        this.length = this.jobs.length;
+        this.paginatedJobs = this.jobs.slice(0, this.pageSize);
       }
     });
+  }
+
+  public onChangePage(event: PageEvent): void {
+    console.log(event);
+
+    this.pageSize = event.pageSize;
+    this.paginatedJobs = this.jobs.slice(event.pageIndex * this.pageSize, event.pageSize * event.pageIndex);
+    console.log(this.length);
   }
 
   public filterRepeatingJobsCat() {

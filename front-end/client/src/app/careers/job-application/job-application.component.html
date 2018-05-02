@@ -1,26 +1,29 @@
 <div class="application-form-holder">
   <form [formGroup]="applicationForm" (ngSubmit)="apply(applicationForm.value)" fxLayout="column" fxLayoutAlign="center center">
     <mat-form-field>
-      <input matInput minLength="3" maxLength="100" placeholder="First name" value="{{firstName}}" [formControl]="applicationForm.controls['firstName']">
+      <label for="firstName">First Name</label>
+      <input matInput minLength="3" maxLength="100" id="firstName" value="{{firstName}}" [formControl]="applicationForm.controls['firstName']">
       <mat-hint align="end">{{firstName.length || 0}}/100</mat-hint>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Last name" value="{{lastName}}" [formControl]="applicationForm.controls['lastName']">
+      <label for="lastName">Last Name</label>
+      <input matInput id="lastName" value="{{lastName}}" [formControl]="applicationForm.controls['lastName']">
       <mat-hint align="end">{{lastName.length || 0}}/100</mat-hint>
     </mat-form-field>
     <mat-form-field fxFlex class="form-item" requiered>
-      <textarea matInput #textarea maxlength="1024" placeholder="Comment" [formControl]="applicationForm.controls['comment']"></textarea>
+      <label for="comment">Comment</label>
+      <textarea matInput #textarea maxlength="1024" id="comment" [formControl]="applicationForm.controls['comment']"></textarea>
       <mat-hint align="end">{{textarea.value?.length || 0}}/1024</mat-hint>
     </mat-form-field>
 
     <label for="cv" class="label-input">Upload CV</label>
     <input type="file" name="cv" (change)="onUpload($event)" #cv accept=".pdf,.doc,.docx" id="cv" class="file-input" required>
-    <div>{{applicationForm.get('cv').value.name}} </div>
+    <div class="uploaded-file">{{applicationForm.get('cv').value.name}} </div>
 
     <label for="coverLetter" class="label-input">Upload Cover Letter</label>
     <input mat-button placeholder="Cover Letter" id="coverLetter" name="coverLetter" (change)="onUpload($event)" #coverLetter
       type="file" accept=".pdf,.doc,.docx" class="file-input" required>
-    <div>{{applicationForm.get('coverLetter')?.value.name}} </div>
+    <div class="uploaded-file">{{applicationForm.get('coverLetter')?.value.name}} </div>
 
     <button mat-button [disabled]="applicationForm.invalid" type="submit">Apply</button>
   </form>

@@ -1,0 +1,137 @@
+.application-form-holder {
+  margin-top: 50px;
+}
+
+.label-input {
+  margin-top: 16px;
+  font-size: 18px;
+  background: black;
+  color: white;
+  padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.file-input {
+  display: none;
+}
+
+label {
+  color: #00ffdd;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline {
+  color: #00a4a2;
+  background-color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline:focus {
+  color: #00fffd;
+  background-color: #00fffd;
+}
+
+::ng-deep .mat-input-elemen {
+  color: #00ffdd;
+}
+
+::ng-deep .mat-input-ripple.mat-form-field-ripple {
+  color: #00ffdd;
+}
+
+::ng-deep .mat-input-element.mat-form-field-autofill-control {
+  color: #00ffdd;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline {
+  color: #00ffdd;
+}
+
+::ng-deep .mat-input-element,
+.mat-input-infix,
+.mat-form-field-lable,
+.mat-input-placeholder,
+.mat-focused,
+.mat-input-ripple {
+  color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline {
+  color: #00a4a2;
+  background-color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline {
+  color: #00a4a2;
+  background-color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline:active {
+  color: #00fffd;
+}
+
+mat-hint.mat-hint {
+  color: #00a4a2;
+}
+
+::ng-deep .mat-input-underline.mat-form-field-underline {
+  color: #00fffd;
+  background-color: #00a4a2 !important;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button.mat-button {
+  background: #222;
+  /* background: linear-gradient(#333333, #222222); */
+  box-sizing: content-box;
+  border: 1px solid #444;
+  border-left-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  color: #fff;
+  display: block;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px auto;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+  width: 250px;
+  transition: 0.5s all;
+}
+
+.uploaded-file {
+  color: #00ffdd;
+}
+
+.label-input {
+  background: #222;
+  /* background: linear-gradient(#333333, #222222); */
+  box-sizing: content-box;
+  border: 1px solid #444;
+  border-left-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  color: #fff;
+  display: block;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px auto;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+  width: 200px;
+  transition: 0.5s all;
+  text-align: center;
+}
