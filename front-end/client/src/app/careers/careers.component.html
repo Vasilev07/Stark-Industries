@@ -1,27 +1,31 @@
 <h1 class="header">Open Positions</h1>
-<div class="container" fxLayout="row">
-  <div fxLayout="column" fxFlex="100%" class="content">
+<div fxLayout="row">
+  <div fxLayout="column" fxFlex="60%"  class="content">
     <div class="container" >
-      <mat-list *ngFor="let job of filteredJobs" >
+      <mat-list *ngFor="let job of paginatedJobs" >
         <stark-careers-view [job]="job"></stark-careers-view>
         <br>
       </mat-list>
     </div>
   </div>
+  <div fxFlex="15%"></div>
   <div fxLayout="column" fxLayoutAlign="start center" class="content" fxFlex="25%">
 
     <mat-form-field>
-      <input matInput placeholder="Filter by keyword" [(ngModel)]="search" (keyup)="filterBySearch()">
+      <label for="keyword">Filter by keyword</label>
+      <input matInput id="keyword" [(ngModel)]="search" (keyup)="filterBySearch()">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select matInput (change)="onChange()" [(ngModel)]="byType" placeholder="Job type">
+        <label for="jobType">Filter by keyword</label>
+      <mat-select matInput (change)="onChange()" [(ngModel)]="byType" id="jobType">
         <mat-option value="{{category.type}}" *ngFor="let category of jobCategories">{{category.type}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Date filter" [matDatepicker]="myDatepicker" name="date" [(ngModel)]="date" (dateChange)="dateChange($event)">
+        <label for="dateFilter">Date filter</label>
+      <input matInput id="dateFilter" [matDatepicker]="myDatepicker" name="date" [(ngModel)]="date" (dateChange)="dateChange($event)">
       <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>
     </mat-form-field>
@@ -30,5 +34,5 @@
     </div>
   </div>
 </div>
-<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+<mat-paginator *ngIf="paginatedJobs?.length > 10" (onChangePage)="onChangePage($event)" [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>

@@ -40,3 +40,33 @@ mat-paginator.mat-paginator-container {
   margin: 25px;
   background-color: rgba(169, 169, 169, 0.87);
 }
+
+.header {
+  color: #00fffd;
+}
+.container {
+  color: #00fffd;
+}
+
+button.mat-button {
+  background: #222;
+  /* background: linear-gradient(#333333, #222222); */
+  box-sizing: content-box;
+  border: 1px solid #444;
+  border-left-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  color: #fff;
+  display: block;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px auto;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+  width: 250px;
+  transition: 0.5s all;
+}

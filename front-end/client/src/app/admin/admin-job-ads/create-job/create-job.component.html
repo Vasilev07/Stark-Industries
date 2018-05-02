@@ -1,0 +1,38 @@
+<div class="application-form-holder">
+  <form [formGroup]="createJobForm" (ngSubmit)="create(createJobForm.value)" fxLayout="column" fxLayoutAlign="center center">
+    <mat-form-field>
+      <label for="firstName">Title</label>
+      <input matInput minLength="3" maxLength="100" id="title" [formControl]="createJobForm.controls['title']" [(ngModel)]="title">
+      <!-- <mat-hint align="end">{{firstName.length || 0}}/100</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field fxFlex class="form-item" requiered>
+      <label for="description">Description</label>
+      <textarea matInput #textarea maxlength="1024" id="description" formControlName="description" [(ngModel)]="description"></textarea>
+      <mat-hint align="end">{{textarea.value?.length || 0}}/1024</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <label for="type">Category</label>
+      <br>
+      <mat-select matInput id="type" name="type" formControlName="type" [(ngModel)]="type">
+        <mat-option value="IT">IT</mat-option>
+        <mat-option value="Development">Development</mat-option>
+        <mat-option value="Hygen">Hygen</mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
+            This field is required!
+          </mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+        <label for="status">Status</label>
+        <br>
+        <mat-select matInput id="status" name="status" formControlName="status" [(ngModel)]="status">
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="closed">Closed</mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
+              This field is required!
+            </mat-error> -->
+      </mat-form-field>
+    <button mat-button [disabled]="createJobForm.invalid" type="submit">Create Job</button>
+  </form>
+</div>
