@@ -1,15 +1,27 @@
-<form [formGroup]="applicationForm" (ngSubmit)="apply(applicationForm.value)" fxLayout="column" fxLayoutAlign="center center">
-  <mat-form-field>
-    <input matInput placeholder="First name" value="{{firstName}}" [formControl]="applicationForm.controls['firstName']">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Last name" value="{{lastName}}" [formControl]="applicationForm.controls['lastName']">
-  </mat-form-field>
-  <mat-form-field fxFlex class="form-item" hintLabel="Max 1024 characters" requiered>
-    <textarea matInput #textarea maxlength="1024" placeholder="Comment" [formControl]="applicationForm.controls['comment']"></textarea>
-    <mat-hint align="end">{{textarea.value?.length || 0}}/1024</mat-hint>
-  </mat-form-field>
-  <input mat-button placeholder="CV" type="file" name="cv" (change)="onUpload($event)" #cv accept=".pdf,.doc,.docx">
-  <input mat-button placeholder="Cover Letter" name="coverLetter" (change)="onUpload($event)" #coverLetter type="file" accept=".pdf,.doc,.docx">
-  <button mat-button type="submit">Apply</button>
-</form>
+<div class="application-form-holder">
+  <form [formGroup]="applicationForm" (ngSubmit)="apply(applicationForm.value)" fxLayout="column" fxLayoutAlign="center center">
+    <mat-form-field>
+      <input matInput minLength="3" maxLength="100" placeholder="First name" value="{{firstName}}" [formControl]="applicationForm.controls['firstName']">
+      <mat-hint align="end">{{firstName.length || 0}}/100</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last name" value="{{lastName}}" [formControl]="applicationForm.controls['lastName']">
+      <mat-hint align="end">{{lastName.length || 0}}/100</mat-hint>
+    </mat-form-field>
+    <mat-form-field fxFlex class="form-item" requiered>
+      <textarea matInput #textarea maxlength="1024" placeholder="Comment" [formControl]="applicationForm.controls['comment']"></textarea>
+      <mat-hint align="end">{{textarea.value?.length || 0}}/1024</mat-hint>
+    </mat-form-field>
+
+    <label for="cv" class="label-input">Upload CV</label>
+    <input type="file" name="cv" (change)="onUpload($event)" #cv accept=".pdf,.doc,.docx" id="cv" class="file-input" required>
+    <div>{{applicationForm.get('cv').value.name}} </div>
+
+    <label for="coverLetter" class="label-input">Upload Cover Letter</label>
+    <input mat-button placeholder="Cover Letter" id="coverLetter" name="coverLetter" (change)="onUpload($event)" #coverLetter
+      type="file" accept=".pdf,.doc,.docx" class="file-input" required>
+    <div>{{applicationForm.get('coverLetter')?.value.name}} </div>
+
+    <button mat-button [disabled]="applicationForm.invalid" type="submit">Apply</button>
+  </form>
+</div>

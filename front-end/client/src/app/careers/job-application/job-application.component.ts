@@ -31,6 +31,9 @@ import {
 import {
   FileUploader
 } from '../../../../node_modules/ng2-file-upload/ng2-file-upload';
+import {
+  ToastrService
+} from 'ngx-toastr';
 @Component({
   selector: 'stark-job-application',
   templateUrl: './job-application.component.html',
@@ -42,38 +45,37 @@ export class JobApplicationComponent implements OnInit {
   @ViewChild('cv') public cv: ElementRef;
   @ViewChild('coverLetter') public coverLetter: ElementRef;
   public id: number;
+  public loading: boolean = false;
   private minLength: number = 3;
   private maxLength: number = 100;
   private commentMaxLength: number = 1024;
-  constructor(private careerService: CareersService, private el: ElementRef, private router: Router, private route: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private toastr: ToastrService, private careerService: CareersService, private el: ElementRef, private router: Router, private route: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder) {}
 
   public firstName: string;
   public lastName: string;
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
     this.firstName = this.authService.userName().firstName;
     this.lastName = this.authService.userName().lastName;
-    console.log(this.authService.userName());
 
     this.applicationForm = this.formBuilder.group({
-      firstName: ['', [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]],
-      lastName: ['', [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]],
+      firstName: this.formBuilder.control({
+        value: '',
+        disabled: true
+      }, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
+      lastName: this.formBuilder.control({
+        value: '',
+        disabled: true
+      }, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
       comment: ['', [Validators.required, Validators.maxLength(this.commentMaxLength)]],
-      cv: ['', []],
-      coverLetter: ['', []],
+      cv: ['', [Validators.required, ]],
+      coverLetter: ['', [Validators.required, ]],
     });
   }
 
   public apply(userInput) {
-    // console.log(userInput);
-
-    const userApplicationObject = {
-      cv: userInput.cv,
-      // coverLetter: userInput.coverLetter,
-      comment: userInput.comment
-    }
-    console.log(userApplicationObject);
+    const userApplicationObject = this.appendValues();
+    this.loading = true;
     this.careerService.createNewApplication(userApplicationObject, this.id).subscribe(
       (res) => {
         console.log('Success');
@@ -81,20 +83,50 @@ export class JobApplicationComponent implements OnInit {
       (err: HttpErrorResponse) => {
         console.log('Fail');
       });
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   }
 
-  public onUpload(event: any): void{
-    // console.log(event);
-    if (event.target.files.length > 0) {
+  public onUpload(event: any): void {
+
+    // console.log(this.applicationForm)
+    if (event.currentTarget.files.length > 0) {
       const file = event.target.files[0];
-      // console.log(file)
-      // this.cv.nativeElement.value = file;
-      // this.coverLetter.nativeElement.value = file;
-      // console.log(this.cv.nativeElement.setValue(file))
-      // console.log(this.coverLetter.nativeElement.setValue(file))
-      this.applicationForm.controls['cv'].setValue(file);
-      // this.applicationForm.controls['coverLetter'].setValue(file);
-      // console.log(this.applicationForm.get('CoverLetter').setValue(file))
+      if (!this.validateExtention(file.name) && !this.validateFileSize(file.size)) {
+        this.toastr.error('Files must be of type pdf, doc or docx and not bigger than 16MB!', 'Invalid File', {
+          timeOut: 5000
+        });
+      } else {
+        this.applicationForm.get(event.currentTarget.id).setValue(file);
+        this.toastr.success(`Successfull uploaded file ${file.name}`);
+      }
     }
+  }
+
+  private appendValues(): FormData {
+    const userInput = new FormData();
+    userInput.append('cv', this.applicationForm.get('cv').value);
+    userInput.append('coverLetter', this.applicationForm.get('coverLetter').value);
+    userInput.append('comment', this.applicationForm.get('comment').value);
+    return userInput;
+  }
+
+  private validateExtention(fileFullName: string): boolean {
+    let fileExtention = fileFullName.substr(fileFullName.lastIndexOf('.'));
+    if (fileExtention === '.pdf' || fileExtention === '.doc' ||
+      fileExtention === '.docx') {
+      return true;
+    }
+    return false;
+  }
+
+  private validateFileSize(fileSize: number) {
+    const fileSizeInKb = fileSize / 1024;
+    if (fileSizeInKb >= 16000) {
+      return false;
+    }
+    return true;
   }
 }
