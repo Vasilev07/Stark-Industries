@@ -18,6 +18,16 @@ const init = (app, data) => {
             }
             res.send(401).end();
         })
+        .get('/buttons/:id', passport.authenticate('jwt-admin', {
+            session: false,
+        }), async (req, res) => {
+            const buttonId = req.params.id;
+            const button = await controller.getById(buttonId);
+            if (button) {
+                res.status(200).send(button);
+            }
+            res.send(401).end();
+        })
         .post('/buttons', passport.authenticate('jwt-admin', {
             session: false,
         }), async (req, res) => {

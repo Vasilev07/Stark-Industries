@@ -1,0 +1,68 @@
+<form novalidate [formGroup]="form" fxFlex="70" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="onSubmit
+  (form.value)">
+  <h2 fxFlex="20">
+    Create/Edit Link Details
+  </h2>
+  <div fxLayout="row" fxFlex="100" fxLayoutGap="20px">
+    <mat-form-field fxFlex="45">
+      <label for="name">Name</label>
+      <br>
+      <input matInput type="text" #nameField id="name" [formControl]="form.controls['name']" [(ngModel)]="name">
+      <mat-hint align="end">{{nameField.value?.length || 0 }}/ 128</mat-hint>
+      <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('required'))">
+        This field is required!
+      </mat-error>
+      <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('maxlength') || form.controls['name'].hasError('minlength'))">
+        Name must be between 3 and 128 characters long.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <span class="tooltip" matTooltip="This field uses Font Awesome icons, pick a name from https://fontawesome.com/v4.7.0/icons/ and write it in the field"
+        matTooltipPosition="below" matTooltipHideDelay="1000">
+        <label for="iconURL">Icon</label>
+      </span>
+      <br>
+      <input matInput type="text" id="iconURL" [formControl]="form.controls['iconURL']" [(ngModel)]="iconURL">
+      <!-- <mat-hint align="end">{{iconField.value?.length || 0 }}/ 128</mat-hint> -->
+    </mat-form-field>
+    <mat-error *ngIf="form.controls['iconURL'].touched && form.controls['iconURL'].hasError('required')">
+      This field is required!
+    </mat-error>
+    <!-- <div fxFlex="10"></div> -->
+  </div>
+  <div fxFlexFill fxLayoutAlign="center center">
+    <mat-form-field fxFlex="40">
+      <label for="targetURL">URL</label>
+      <br>
+      <input matInput type="text" #valueField id="targetURL" [formControl]="form.controls['targetURL']" [(ngModel)]="targetURL">
+      <mat-error *ngIf="form.controls['targetURL'].touched && form.controls['targetURL'].hasError('required')">
+        This field is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxFlex="100" fxLayoutGap="20px">
+    <mat-form-field>
+      <label for="isPrimary">Type</label>
+      <br>
+      <mat-select matInput id="type" [formControl]="form.controls['type']" [(ngModel)]="type">
+        <mat-option [value]="'link'">Link</mat-option>
+        <mat-option [value]="'social'">Social</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['type'].touched && form.controls['type'].hasError('required') && !form.controls['type'].value">
+        This field is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <label for="hidden">Is it hidden?</label>
+      <br>
+      <mat-select #hiddenField id="hidden" name="hidden" [formControl]="form.controls['hidden']" [(ngModel)]="hidden">
+        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['hidden'].touched && form.controls['hidden'].hasError('required') && !form.controls['hidden'].value">
+        This field is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
+</form>

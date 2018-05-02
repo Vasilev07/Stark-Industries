@@ -3,11 +3,21 @@ class ButtonsController {
         this.data = data;
     }
 
+    async getById(id) {
+        let button = await this.data.buttons.getById(id);
+        console.log(button);
+        button = button.dataValues;
+        console.log(button);
+        if (button) {
+            return button;
+        }
+        return null;
+    }
     async getAllButtons() {
         let allButtons = await this.data.buttons.getAll();
         allButtons = allButtons.map((button) => {
             return button.dataValues;
-        })
+        });
         return allButtons;
     }
 

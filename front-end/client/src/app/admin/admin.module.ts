@@ -7,6 +7,8 @@ import { MatModuleModule } from '../shared/mat.module.module';
 import { AdminContactComponent } from './admin-contact/admin-contact.component';
 import { AdminDeleteDialogComponent } from './admin-contact/admin-delete-dialog/admin-delete-dialog.component';
 import { AdminFormComponent } from './admin-contact/admin-form/admin-form.component';
+import { AdminFormLinksComponent } from './admin-links/admin-form-links/admin-form-links.component';
+import { AdminLinksComponent } from './admin-links/admin-links.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminRoutingModule } from './routing/admin-routing.module';
 
@@ -20,6 +22,13 @@ import { AdminRoutingModule } from './routing/admin-routing.module';
     ReactiveFormsModule,
   ],
   entryComponents: [AdminDeleteDialogComponent],
-  declarations: [AdminUsersComponent, AdminContactComponent, AdminFormComponent, AdminDeleteDialogComponent],
+  declarations: [
+    AdminUsersComponent,
+    AdminContactComponent,
+    AdminFormComponent,
+    AdminDeleteDialogComponent,
+    AdminLinksComponent,
+    AdminFormLinksComponent,
+],
 })
 export class AdminModule { }

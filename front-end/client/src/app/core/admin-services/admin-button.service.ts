@@ -14,6 +14,10 @@ export class AdminButtonsService {
         return this.http.get<ButtonGetModel[]>(`${this.appConfig.apiUrl}/buttons`);
     }
 
+    public getById(id: number): Observable<ButtonGetModel> {
+        return this.http.get<ButtonGetModel>(`${this.appConfig.apiUrl}/buttons/${id}`);
+    }
+
     public createButton(button: ButtonCreateModel): Observable<ButtonCreateModel> {
         return this.http.post<ButtonCreateModel>(`${this.appConfig.apiUrl}/buttons`, button);
     }

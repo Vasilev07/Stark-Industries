@@ -65,7 +65,7 @@ export class AdminContactComponent implements OnInit {
                             return contact.id === id;
                         });
                         this.dataSource.data.splice(i, 1);
-                        this.dataSource.paginator = this.paginator;
+                        setTimeout(() =>  this.dataSource.paginator = this.paginator);
                     },
                     (err: HttpErrorResponse) => {
                         this.toastr.error(`Server error: ${err}`);
