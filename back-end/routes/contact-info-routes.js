@@ -33,7 +33,8 @@ const init = (app, data) => {
             }),
             async (req, res) => {
                 const newAddress = req.body;
-                const newAddressObj = await controller.createNewContact(newAddress);
+                const newAddressObj =
+                    await controller.createNewContact(newAddress);
                 if (newAddressObj) {
                     res.status(200).end();
                 }

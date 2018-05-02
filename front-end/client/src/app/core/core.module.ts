@@ -10,6 +10,7 @@ import { ContactService } from './contact.service';
 import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
 import { IsAdminGuard } from './guards/is.admin.guard';
 import { PatternValidatorService } from './pattern.validator.service';
+import { AdminButtonsService } from './admin-services/admin-button.service';
 
 export const tokenGetter = () => {
     return localStorage.getItem('access_token');
@@ -35,6 +36,7 @@ export const tokenGetter = () => {
         { provide: IsAdminGuard, useClass: IsAdminGuard },
         { provide: AdminUsersService, useClass: AdminUsersService },
         { provide: AdminContactService, useClass: AdminContactService},
+        { provide: AdminButtonsService, useClass: AdminButtonsService},
     ],
 })
 export class CoreModule { }

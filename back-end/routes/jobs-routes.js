@@ -47,7 +47,8 @@ const init = (app, data) => {
         })
         .get('/careers/jobDetails/:id/apply', async (req, res) => {
             const jobId = req.params.id;
-            const allJobsById = await applicationController.getAllJobApplications(jobId);
+            const allJobsById =
+            await applicationController.getAllJobApplications(jobId);
             res.send(allJobsById);
         })
         .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {
