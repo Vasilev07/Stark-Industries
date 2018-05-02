@@ -3,7 +3,7 @@
 <div class="container">
   <div fxLayout="row" fxLayoutAlign="start start" class="content">
     <div class="map" fxFlex="50%">
-      <agm-map [longitude]='displayLongtitude' [latitude]='displayLatitude' style="height: 300px;">
+      <agm-map [longitude]='displayLongtitude' [latitude]='displayLatitude' style="height: 400px;">
         <agm-marker [longitude]='displayLongtitude' [latitude]='displayLatitude'></agm-marker>
       </agm-map>
     </div>
@@ -22,6 +22,7 @@
             <p *ngIf="!contact.isMappable">{{contact.value}}</p>
             <p *ngIf="contact.longtitude !== 0">Longtidue: {{contact.longtitude}}</p>
             <p *ngIf="contact.latitude !== 0">Latitude: {{contact.latitude}}</p>
+            <button *ngIf="contact.isMappable" mat-raised-button (click)="mapIt(contact.longtitude, contact.latitude)">Show On Map</button>
           </div>
         </mat-expansion-panel>
       </div>

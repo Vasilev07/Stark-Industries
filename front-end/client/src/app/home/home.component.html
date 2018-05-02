@@ -1,8 +1,7 @@
 <header>
   <div class="video-header">
     <div class="video-wrap">
-      <video src="../../assets/mark3-crop.mp4" autoplay loop [muted]="true"></video>
-
+      <video src="./../../assets/{{bck}}" autoplay loop [muted]="true"></video>
     </div>
   </div>
   <div class="overlay"></div>
@@ -13,8 +12,20 @@
         <i> STARK INDUSTRIES</i>
       </h1>
     </div>
-    <div class="linkButtons">
+    <div class="linkButtons" fxLayout="column" fxLayoutAlign="start start">
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex="40">
         <button mat-button>Placeholder</button>
+      </div>
+      <div fxFlex="20"></div>
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx" fxFlex="40">
+        <fb-like colorScheme="dark" layout="button" size="large" href="https://www.facebook.com/robertdowneyjr/">Like Us</fb-like>
+        <iframe src="//platform.twitter.com/widgets/follow_button.html?size=l&show_count=false&show_screen_name=false&screen_name=StarkIndustr1es"
+          frameborder="0" target="blank" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-show-count="false"></iframe>
+      </div>
     </div>
   </div>
+  <div class="twitter-timeline" style="display: block; z-index: 99999; width: 600px; margin-top: 27%; margin-left: 73%;">
+    <ng4-twitter-timeline [dataSrc]="{sourceType: 'widget', widgetId: '991263686848405504'}" [opts]="{tweetLimit: 2}"></ng4-twitter-timeline>
+  </div>
 </header>
+

@@ -1,79 +1,109 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
-  <h2 fxFlex="20">
-    Create/Edit Contact Details
-  </h2>
-  <form novalidate [formGroup]="form" fxFlex="60" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="onSubmit(form.value)">
-    <mat-form-field>
-      <label for="name">Name</label>
-      <br>
-      <input matInput type="text" #nameField id="name" [formControl]="form.controls['name']" [value]='name || ""'>
-      <mat-hint align="end">{{nameField.value?.length || 0 }}/ 128</mat-hint>
-    </mat-form-field>
-    <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('required'))">
-      This field is required!
-    </mat-error>
-    <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('maxlength') || form.controls['name'].hasError('minlength'))">
-      Name must be between 2 and 128 characters long.
-    </mat-error>
-    <mat-form-field>
-      <label for="value">Value</label>
-      <br>
-      <textarea matInput type="text" #valueField id="value" [formControl]="form.controls['value']" [value]='value || ""'></textarea>
-      <mat-hint align="end">{{valueField.value?.length || 0 }}/ 1024</mat-hint>
-    </mat-form-field>
-    <mat-error *ngIf="form.controls['value'].touched && form.controls['value'].hasError('required')">
-      This field is required!
-    </mat-error>
-    <mat-error *ngIf="form.controls['value'].touched && (form.controls['value'].hasError('maxlength') || form.controls['value'].hasError('minlength'))">
-      Name must be between 2 and 1024 characters long.
-    </mat-error>
-    <mat-form-field>
-      <span class="tooltip" matTooltip="This field uses material icons, pick a name from https://material.io/icons/ and write it in the field"
-        matTooltipPosition="below" matTooltipHideDelay="1000">
-        <label for="icon">Icon</label>
-      </span>
-      <br>
-      <input matInput type="text" id="icon" [formControl]="form.controls['icon']" [value]='icon || ""'>
-    </mat-form-field>
-
-    <mat-error *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('required')">
-      This field is required!
-    </mat-error>
-    <mat-error *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('minlength')">
-      Name must be at least 2 characters long.
-    </mat-error>
-    <mat-form-field>
-      <label for="isPrimary">Is Address Primary?</label>
-      <br>
-      <mat-select matInput id="isPrimary" [formControl]="form.controls['isPrimary']" [value]='isPrimary'>
-        <mat-option value="true">Yes</mat-option>
-        <mat-option value="false">No</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-error *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
-      This field is required!
-    </mat-error>
-    <mat-form-field>
-      <label for="isMappable">Is Address Mappable?</label>
-      <br>
-      <mat-select #mappable id="isMappable" name="mappable" [formControl]="form.controls['isMappable']" [value]='isMappable'>
-        <mat-option value="true">Yes</mat-option>
-        <mat-option value="false">No</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-error *ngIf="form.controls['isMappable'].touched && form.controls['isMappable'].hasError('required') && !form.controls['isMappable'].value">
-      This field is required!
-    </mat-error>
-    <mat-form-field *ngIf="mappable.value === 'true'">
-      <label for="longtitude">Longtitude</label>
-      <br>
-      <input matInput id="longtitude" type="number" [value]='longtitude'>
-    </mat-form-field>
-    <mat-form-field *ngIf="mappable.value === 'true'">
-      <label for="Latitude">Latitude</label>
-      <br>
-      <input matInput id="latitude" type="number" [value]='latitude'>
-    </mat-form-field>
+<div fxLayout="row" fxLayoutAlign="start start">
+  <form novalidate [formGroup]="form" fxFlex="70" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="onSubmit
+  (form.value)">
+    <h2 fxFlex="20">
+      Create/Edit Contact Details
+    </h2>
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="20px">
+      <mat-form-field fxFlex="45">
+        <label for="name">Name</label>
+        <br>
+        <input matInput type="text" #nameField id="name" [formControl]="form.controls['name']" [(ngModel)]="name">
+        <mat-hint align="end">{{nameField.value?.length || 0 }}/ 128</mat-hint>
+        <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('required'))">
+          This field is required!
+        </mat-error>
+        <mat-error *ngIf="form.controls['name'].touched && (form.controls['name'].hasError('maxlength') || form.controls['name'].hasError('minlength'))">
+          Name must be between 2 and 128 characters long.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <span class="tooltip" matTooltip="This field uses material icons, pick a name from https://material.io/icons/ and write it in the field"
+          matTooltipPosition="below" matTooltipHideDelay="1000">
+          <label for="icon">Icon</label>
+        </span>
+        <br>
+        <input matInput type="text" #iconField id="icon" [formControl]="form.controls['icon']" [(ngModel)]="icon">
+        <mat-hint align="end">{{iconField.value?.length || 0 }}/ 128</mat-hint>
+      </mat-form-field>
+      <mat-error *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('required')">
+        This field is required!
+      </mat-error>
+      <mat-error *ngIf="form.controls['icon'].touched && form.controls['icon'].hasError('minlength')">
+        Name must be at least 2 characters long.
+      </mat-error>
+      <!-- <div fxFlex="10"></div> -->
+    </div>
+    <div fxFlexFill fxLayoutAlign="center center">
+      <mat-form-field fxFlex="40">
+        <label for="value">Value</label>
+        <br>
+        <textarea matInput type="text" #valueField id="value" [formControl]="form.controls['value']" [(ngModel)]="value"></textarea>
+        <mat-hint align="end">{{valueField.value?.length || 0 }}/ 1024</mat-hint>
+        <mat-error *ngIf="form.controls['value'].touched && form.controls['value'].hasError('required')">
+          This field is required!
+        </mat-error>
+        <mat-error *ngIf="form.controls['value'].touched && (form.controls['value'].hasError('maxlength') || form.controls['value'].hasError('minlength'))">
+          Name must be between 2 and 1024 characters long.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="20px">
+      <mat-form-field>
+        <label for="isPrimary">Is Address Primary?</label>
+        <br>
+        <mat-select matInput id="isPrimary" [formControl]="form.controls['isPrimary']" [(ngModel)]="isPrimary">
+          <mat-option [value]="true">Yes</mat-option>
+          <mat-option [value]="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['isPrimary'].touched && form.controls['isPrimary'].hasError('required') && !form.controls['isPrimary'].value">
+          This field is required!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <label for="isMappable">Is Address Mappable?</label>
+        <br>
+        <mat-select #mappable id="isMappable" name="mappable" [formControl]="form.controls['isMappable']" [(ngModel)]="isMappable">
+          <mat-option [value]="true">Yes</mat-option>
+          <mat-option [value]="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['isMappable'].touched && form.controls['isMappable'].hasError('required') && !form.controls['isMappable'].value">
+          This field is required!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="20px">
+      <mat-form-field *ngIf="isMappable">
+        <label for="longtitude">Longtitude</label>
+        <br>
+        <input matInput id="longtitude" name="longtitude" type="number" [(ngModel)]="longtitude" [formControl]="form.controls['longtitude']">
+      </mat-form-field>
+      <mat-form-field *ngIf="isMappable">
+        <label for="Latitude">Latitude</label>
+        <br>
+        <input matInput id="latitude" name="latitude" type="number" [(ngModel)]="latitude" [formControl]="form.controls['latitude']">
+      </mat-form-field>
+    </div>
     <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
+  <div fxLayout="column" fxLayoutAlign="start start" fxFlex="40">
+    <h2>This is what it would look like</h2>
+    <div class="contactsContainer" fxFlex="40%">
+      <br>
+      <mat-expansion-panel class="contact">
+        <mat-expansion-panel-header class="contactHeader">
+          <mat-panel-title>
+            <mat-icon>{{icon}}</mat-icon>{{ name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <p *ngIf="isMappable">Address: {{value}}</p>
+          <p *ngIf="!isMappable">{{value}}</p>
+          <p *ngIf="longtitude !== 0">Longtidue: {{longtitude}}</p>
+          <p *ngIf="latitude !== 0">Latitude: {{latitude}}</p>
+          <button *ngIf="isMappable" mat-raised-button>Show On Map</button>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
 </div>

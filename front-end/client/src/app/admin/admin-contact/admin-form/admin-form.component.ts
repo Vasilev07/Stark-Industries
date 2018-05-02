@@ -50,8 +50,8 @@ export class AdminFormComponent implements OnInit {
                     this.isMappable = contact.isMappable;
                     this.longtitude = contact.longtitude;
                     this.latitude = contact.latitude;
-                    console.log(`this.name: ${this.name}`);
-                    console.log(`contact.name: ${contact.name}`);
+                    console.log(`this.longtitude: ${this.longtitude}`);
+                    console.log(`this.latitude: ${contact.latitude}`);
                 });
             }
             // console.log(typeof this.paramsId);
@@ -59,7 +59,7 @@ export class AdminFormComponent implements OnInit {
         this.form = this.formBuilder.group({
             name: [this.name, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLengthName), Validators.required]],
             value: [this.value, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLengthValue), Validators.required]],
-            icon: [this.icon, [Validators.minLength(this.minLength), Validators.required]],
+            icon: [this.icon, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLengthName), Validators.required]],
             isPrimary: [this.isPrimary, [Validators.required]],
             isMappable: [this.isMappable, [Validators.required]],
             longtitude: this.longtitude,

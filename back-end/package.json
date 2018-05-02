@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Vasilev07/Stark-Industries#readme",
   "dependencies": {
+    "@types/multer": "^1.3.6",
     "babel-eslint": "^8.2.3",
     "bcrypt": "^2.0.0",
     "bcrypt-nodejs": "0.0.3",

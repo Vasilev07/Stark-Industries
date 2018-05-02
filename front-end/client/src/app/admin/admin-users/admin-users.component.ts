@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { AdminUsersService } from '../../core/admin-services/admin-users.service';
+import { Roles } from '../../models/roles.enum';
 import { User } from '../../models/user';
 
 @Component({
@@ -16,6 +17,7 @@ export class AdminUsersComponent implements OnInit {
     public displayedColumns = ['id', 'firstName', 'email', 'createdAt', 'applicationsCount', 'roleId'];
     @ViewChild(MatSort) public sort: MatSort;
     @ViewChild(MatPaginator) public paginator: MatPaginator;
+    private Roles = Roles;
     constructor(private adminUsersService: AdminUsersService) { }
     public ngOnInit(): void {
         this.adminUsersService.getAllUsers().subscribe((data) => {

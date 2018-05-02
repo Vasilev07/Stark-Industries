@@ -24,5 +24,8 @@ export class ContactComponent implements OnInit {
             this.displayLatitude = this.primaryAddress.latitude;
         });
     }
-
+    public mapIt(longtitude: number, latitude: number): void {
+        this.displayLongtitude = longtitude;
+        this.displayLatitude = latitude;
+    }
 }
