@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng4TwitterTimelineModule } from 'ng4-twitter-timeline/lib';
-import { FacebookModule } from 'ngx-facebook';
 
 import { MatModuleModule } from '../shared/mat.module.module';
 import { HomeComponent } from './home.component';
@@ -11,7 +13,10 @@ import { HomeComponent } from './home.component';
     CommonModule,
     MatModuleModule,
     Ng4TwitterTimelineModule,
-    FacebookModule.forRoot(),
+    RouterModule,
+    MatModuleModule,
+    FlexLayoutModule,
+    AngularFontAwesomeModule,
   ],
   declarations: [HomeComponent],
 })

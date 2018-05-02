@@ -5,6 +5,7 @@
 header {
   margin: 0;
   overflow-x: hidden;
+  overflow-y: hidden;
   text-align: center;
   display: flex;
 }
@@ -15,7 +16,7 @@ header {
   z-index: 0;
   align-items: center;
   color: white;
-  width: 99.5vw;
+  width: 98vw;
   height: auto;
   position: absolute;
   overflow-x: hidden;
@@ -26,7 +27,8 @@ header {
   width: 99.5%;
   overflow: hidden;
   object-fit: cover;
-  height: 100vh;
+  overflow-y: hidden;
+  height: 90vh;
 }
 
 .video-wrap video {
@@ -34,6 +36,8 @@ header {
   top: 0;
   left: 0;
   overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
 }
 
 .content {
@@ -47,28 +51,24 @@ header {
   position: absolute;
   /* display: flex; */
   width: 98vw;
-  height: 100vh;
+  height: 90vh;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-.linkButtons {
-  left: 15%;
-  bottom: 20%;
-  position: absolute;
-  /* background: none; */
-}
 
-.linkButtons button {
-  background-color: none;
+.linkButtons a.mat-button {
+  /* background-color: none; */
   color: white;
   font-size: 20px;
   cursor: pointer;
   text-transform: uppercase;
+  text-align: left;
 }
 
-.linkButtons button:hover {
+.linkButtons a.mat-button:hover {
   color: #00fffc;
-  background-color: none;
+  /* background-color: none; */
   transform: scale(1.1);
   transition: 0.5s all;
 }
@@ -80,11 +80,17 @@ header {
   opacity: 0.6;
   position: absolute;
   /* display: flex; */
-  width: 99vw;
-  height: 100vh;
+  width: 98vw;
+  height: 90vh;
   overflow-x: hidden;
   /* margin-top: -10px; */
 }
+
+.homeFooter {
+    width: 98%;
+    box-sizing: border-box;
+}
+
 
 #logo {
   animation: logo-entry 0.8s ease-in;
@@ -136,12 +142,9 @@ h1:after {
   margin-right: 12px;
 }
 
-::ng-depp div.twitter-timeline, .timeline-Widget {
-  width: 150px;
-  z-index: 99999;
-  width: 400px;
-  margin-top: 28%;
-  margin-left: 74%;
+
+.fa {
+    font-size: 3em;
 }
 .footer {
     height: 30%;

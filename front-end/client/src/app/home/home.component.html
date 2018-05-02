@@ -1,31 +1,46 @@
 <header>
   <div class="video-header">
     <div class="video-wrap">
-      <video src="./../../assets/{{bck}}" autoplay loop [muted]="true"></video>
+      <video src="./../../assets/{{backgroundVideo}}" autoplay loop [muted]="true"></video>
     </div>
   </div>
   <div class="overlay"></div>
   <div class="content">
-    <div id="logo">
-      <h2>WELCOME TO</h2>
-      <h1>
-        <i> STARK INDUSTRIES</i>
-      </h1>
-    </div>
-    <div class="linkButtons" fxLayout="column" fxLayoutAlign="start start">
-      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex="40">
-        <button mat-button>Placeholder</button>
+    <div class="contentContainer" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="22%">
+      <div id="logo" fxFlex="40" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+        <!-- <h2 fxFlex="30">WELCOME TO</h2> -->
+        <div fxFlex="10%"></div>
+        <h1 fxFlex="60%">
+          <i> STARK INDUSTRIES</i>
+        </h1>
       </div>
-      <div fxFlex="20"></div>
-      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx" fxFlex="40">
-        <fb-like colorScheme="dark" layout="button" size="large" href="https://www.facebook.com/robertdowneyjr/">Like Us</fb-like>
-        <iframe src="//platform.twitter.com/widgets/follow_button.html?size=l&show_count=false&show_screen_name=false&screen_name=StarkIndustr1es"
-          frameborder="0" target="blank" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-show-count="false"></iframe>
+      <!-- <div fxFlex="15%"></div> -->
+      <div class="homeFooter" fxLayout="row" fxLayoutAlign="space-between" fxFlex="40" fxLayoutGap="20%">
+        <div class="linkButtons" fxLayout="column" fxLayoutAlign="start start" fxFlex="40" fxLayoutGap="20px">
+          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex="20">
+            <div class="localButtons" *ngFor="let button of linkButtonsLocal">
+              <a mat-button [routerLink]="button.targetURL">
+                <mat-icon>{{button.iconURL}}</mat-icon>{{button.name}}</a>
+            </div>
+            <div class="foreignButtons" *ngFor="let button of linkButtonsForeign">
+              <a mat-button href="{{button.targetURL}}" target="blank">
+                <mat-icon>{{button.iconURL}}</mat-icon>{{button.name}}</a>
+            </div>
+          </div>
+          <p fxFlex="60" style="text-align: left;">{{homeText}}</p>
+          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px" fxFlex="20" *ngFor="let button of socialButtons">
+            <a fxFlex="10" mat-icon-button href="{{button.targetURL}}" target="blank">
+              <i class="fa fa-{{button.iconURL}}" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="twitter-timeline" fxFlex="20">
+          <ng4-twitter-timeline [dataSrc]="{sourceType: 'widget', widgetId: '991263686848405504'}" [opts]="{tweetLimit: 1}"></ng4-twitter-timeline>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="twitter-timeline" style="display: block; z-index: 99999; width: 600px; margin-top: 27%; margin-left: 73%;">
-    <ng4-twitter-timeline [dataSrc]="{sourceType: 'widget', widgetId: '991263686848405504'}" [opts]="{tweetLimit: 2}"></ng4-twitter-timeline>
-  </div>
-</header>
 
+
+  </div>
+
+</header>

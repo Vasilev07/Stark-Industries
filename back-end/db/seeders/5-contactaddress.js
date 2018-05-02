@@ -19,8 +19,8 @@ module.exports = {
             icon: 'satellite',
             isPrimary: false,
             isMappable: true,
-            longtitude: 33.901506,
-            latitude: -118.383915,
+            latitude: 33.901506,
+            longtitude: -118.383915,
             createdAt: new Date(),
             updatedAt: new Date(),
         }], {});
