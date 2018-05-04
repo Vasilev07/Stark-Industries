@@ -6,7 +6,7 @@ class ApplicationController {
     async createNewApplication(userInformation,
         userApplication, jobId, cvFile, coverFile) {
         const userApplications = await this.data.application
-            .getAllUserIds(userInformation.id);no
+            .getAllUserIds(userInformation.id);
         const allJobsApplicationsIds = [];
         userApplications.map((application) => {
             allJobsApplicationsIds.push(application.jobId);

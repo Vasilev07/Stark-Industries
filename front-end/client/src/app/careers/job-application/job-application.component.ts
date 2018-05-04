@@ -82,7 +82,6 @@ export class JobApplicationComponent implements OnInit {
     const userApplicationObject = this.appendValues();
     this.careerService.createNewApplication(userApplicationObject, this.id).subscribe(
       (res) => {
-        console.log('aaaa');
         console.log('Success');
       },
       (err: HttpErrorResponse) => {
