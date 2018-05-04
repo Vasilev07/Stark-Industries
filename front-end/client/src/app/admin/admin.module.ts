@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { MatModuleModule } from '../shared/mat.module.module';
 import { AdminContactComponent } from './admin-contact/admin-contact.component';
@@ -22,6 +23,8 @@ import { AdminRoutingModule } from './routing/admin-routing.module';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
   ],
   entryComponents: [AdminDeleteDialogComponent],
   declarations: [

@@ -5,10 +5,13 @@
       <input matInput minLength="3" maxLength="100" id="title" [formControl]="createJobForm.controls['title']" [(ngModel)]="title">
       <!-- <mat-hint align="end">{{firstName.length || 0}}/100</mat-hint> -->
     </mat-form-field>
-    <mat-form-field fxFlex class="form-item" requiered>
+    <mat-form-field fxFlex class="form-item textarea" requiered>
       <label for="description">Description</label>
-      <textarea matInput #textarea maxlength="1024" id="description" formControlName="description" [(ngModel)]="description"></textarea>
-      <mat-hint align="end">{{textarea.value?.length || 0}}/1024</mat-hint>
+      <textarea [froalaEditor]="options" matInput #textarea maxlength="1024" id="description" [formControl]="createJobForm.controls['description']" [(ngModel)]="description"></textarea>
+      <!-- <mat-hint align="end">{{textarea.value?.length - 7 || 0}}/1024</mat-hint> -->
+      <mat-error *ngIf="form.controls['description'].touched && (form.controls['description'].hasError('required'))">
+            This field is required!
+          </mat-error>
     </mat-form-field>
     <mat-form-field>
       <label for="type">Category</label>
