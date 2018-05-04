@@ -9,13 +9,13 @@
     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
       <div id="fade-box">
         <input type="text" id="userName" placeholder="Username" formControlName="userName">
-        <div style='color:#ff7355' *ngIf="loginForm.get('userName').hasError('required')">
+        <!-- <div style='color:#ff7355' *ngIf="loginForm.get('userName').touched && loginForm.get('userName').hasError('required')">
           Username must not be empty
-        </div>
+        </div> -->
         <input type="password" placeholder="Password" formControlName="password">
-        <div style='color:#ff7355' *ngIf="loginForm.get('password').hasError('required')">
+        <!-- <div style='color:#ff7355' *ngIf="loginFrom.get('password').touched && loginForm.get('password').hasError('required')">
           Password must not be empty
-        </div>
+        </div> -->
         <button [disabled]="!loginForm.valid">Log In</button>
       </div>
     </form>

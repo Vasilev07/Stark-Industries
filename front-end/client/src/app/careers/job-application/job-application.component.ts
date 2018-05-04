@@ -45,11 +45,16 @@ export class JobApplicationComponent implements OnInit {
   @ViewChild('cv') public cv: ElementRef;
   @ViewChild('coverLetter') public coverLetter: ElementRef;
   public id: number;
-  public loading: boolean = false;
   private minLength: number = 3;
   private maxLength: number = 100;
   private commentMaxLength: number = 1024;
-  constructor(private toastr: ToastrService, private careerService: CareersService, private el: ElementRef, private router: Router, private route: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private toastr: ToastrService, 
+    private careerService: CareersService, 
+    private el: ElementRef, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private authService: AuthService, 
+    private formBuilder: FormBuilder) {}
 
   public firstName: string;
   public lastName: string;
@@ -75,9 +80,9 @@ export class JobApplicationComponent implements OnInit {
 
   public apply(userInput) {
     const userApplicationObject = this.appendValues();
-    this.loading = true;
     this.careerService.createNewApplication(userApplicationObject, this.id).subscribe(
       (res) => {
+        console.log('aaaa');
         console.log('Success');
       },
       (err: HttpErrorResponse) => {
@@ -85,13 +90,10 @@ export class JobApplicationComponent implements OnInit {
       });
 
     setTimeout(() => {
-      this.loading = false;
     }, 1000);
   }
 
   public onUpload(event: any): void {
-
-    // console.log(this.applicationForm)
     if (event.currentTarget.files.length > 0) {
       const file = event.target.files[0];
       if (!this.validateExtention(file.name) && !this.validateFileSize(file.size)) {
