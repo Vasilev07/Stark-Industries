@@ -46,7 +46,7 @@ class AuthenticationController {
             });
         } else {
             res.status(401).send({
-                err: 'User already exists',
+                err: 'User with this email already exists',
             });
         }
     }
@@ -56,34 +56,37 @@ class AuthenticationController {
         const userFound = await this.data.users
             .getByValue('userName', req.body.userName);
         if (userFound) {
-            bcrypt
-                .compare(req.body.password,
-                    userFound.password, (err, response) => {
-                        if (response) {
-                            const expire = moment(new Date())
-                                .add(config.JWT_EXPIRE_TIME, 'minutes').unix();
-                            const payload = {
-                                sub: userFound.id,
-                                email: userFound.email,
-                                role: userFound.roleId,
-                                firstName: userFound.firstName,
-                                lastName: userFound.lastName,
-                                exp: expire,
-                                iss: config.JWT_ISS,
-                            };
-                            const secret = config.JWT_SECRET;
-                            const token = jwt.encode(payload, secret);
+            bcrypt.compare(req.body.password, userFound.password,
+                (err, response) => {
+                    if (response) {
+                        const expire = moment(new Date())
+                            .add(config.JWT_EXPIRE_TIME, 'minutes').unix();
+                        const payload = {
+                            sub: userFound.id,
+                            email: userFound.email,
+                            role: userFound.roleId,
+                            firstName: userFound.firstName,
+                            lastName: userFound.lastName,
+                            exp: expire,
+                            iss: config.JWT_ISS,
+                        };
+                        const secret = config.JWT_SECRET;
+                        const token = jwt.encode(payload, secret);
 
-                            res.status(200).send({
-                                token,
-                                message: 'User successfully logged in!',
-                            });
-                        } else {
-                            res.status(401).send({
-                                err: 'User not found',
-                            });
-                        }
-                    });
+                        res.status(200).send({
+                            token,
+                            message: 'User successfully logged in!',
+                        });
+                    } else {
+                        res.status(401).send({
+                            err: 'Password is incorrect',
+                        });
+                    }
+                });
+        } else {
+            res.status(401).send({
+                err: 'Username is incorrect',
+            });
         }
     }
 }

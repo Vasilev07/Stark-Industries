@@ -21,6 +21,9 @@ import {
 import {
   UserRegisterModel
 } from '../models/users/userRegisterModel';
+import {
+  HttpErrorResponse
+} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -28,30 +31,34 @@ import {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registrationForm: FormGroup;
+  private registrationForm: FormGroup;
+  private passwordPattern = '(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}';
 
-  passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
+  constructor(private authService: AuthService,
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder,
+    private router: Router) {}
 
-  constructor(private authService: AuthService, private toastr: ToastrService,
-    private formBuilder: FormBuilder, private router: Router) {}
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
-      // userName: '',
-      // firstName: '',
-      // lastName: '',
-      // email: ['', [Validators.maxLength(1024)]],
-      password: ['', [Validators.maxLength(256)]],
+      userName: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.email, Validators.maxLength(1024)]],
+      password: ['', [Validators.required, Validators.maxLength(256), Validators.pattern(this.passwordPattern)]],
       confirmPassword: ['', [Validators.required]],
     });
-
-    // console.log(this.registrationForm);
   }
 
   private register(user: UserRegisterModel): void {
-    this.authService.register(this.registrationForm.value).subscribe((data) => {
-      localStorage.setItem('access_token', data.token);
-      this.toastr.success(`Success! Welcome to Stark Industries ${user.firstName} ${user.lastName}`);
-      this.router.navigate(['/home']);
-    });
+    console.log(this.registrationForm.errors);
+    this.authService.register(this.registrationForm.value).subscribe(
+      (data) => {
+        localStorage.setItem('access_token', data.token);
+        this.toastr.success(`Success! Welcome to Stark Industries ${user.firstName} ${user.lastName}`);
+        this.router.navigate(['/home']);
+      }, (err: HttpErrorResponse) => {
+        this.toastr.error(err.error.err);
+      });
   }
 }

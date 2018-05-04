@@ -18,6 +18,9 @@ import { JobApplicationComponent } from './job-application/job-application.compo
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [CareersComponent, JobDetailsComponent, CareersViewComponent, JobApplicationComponent]
+  declarations: [CareersComponent, 
+    JobDetailsComponent, 
+    CareersViewComponent, 
+    JobApplicationComponent,]
 })
 export class CareersModule { }

@@ -2,7 +2,7 @@
 <div fxLayout="row">
   <div fxLayout="column" fxFlex="60%"  class="content">
     <div class="container" >
-      <mat-list *ngFor="let job of paginatedJobs" >
+      <mat-list *ngFor="let job of filteredJobs" >
         <stark-careers-view [job]="job"></stark-careers-view>
         <br>
       </mat-list>

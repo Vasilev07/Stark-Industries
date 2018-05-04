@@ -40,4 +40,8 @@ export class AdminJobsService {
   public deleteJob(id: number): Observable<any> {
       return this.httpClient.delete(`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}`);
   }
+
+  public getAllApplications(id:number): Observable<Job> {
+    return this.httpClient.get<Job>(`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}/applications`);
+}
 }
