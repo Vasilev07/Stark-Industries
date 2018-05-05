@@ -8,35 +8,35 @@
       <!-- Position Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> User Id </mat-header-cell>
-        <mat-cell *matCellDef="let users" [ngClass]="'idContainer'"> {{user.id}} </mat-cell>
+        <mat-cell *matCellDef="let user" [ngClass]="'idContainer'"> {{user?.id}} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let users"> {{user.firstName}} {{user.lastName}} </mat-cell>
+        <mat-cell *matCellDef="let user"> {{user.firstName}} {{user?.lastName}} </mat-cell>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
-        <mat-cell *matCellDef="let user"> <a href="mailto:{{user.email}}"> {{user.email}} </a></mat-cell>
+        <mat-cell *matCellDef="let user"> <a href="mailto:{{user.email}}"> {{user?.email}} </a></mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="createdAt">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Registered </mat-header-cell>
-        <mat-cell *matCellDef="let users"> {{user.createdAt | date: "fullDate"}} </mat-cell>
+        <mat-cell *matCellDef="let user"> {{user.createdAt | date: "fullDate"}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="applicationsCount">
         <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> Number of Applications </mat-header-cell>
-        <mat-cell *matCellDef="let users" [ngClass]="'idContainer'"> {{user.applicationsCount}} </mat-cell>
+        <mat-cell *matCellDef="let user" [ngClass]="'idContainer'"> {{user.applicationsCount}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="roleId">
         <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'idContainer'"> Role </mat-header-cell>
-        <mat-cell *matCellDef="let users" [ngClass]="'idContainer'"> {{Roles[user.roleId]}} </mat-cell>
+        <mat-cell *matCellDef="let user" [ngClass]="'idContainer'"> {{Roles[user.roleId]}} </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

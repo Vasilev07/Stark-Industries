@@ -1,4 +1,6 @@
 // const passport = require('passport');
+/* globals __dirname*/
+
 const {
     Router,
 } = require('express');
@@ -54,7 +56,8 @@ const init = (app, data) => {
         })
         .get('/careers/download/:fileName', async (req, res) => {
             const file = req.params.fileName;
-            const filePath = path.join('./uploads', file);
+            const filePath = path.join(__dirname, '..', 'uploads', file);
+            console.log(__dirname);
             console.log(file);
 
             return res.download(filePath, file);
