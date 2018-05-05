@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
+import { AuthService } from '../../core/auth.service';
 import { CareersService } from '../../core/careers.service';
 import { Job } from '../../models/job';
 
@@ -15,17 +16,22 @@ export class JobDetailsComponent implements OnInit {
 
     public jobDetail: Job;
     public createdAt: string;
-
+    public isAdmin: boolean;
     public previousRoute: string;
-    constructor(private carrerService: CareersService, private route: ActivatedRoute, private router: Router) { }
+    constructor(
+        private carrerService: CareersService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private authService: AuthService,
+    ) { }
 
     public ngOnInit(): void {
         this.route.params.subscribe((param: Params) => {
             this.carrerService.getById(+param.id).subscribe((data) => {
                 this.jobDetail = data;
-                console.log(this.jobDetail);
             });
         });
+        this.isAdmin = this.authService.isAdmin();
     }
 
     public navigateTo(jobId: number): void {

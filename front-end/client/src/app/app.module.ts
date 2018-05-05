@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { NavigationModule } from './navigation/navigation.module';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SlimLoadingBarModule.forRoot(),
   ],
   providers: [AppConfig],
   bootstrap: [AppComponent],

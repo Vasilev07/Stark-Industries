@@ -18,6 +18,8 @@ export class JobApplicationComponent implements OnInit {
     @ViewChild('cv') public cv: ElementRef;
     @ViewChild('coverLetter') public coverLetter: ElementRef;
     public id: number;
+    public firstName: string;
+    public lastName: string;
     private minLength: number = 3;
     private maxLength: number = 100;
     private commentMaxLength: number = 1024;
@@ -32,8 +34,8 @@ export class JobApplicationComponent implements OnInit {
 
     public ngOnInit(): void {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-        this.firstName = this.authService.userName().firstName;
-        this.lastName = this.authService.userName().lastName;
+        this.firstName = this.authService.getUserName().firstName;
+        this.lastName = this.authService.getUserName().lastName;
 
         this.applicationForm = this.formBuilder.group({
             firstName: this.formBuilder.control({

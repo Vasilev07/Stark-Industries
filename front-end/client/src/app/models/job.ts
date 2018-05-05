@@ -1,10 +1,10 @@
 
-export interface Job {
-    id: number;
-    title: string;
-    type: string;
-    description: string;
-    status: string;
-    createdAt: string;
-    updatedAt: string;
+export class Job {
+    public id: number;
+    public title: string;
+    public type: string;
+    public description: string;
+    public status: string;
+    public createdAt: string;
+    public updatedAt: string;
 }

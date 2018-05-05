@@ -7,3 +7,7 @@ html {
     font-family: 'Ubuntu', sans-serif;
     /* background-color: lightgrey; */
 }
+
+div.mat-select-value {
+    color: #00a4a2 !important;
+}

@@ -2,10 +2,15 @@
 <div fxLayout="row">
   <div fxLayout="column" fxFlex="60%" class="content">
     <div class="container">
-      <mat-list *ngFor="let job of filteredJobs">
-        <stark-careers-view [job]="job"></stark-careers-view>
-        <br>
-      </mat-list>
+      <div class="noData" *ngIf="filteredJobs.length === 0">
+        <p>There are no open positions - please try later.</p>
+      </div>
+      <div *ngIf="filteredJobs.length > 0">
+        <mat-list *ngFor="let job of filteredJobs">
+          <stark-careers-view [job]="job"></stark-careers-view>
+          <br>
+        </mat-list>
+      </div>
     </div>
   </div>
   <div fxFlex="15%"></div>

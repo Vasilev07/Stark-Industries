@@ -144,3 +144,26 @@ button.mat-button {
   transition: 0.5s all;
   text-align: center;
 }
+
+::ng-deep .fr-toolbar .fr-command.fr-btn i, .fr-popup .fr-command.fr-btn i, .fr-toolbar .fr-command.fr-btn svg, .fr-popup .fr-command.fr-btn svg {
+    color: #00a4a2;
+}
+
+::ng-deep .fr-toolbar.fr-top {
+    background-color: black;
+}
+
+::ng-deep .fr-box.fr-basic .fr-element {
+    background-color: black;
+    color: #00a4a2;
+}
+
+::ng-deep .fr-box .fr-counter {
+    border: none !important;
+    background: black !important;
+    color: #00ffdd !important;
+}
+
+::ng-deep .fr-element.fr-view {
+    height: 250px;
+}
