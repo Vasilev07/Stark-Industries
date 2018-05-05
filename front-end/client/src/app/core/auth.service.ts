@@ -75,4 +75,8 @@ export class AuthService {
         const decodedToken = this.jwtService.decodeToken(token);
         return decodedToken.sub;
     }
+
+    public getPreviousRoute() {
+        console.log(this.router.events);
+    }
 }

@@ -16,8 +16,7 @@ const init = (app, data) => {
         .get('/admin/users', passport.authenticate('jwt-admin', {
             session: false,
         }), async (req, res) => {
-            const allUsersInformation = await controller
-                .getAllUserDetails();
+            const allUsersInformation = await controller.getAllUserDetails();
             res.send(allUsersInformation);
         });
 };

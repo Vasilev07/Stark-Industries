@@ -26,7 +26,7 @@ const init = (app, data) => {
             if (button) {
                 res.status(200).send(button);
             }
-            res.send(401).end();
+            res.status(401);
         })
         .post('/buttons', passport.authenticate('jwt-admin', {
             session: false,

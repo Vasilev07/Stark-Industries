@@ -18,6 +18,15 @@
   display: none;
 }
 
+::ng-deep div.fr-box.fr-basic.fr-top {
+    color: #00ffdd;
+    background-color: black;
+}
+.textarea {
+    width: 50%;
+    color: #00ffdd;
+    background-color: black;
+}
 label {
   color: #00ffdd;
 }

@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CareersComponent } from './careers.component';
-import { CareersRoutingModule } from './routing/careers-routing.module';
-import { MatModuleModule } from '../shared/mat.module.module';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JobDetailsComponent } from './job-details/job-details.component';
+
+import { MatModuleModule } from '../shared/mat.module.module';
 import { CareersViewComponent } from './careers-view.component';
+import { CareersComponent } from './careers.component';
 import { JobApplicationComponent } from './job-application/job-application.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
+import { CareersRoutingModule } from './routing/careers-routing.module';
 
 @NgModule({
   imports: [

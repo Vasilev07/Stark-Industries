@@ -18,24 +18,26 @@
       <div class="homeFooter" fxLayout="row" fxLayoutAlign="space-between" fxFlex="40" fxLayoutGap="20%">
         <div class="linkButtons" fxLayout="column" fxLayoutAlign="start start" fxFlex="40" fxLayoutGap="20px">
           <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex="20">
-            <div class="localButtons" *ngFor="let button of linkButtonsLocal">
-              <a mat-button [routerLink]="button.targetURL">
+            <div class="localButtons" *ngFor="let button of linkButtonsLocal" fxLayout="row">
+              <a *ngIf="!button.hidden" mat-button [routerLink]="button.targetURL">
                 <mat-icon>{{button.iconURL}}</mat-icon>{{button.name}}</a>
             </div>
             <div class="foreignButtons" *ngFor="let button of linkButtonsForeign">
-              <a mat-button href="{{button.targetURL}}" target="blank">
-                <mat-icon>{{button.iconURL}}</mat-icon>{{button.name}}</a>
+                <a *ngIf="!button.hidden" mat-button href="{{button.targetURL}}" target="blank">
+                  <mat-icon>{{button.iconURL}}</mat-icon>{{button.name}}</a>
             </div>
           </div>
           <p fxFlex="60" style="text-align: left;">{{homeText}}</p>
-          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px" fxFlex="20" *ngFor="let button of socialButtons">
-            <a fxFlex="10" mat-icon-button href="{{button.targetURL}}" target="blank">
-              <i class="fa fa-{{button.iconURL}}" aria-hidden="true"></i>
-            </a>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20" fxLayoutGap="20px">
+              <div *ngFor="let button of socialButtons">
+                  <a *ngIf="!button.hidden" fxFlex="20" mat-icon-button href="{{button.targetURL}}" target="blank">
+                    <i class="fa fa-{{button.iconURL}}" aria-hidden="true"></i>
+                  </a>
+              </div>
           </div>
         </div>
         <div class="twitter-timeline" fxFlex="20">
-          <ng4-twitter-timeline [dataSrc]="{sourceType: 'widget', widgetId: '991263686848405504'}" [opts]="{tweetLimit: 1}"></ng4-twitter-timeline>
+          <ng4-twitter-timeline [dataSrc]="{sourceType: 'widget', widgetId: widgetId}" [opts]="{tweetLimit: 1}"></ng4-twitter-timeline>
         </div>
       </div>
     </div>
