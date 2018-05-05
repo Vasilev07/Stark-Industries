@@ -9,3 +9,4 @@ export const ROUTES: Routes = [
   { path: 'jobDetails/:id', component: JobDetailsComponent },
   { path: 'jobDetails/:id/apply', component: JobApplicationComponent },
 ];
+ 

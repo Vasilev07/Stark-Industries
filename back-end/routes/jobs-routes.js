@@ -60,7 +60,6 @@ const init = (app, data) => {
             const userInformation = req.user;
             const userApplication = req.body;
             const jobId = req.params;
-            console.log(cvFile);
             console.log('-'.repeat(40));
             try {
                 await applicationController

@@ -7,6 +7,7 @@ import { CreateJobComponent } from '../admin-job-ads/create-job/create-job.compo
 import { AdminFormLinksComponent } from '../admin-links/admin-form-links/admin-form-links.component';
 import { AdminLinksComponent } from '../admin-links/admin-links.component';
 import { AdminUsersComponent } from '../admin-users/admin-users.component';
+import { AllApplicationsComponent } from '../admin-job-ads/all-applications/all-applications.component';
 
 export const ROUTES: Routes = [
   { path: 'users', component: AdminUsersComponent},
@@ -19,4 +20,6 @@ export const ROUTES: Routes = [
   { path: 'careers', component: AdminJobAdsComponent},
   { path: 'careers/create', component: CreateJobComponent},
   { path: 'careers/create/:id', component: CreateJobComponent},
+  { path: 'careers/jobDetails/:id/applications', component: AllApplicationsComponent },
+  
 ];

@@ -37,7 +37,7 @@ export class CareersComponent implements OnInit {
 
   @Input()
   public jobs: Job[] = [];
-  public paginatedJobs: Job[] = [];
+  // public paginatedJobs: Job[] = [];
   public filteredJobs: Job[] = [];
   public jobCategories = [];
   public date: string = '';
@@ -60,23 +60,20 @@ export class CareersComponent implements OnInit {
         this.filteredJobs = data;
         this.filterRepeatingJobsCat();
         this.length = this.jobs.length;
-        this.paginatedJobs = this.jobs.slice(0, this.pageSize);
+        this.filteredJobs = this.jobs.slice(0, this.pageSize);
       } else {
         this.jobs = data.filter((job) => job.status === 'active');
         this.filteredJobs = this.jobs;
         this.filterRepeatingJobsCat();
         this.length = this.jobs.length;
-        this.paginatedJobs = this.jobs.slice(0, this.pageSize);
+        this.filteredJobs = this.jobs.slice(0, this.pageSize);
       }
     });
   }
 
   public onChangePage(event: PageEvent): void {
-    console.log(event);
-
     this.pageSize = event.pageSize;
-    this.paginatedJobs = this.jobs.slice(event.pageIndex * this.pageSize, event.pageSize * event.pageIndex);
-    console.log(this.length);
+    this.filteredJobs = this.jobs.slice(event.pageIndex * this.pageSize, event.pageSize * event.pageIndex);
   }
 
   public filterRepeatingJobsCat() {

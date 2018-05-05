@@ -19,6 +19,9 @@ import { CareersRoutingModule } from './routing/careers-routing.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [CareersComponent, JobDetailsComponent, CareersViewComponent, JobApplicationComponent]
+  declarations: [CareersComponent, 
+    JobDetailsComponent, 
+    CareersViewComponent, 
+    JobApplicationComponent,]
 })
 export class CareersModule { }

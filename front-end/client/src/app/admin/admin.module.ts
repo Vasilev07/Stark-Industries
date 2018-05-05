@@ -14,6 +14,7 @@ import { AdminFormLinksComponent } from './admin-links/admin-form-links/admin-fo
 import { AdminLinksComponent } from './admin-links/admin-links.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminRoutingModule } from './routing/admin-routing.module';
+import { AllApplicationsComponent } from './admin-job-ads/all-applications/all-applications.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { AdminRoutingModule } from './routing/admin-routing.module';
     AdminFormLinksComponent,
     AdminJobAdsComponent,
     CreateJobComponent,
+    AllApplicationsComponent,
 ],
 })
 export class AdminModule { }

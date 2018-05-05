@@ -19,14 +19,11 @@ export class CareersService {
         return this.httpClient.get(`${this.appConfig.apiUrl}/careers`).map((x) => (x) as Job[]);
     }
 
-    public getById(id): Observable<Job> {
+    public getById(id:number): Observable<Job> {
         return this.httpClient.get<Job>(`${this.appConfig.apiUrl}/careers/jobDetails/${id}`);
     }
 
     public createNewApplication(userApplication: any, jobId): Observable<Job> {
-        console.log(`${this.appConfig.apiUrl}/careers/jobDetails/${jobId}/apply`);
        return this.httpClient.post<Job>(`${this.appConfig.apiUrl}/careers/jobDetails/${jobId}/apply`, userApplication);
     }
-
-    
 }

@@ -7,17 +7,20 @@
   <section class="stark-login">
     <form [formGroup]="registrationForm" (ngSubmit)="register(registrationForm.value)">
       <div id="fade-box">
-        <!-- <input type="text" id="username" maxlength="10" placeholder="Username" required [formControl]="registrationForm.controls['userName']">
-        <input type="text" placeholder="First Name" required [formControl]="registrationForm.controls['firstName']">
-        <input type="text" placeholder="Last Name" required [formControl]="registrationForm.controls['lastName']">
-        <input type="text" placeholder="E-mail" required [formControl]="registrationForm.controls['email']">
-        <div *ngIf="registrationForm.controls['email'].touched && registrationForm.controls['email'].hasError('maxlength')">
+        <input type="text" id="username" maxlength="10" placeholder="Username" formControlName="userName">
+        <input type="text" placeholder="First Name" formControlName="firstName">
+        <input type="text" placeholder="Last Name" formControlName="lastName">
+        <input type="text" placeholder="E-mail" formControlName="email">
+        <div style='color:#ff7355' *ngIf="registrationForm.get('email').touched && registrationForm.get('email').hasError('maxlength')">
           Maximum of 1024 characters
         </div>
-        <div *ngIf="email.hasError('email')">INCORRECT EMAIL</div> -->
+        <div style='color:#ff7355' *ngIf="registrationForm.get('email').dirty && registrationForm.get('email').hasError('email')">INCORRECT EMAIL</div>
         <input type="password" placeholder="Password" formControlName="password">
-        <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').hasError('maxlength')">
+        <div style='color:#ff7355' *ngIf="registrationForm.get('password').dirty && registrationForm.get('password').hasError('maxlength')">
           Maximum of 256 characters
+        </div>
+        <div style='color:#ff7355' *ngIf="registrationForm.get('password').dirty && registrationForm.get('password').hasError('pattern')">
+          Not Valid Password
         </div>
         <!-- <div *ngIf="password.hasError('pattern')">
           Password must contain upperase,digit,special symbols
@@ -25,7 +28,7 @@
         <input type="password" placeholder="Confirm Password"  formControlName="confirmPassword">
         <div style='color:#ff7355' *ngIf="registrationForm.get('password').value != registrationForm.get('confirmPassword').value && registrationForm.get('confirmPassword').value != null">
             Password does not match</div>
-        <button type="submit">Register</button>
+        <button mat-button [disabled]="!registrationForm.valid" type="submit">Register</button>
       </div>  
     </form>
   </section>
