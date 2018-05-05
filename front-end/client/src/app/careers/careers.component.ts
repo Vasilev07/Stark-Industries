@@ -51,7 +51,8 @@ export class CareersComponent implements OnInit {
 
   @ViewChild(MatPaginator) public paginator: MatPaginator;
 
-  constructor(private careerService: CareersService, private authService: AuthService) {}
+  constructor(private careerService: CareersService, 
+    private authService: AuthService) {}
 
   ngOnInit() {
     this.careerService.getAll().subscribe((data) => {

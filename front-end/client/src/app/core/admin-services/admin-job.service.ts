@@ -17,6 +17,9 @@ import {
 import {
   JobCreate
 } from '../../models/job/job-create/job-create';
+import {
+  User
+} from '../../models/user';
 @Injectable()
 export class AdminJobsService {
   constructor(private appConfig: AppConfig, private httpClient: HttpClient) {}
@@ -34,14 +37,14 @@ export class AdminJobsService {
   }
 
   public updateJob(job: JobCreate, id: number): Observable < JobCreate > {
-    return this.httpClient.put<JobCreate>(`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}`, job);
+    return this.httpClient.put < JobCreate > (`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}`, job);
   }
 
-  public deleteJob(id: number): Observable<any> {
-      return this.httpClient.delete(`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}`);
+  public deleteJob(id: number): Observable < any > {
+    return this.httpClient.delete(`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}`);
   }
 
-  public getAllApplications(id:number): Observable<Job> {
-    return this.httpClient.get<Job>(`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}/applications`);
-}
+  public getAllApplications(id: number): Observable < User[] > {
+    return this.httpClient.get < User[] > (`${this.appConfig.apiUrl}/admin/careers/jobDetails/${id}/applications`);
+  }
 }

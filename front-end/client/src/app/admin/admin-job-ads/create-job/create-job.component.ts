@@ -56,6 +56,7 @@ export class CreateJobComponent implements OnInit {
         });
       }
     });
+    
     this.createJobForm = this.formBuilder.group({
       title: [this.title, [Validators.required]],
       description: [this.description, [Validators.required]],

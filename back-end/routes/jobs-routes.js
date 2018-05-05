@@ -4,11 +4,12 @@ const {
 } = require('express');
 const passport = require('passport');
 const multer = require('multer');
+const path = require('path');
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, './uploads');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname);
     },
 });
@@ -48,8 +49,15 @@ const init = (app, data) => {
         .get('/careers/jobDetails/:id/apply', async (req, res) => {
             const jobId = req.params.id;
             const allJobsById =
-            await applicationController.getAllJobApplications(jobId);
+                await applicationController.getAllJobApplications(jobId);
             res.send(allJobsById);
+        })
+        .get('/careers/download/:fileName', async (req, res) => {
+            const file = req.params.fileName;
+            const filePath = path.join('./uploads', file);
+            console.log(file);
+
+            return res.download(filePath, file);
         })
         .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {
             session: false,

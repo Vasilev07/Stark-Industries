@@ -13,12 +13,16 @@ import { User } from '../../models/user';
 export class AdminUsersComponent implements OnInit {
 
     public users: User[] = [];
+    
     public dataSource;
     public displayedColumns = ['id', 'firstName', 'email', 'createdAt', 'applicationsCount', 'roleId'];
+
     @ViewChild(MatSort) public sort: MatSort;
     @ViewChild(MatPaginator) public paginator: MatPaginator;
     private Roles = Roles;
+
     constructor(private adminUsersService: AdminUsersService) { }
+
     public ngOnInit(): void {
         this.adminUsersService.getAllUsers().subscribe((data) => {
             this.users = data;
