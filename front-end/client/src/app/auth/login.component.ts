@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
     }
 
     private login(user: UserLoginModel): void {
-        this.route.queryParams.subscribe((param) => {
-            this.returnUrl = param['returnURL'];
+        this.route.queryParamMap.subscribe((param) => {
+            this.returnUrl = param.get('returnURL');
         });
         this.authService.login(user).subscribe(
             (res) => {
