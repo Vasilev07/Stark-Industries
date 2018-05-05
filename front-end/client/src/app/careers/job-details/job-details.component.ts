@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 
 import { CareersService } from '../../core/careers.service';
 import { Job } from '../../models/job';
@@ -29,9 +29,6 @@ export class JobDetailsComponent implements OnInit {
     }
 
     public navigateTo(jobId: number): void {
-        this.router.events.filter((event) => event instanceof NavigationEnd).subscribe((ev) => {
-            console.log(ev);
-        });
         this.router.navigate([`careers/jobDetails/${jobId}/apply`]);
     }
 }

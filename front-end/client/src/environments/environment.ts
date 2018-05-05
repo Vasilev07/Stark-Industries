@@ -12,4 +12,5 @@ export const environment = {
   ' while its biggest facility is the Stark Industrial Complex in Dover, New Jersey.' +
   ' Founded by Isaac Stark Sr. in the mid-19th Century, the company\'s current C.E.O.' +
   ' is Amanda Armstrong, biological mother of the company\'s owner, President and former C.E.O. Anthony Stark.',
+  widgetId: '991263686848405504',
 };

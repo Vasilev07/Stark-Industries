@@ -13,6 +13,7 @@ import { environment } from './../../environments/environment';
 })
 export class HomeComponent implements OnInit {
     public backgroundVideo: string;
+    public widgetId: string;
     public homeText: string;
     public linkButtonsLocal: ButtonGetModel[];
     public linkButtonsForeign: ButtonGetModel[];
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     public ngOnInit(): void {
         this.backgroundVideo = environment.backgroundVideo;
         this.homeText = environment.homeText;
+        this.widgetId = environment.widgetId;
         this.adminButtonService.getAllButtons().subscribe((data) => {
             this.linkButtonsLocal = data.filter((button) => button.type === 'link' && button.targetURL.startsWith('/', 0));
             this.linkButtonsForeign = data.filter((button) => button.type === 'link' && button.targetURL.startsWith('h', 0));

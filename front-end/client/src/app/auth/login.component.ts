@@ -15,17 +15,22 @@ import { UserLoginModel } from '../models/users/userLoginModel';
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
 
-    constructor(private authService: AuthService,
-    private toastr: ToastrService, private router: Router, private formBuilder: FormBuilder) { }
+    constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
-    ngOnInit() {
+    public ngOnInit(): void {
+        this.authService.getPreviousRoute();
         this.loginForm = this.formBuilder.group({
             userName: '',
             password: '',
         });
     }
     private login(user: UserLoginModel): void {
-        this.authService.login(user).subscribe((data) => {
+        this.authService.login(user).subscribe(
+            (data) => {
             localStorage.setItem('access_token', data.token);
             this.toastr.success(`${user.userName} logged in!`);
             this.router.navigate(['/home']);
