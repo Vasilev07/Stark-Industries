@@ -56,7 +56,7 @@
       <label for="hidden">Is it hidden?</label>
       <br>
       <mat-select #hiddenField id="hidden" name="hidden" [formControl]="form.controls['hidden']" [(ngModel)]="hidden">
-        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="true" ng-style="color: #00fffd;">Yes</mat-option>
         <mat-option [value]="false">No</mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['hidden'].touched && form.controls['hidden'].hasError('required') && !form.controls['hidden'].value">

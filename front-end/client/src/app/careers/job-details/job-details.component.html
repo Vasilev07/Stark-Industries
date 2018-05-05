@@ -2,10 +2,10 @@
   <div class="holder" fxLayout="column" fxFlex="70%">
     <h1 class="header">{{jobDetail?.title}}</h1>
     <span>Created: {{jobDetail?.createdAt | date: "short"}}</span>
-    <mat-list class="description">{{jobDetail?.description}}</mat-list>
+    <mat-list class="description" [froalaView]="jobDetail?.description"></mat-list>
   </div>
   <div class="buttonHoler" fxFLex="20%">
     <button (click)="navigateTo(jobDetail?.id)" mat-button class="apply-button">Apply</button>
-    <button (click)="navigateAdminTo(jobDetail?.id)" mat-button type="submit">Applications</button>
+    <button *ngIf="isAdmin" (click)="navigateAdminTo(jobDetail?.id)" mat-button type="submit">Applications</button>
   </div>
 </div>

@@ -149,3 +149,11 @@ mat-hint.mat-hint {
 .header {
   color: #00fffd;
 }
+
+.noData {
+    /* background-color: white; */
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+  }

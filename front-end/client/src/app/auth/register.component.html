@@ -11,10 +11,12 @@
         <input type="text" placeholder="First Name" formControlName="firstName">
         <input type="text" placeholder="Last Name" formControlName="lastName">
         <input type="text" placeholder="E-mail" formControlName="email">
-        <div style='color:#ff7355' *ngIf="registrationForm.get('email').touched && registrationForm.get('email').hasError('maxlength')">
+        <mat-error style='color:#ff7355' *ngIf="registrationForm.get('email').touched && registrationForm.get('email').hasError('maxlength')">
           Maximum of 1024 characters
-        </div>
-        <div style='color:#ff7355' *ngIf="registrationForm.get('email').dirty && registrationForm.get('email').hasError('email')">INCORRECT EMAIL</div>
+        </mat-error>
+        <mat-error style='color:#ff7355' *ngIf="registrationForm.get('email').dirty && registrationForm.get('email').hasError('email')">
+            INCORRECT EMAIL
+        </mat-error>
         <input type="password" placeholder="Password" formControlName="password">
         <div style='color:#ff7355' *ngIf="registrationForm.get('password').dirty && registrationForm.get('password').hasError('maxlength')">
           Maximum of 256 characters
@@ -25,11 +27,11 @@
         <!-- <div *ngIf="password.hasError('pattern')">
           Password must contain upperase,digit,special symbols
         </div> -->
-        <input type="password" placeholder="Confirm Password"  formControlName="confirmPassword">
+        <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
         <div style='color:#ff7355' *ngIf="registrationForm.get('password').value != registrationForm.get('confirmPassword').value && registrationForm.get('confirmPassword').value != null">
-            Password does not match</div>
+          Password does not match</div>
         <button mat-button [disabled]="!registrationForm.valid" type="submit">Register</button>
-      </div>  
+      </div>
     </form>
   </section>
 

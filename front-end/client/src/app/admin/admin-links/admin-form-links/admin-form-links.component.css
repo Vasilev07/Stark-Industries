@@ -107,11 +107,3 @@ form {
   ::ng-deep div.mat-select-arrow {
       color: #00a4a2 !important;
   }
-
-  ::ng-deep div.mat-select-value {
-      color: #00fffd !important;
-  }
-
-  ::ng-deep span.ng-star-inserted {
-      color: #00fffd !important;
-  }

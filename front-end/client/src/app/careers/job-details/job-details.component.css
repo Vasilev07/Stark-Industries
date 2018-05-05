@@ -32,6 +32,7 @@ mat-paginator.mat-paginator-container {
   border: 6px solid #00a4a2;
   box-shadow: 0 0 15px #00fffd;
   margin-top: 30px;
+  padding: 10px;
 }
 
 ::ng-deep .apply-button {

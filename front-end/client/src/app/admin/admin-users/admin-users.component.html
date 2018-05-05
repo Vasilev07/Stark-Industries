@@ -20,7 +20,7 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+        <mat-cell *matCellDef="let user"> <a href="mailto:{{user.email}}"> {{user.email}} </a></mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->

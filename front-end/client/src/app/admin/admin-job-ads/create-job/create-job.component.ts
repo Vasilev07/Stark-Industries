@@ -25,7 +25,7 @@ export class CreateJobComponent implements OnInit {
         charCounterCount: true,
         charCounterMax: this.textFieldMaxCount,
         filUpload: false,
-        useClasses: false,
+        // useClasses: false,
     };
     constructor(
         private activatedRouted: ActivatedRoute,
@@ -38,7 +38,6 @@ export class CreateJobComponent implements OnInit {
     public ngOnInit(): void {
         this.activatedRouted.params.subscribe((param) => {
             this.paramsId = param.id;
-            console.log(param.id);
             if (param.id) {
                 this.adminJobService.getJobById(+param.id).subscribe((job) => {
                     this.title = job.title;

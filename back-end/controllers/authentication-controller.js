@@ -31,6 +31,7 @@ class AuthenticationController {
 
             const payload = {
                 sub: user.id,
+                userName: user.userName,
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
@@ -64,6 +65,7 @@ class AuthenticationController {
                         const payload = {
                             sub: userFound.id,
                             email: userFound.email,
+                            userName: userFound.userName,
                             role: userFound.roleId,
                             firstName: userFound.firstName,
                             lastName: userFound.lastName,
