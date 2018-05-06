@@ -19,7 +19,7 @@ html {
 Stark Industries Logo
 ========================================= */
 #logo {
-  animation: logo-entry 4s ease-in;
+  animation: logo-entry 2s ease-in;
   width: 500px;
   margin: 0 auto;
   position: relative;
@@ -69,21 +69,21 @@ h1:after {
 Log in form
 ========================================= */
 #fade-box {
-  animation: input-entry 3s ease-in;
+  animation: input-entry 1.5s ease-in;
   z-index: 4;
 }
 .stark-login {
     opacity: 0.9;
 }
 .stark-login form {
-  animation: form-entry 3s ease-in-out;
+  animation: form-entry 1.5s ease-in-out;
   background: #111;
   background: linear-gradient(#004746, #111111);
   border: 6px solid #00a4a2;
   box-shadow: 0 0 15px #00fffd;
   border-radius: 5px;
   display: inline-block;
-  height: 220px;
+  /* height: 220px; */
   margin: auto;
   position: relative;
   z-index: 4;
@@ -114,7 +114,7 @@ Log in form
   width: 400px;
 }
 .stark-login input:focus {
-  animation: box-glow 1s ease-out infinite alternate;
+  animation: box-glow 1.8s ease-out infinite alternate;
   background: #0B4252;
   background: linear-gradient(#333933, #222922);
   border-color: #00fffc;
@@ -127,7 +127,7 @@ Log in form
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.2), inset 0 0 5px rgba(255, 0, 0, 0.1), 0 2px 0 #000;
 }
 .stark-login button {
-  animation: input-entry 3s ease-in;
+  animation: input-entry 1s ease-in;
   background: #222;
   background: linear-gradient(#333333, #222222);
   box-sizing: content-box;
@@ -138,7 +138,7 @@ Log in form
   color: #fff;
   display: block;
   font-family: 'Cabin', helvetica, arial, sans-serif;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 400;
   height: 40px;
   line-height: 40px;
@@ -163,7 +163,21 @@ Log in form
   box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
   top: 1px;
 }
-
+::ng-deep .mat-checkbox-frame {
+    background-color: #004746;
+}
+/* ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background:checked {
+    color: #00fffd;
+} */
+/* ::ng-deep .mat-checkbox:checked .mat-checkbox-background svg.mat-checkbox-checkmark {
+    color: #00fffd !important;
+} */
+/* .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    color: #00fffd !important;
+} */
+::ng-deep .mat-checkbox-label {
+    color: #00a4a2
+}
 /* =========================================
 Spinner
 ========================================= */
@@ -288,8 +302,11 @@ Animation Keyframes
     opacity: 1;
     padding: 0;
   }
+  80% {
+      height: 240px;
+  }
   100% {
-    height: 220px;
+    /* height: 220px; */
     width: 500px;
   }
 }

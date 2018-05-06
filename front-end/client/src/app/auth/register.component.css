@@ -19,7 +19,7 @@ html {
 Stark Industries Logo
 ========================================= */
 #logo {
-  animation: logo-entry 4s ease-in;
+  animation: logo-entry 2s ease-in;
   width: 500px;
   margin: 0 auto;
   position: relative; 
@@ -69,14 +69,14 @@ h1:after {
 Log in form
 ========================================= */
 #fade-box {
-  animation: input-entry 3s ease-in;
+  animation: input-entry 1.5s ease-in;
   z-index: 4;
 }
 .stark-login {
     opacity: 0.9;
 }
 .stark-login form {
-  animation: form-entry 3s ease-in-out;
+  animation: form-entry 1.5s ease-in-out;
   background: #111;
   background: linear-gradient(#004746, #111111);
   border: 6px solid #00a4a2;
@@ -127,7 +127,7 @@ Log in form
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.2), inset 0 0 5px rgba(255, 0, 0, 0.1), 0 2px 0 #000;
 }
 .stark-login button {
-  animation: input-entry 3s ease-in;
+  animation: input-entry 1.8s ease-in;
   background: #222;
   background: linear-gradient(#333333, #222222);
   box-sizing: content-box;
@@ -138,7 +138,7 @@ Log in form
   color: #fff;
   display: block;
   font-family: 'Cabin', helvetica, arial, sans-serif;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 400;
   height: 40px;
   line-height: 40px;

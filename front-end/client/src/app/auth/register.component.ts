@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../core/auth.service';
 import { UserRegisterModel } from '../models/users/userRegisterModel';
+import { TokenService } from '../core/token.service';
 
 @Component({
     selector: 'app-register',
@@ -22,7 +23,9 @@ export class RegisterComponent implements OnInit {
         private authService: AuthService,
         private toastr: ToastrService,
         private formBuilder: FormBuilder,
-        private router: Router) { }
+        private router: Router,
+        private tokenSettr: TokenService,
+    ) { }
 
     public ngOnInit(): void {
         this.registrationForm = this.formBuilder.group({
@@ -38,7 +41,7 @@ export class RegisterComponent implements OnInit {
     private register(user: UserRegisterModel): void {
         this.authService.register(this.registrationForm.value).subscribe(
             (data) => {
-                localStorage.setItem('access_token', data.token);
+                this.tokenSettr.setTokenToLocalStorage(data.token);
                 this.authService.loginEventFunction(true);
                 const loggedUserInfo = this.authService.getUserName();
                 this.authService.userLoggedEventFunction(loggedUserInfo);

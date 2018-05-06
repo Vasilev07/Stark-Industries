@@ -16,6 +16,7 @@
         <!-- <div style='color:#ff7355' *ngIf="loginFrom.get('password').touched && loginForm.get('password').hasError('required')">
           Password must not be empty
         </div> -->
+        <mat-checkbox color="warn" [checked]="rememberMe" (change)="rememberMe = !rememberMe">Remember Me?</mat-checkbox>
         <button [disabled]="!loginForm.valid">Log In</button>
       </div>
     </form>
