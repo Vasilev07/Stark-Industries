@@ -30,7 +30,7 @@ export class JobApplicationComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private authService: AuthService,
-        private formBuilder: FormBuilder) { }
+        private formBuilder: FormBuilder,) { }
 
     public ngOnInit(): void {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -56,13 +56,14 @@ export class JobApplicationComponent implements OnInit {
         const userApplicationObject = this.appendValues();
         this.careerService.createNewApplication(userApplicationObject, this.id).subscribe(
             (res) => {
-                console.log('Success');
+                this.toastr.success(`Successfull application`);
             },
             (err: HttpErrorResponse) => {
-                console.log('Fail');
+                this.toastr.error(`Some error has occured`);
             });
 
         setTimeout(() => {
+            this.router.navigate(['/careers']);
         }, 1000);
     }
 
