@@ -26,7 +26,7 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef [ngClass]="'actionsContainer'"> Actions </mat-header-cell>
         <mat-cell *matCellDef="let job" [ngClass]="'actionsContainer'">
-          <a mat-button (click)="goToView(job.id)">View</a>
+          <a mat-button (click)="navigateAdminTo(job.id)">View</a>
           <a mat-button (click)="goToUpdateForm(job.id)">Edit</a>
           <a mat-button (click)="deleteJob(job.id)">Delete</a>
         </mat-cell>
