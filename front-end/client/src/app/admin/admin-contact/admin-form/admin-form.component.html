@@ -87,20 +87,20 @@
     <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
   <div fxLayout="column" fxLayoutAlign="start start" fxFlex="40">
-    <h2>This is what it would look like</h2>
+    <h2>Preview:</h2>
     <div class="contactsContainer" fxFlex="40%">
       <br>
       <mat-expansion-panel class="contact">
         <mat-expansion-panel-header class="contactHeader">
           <mat-panel-title>
-            <mat-icon>{{icon}}</mat-icon>{{ name }}
+            <mat-icon class="primaryAddress" *ngIf="isPrimary">stars</mat-icon><mat-icon>{{icon}}</mat-icon>{{ name }}
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div>
           <p *ngIf="isMappable">Address: {{value}}</p>
           <p *ngIf="!isMappable">{{value}}</p>
-          <p *ngIf="longtitude !== 0">Longtidue: {{longtitude}}</p>
-          <p *ngIf="latitude !== 0">Latitude: {{latitude}}</p>
+          <p *ngIf="isMappable">Longtidue: {{longtitude}}</p>
+          <p *ngIf="isMappable">Latitude: {{latitude}}</p>
           <button *ngIf="isMappable" mat-raised-button>Show On Map</button>
         </div>
       </mat-expansion-panel>

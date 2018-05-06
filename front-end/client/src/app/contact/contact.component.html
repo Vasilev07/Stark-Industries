@@ -1,4 +1,4 @@
-<h1 class="header">CONTACTS</h1>
+<h2 class="header">CONTACTS</h2>
 
 <div class="container">
   <div fxLayout="row" fxLayoutAlign="start start" class="content">
@@ -14,14 +14,14 @@
         <mat-expansion-panel class="contact">
           <mat-expansion-panel-header class="contactHeader">
             <mat-panel-title>
-              <mat-icon>{{contact.icon}}</mat-icon>{{ contact.name }}
+                <mat-icon class="primaryAddress" *ngIf="contact.isPrimary">stars</mat-icon><mat-icon>{{contact.icon}}</mat-icon>{{ contact.name }}
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
             <p *ngIf="contact.isMappable">Address: {{contact.value}}</p>
             <p *ngIf="!contact.isMappable">{{contact.value}}</p>
-            <p *ngIf="contact.longtitude !== 0">Longtidue: {{contact.longtitude}}</p>
-            <p *ngIf="contact.latitude !== 0">Latitude: {{contact.latitude}}</p>
+            <p *ngIf="contact.isMappable">Longtidue: {{contact.longtitude}}</p>
+            <p *ngIf="contact.isMappable">Latitude: {{contact.latitude}}</p>
             <button *ngIf="contact.isMappable" mat-raised-button (click)="mapIt(contact.longtitude, contact.latitude)">Show On Map</button>
           </div>
         </mat-expansion-panel>

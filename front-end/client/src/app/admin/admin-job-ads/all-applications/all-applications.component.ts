@@ -31,7 +31,7 @@ export class AllApplicationsComponent implements OnInit {
       console.log(param.id)
       this.adminJobsService.getAllApplications(param.id).subscribe((data) => {
         this.users = data;
-        console.log(data);  
+        console.log(data);
         this.dataSource = new MatTableDataSource(this.users);
         this.dataSource.sort = this.sort;
         setTimeout(() => this.dataSource.paginator = this.paginator);
@@ -49,13 +49,20 @@ export class AllApplicationsComponent implements OnInit {
       const fileArray = url.split('/');
       const file = fileArray[fileArray.length - 1];
       console.log(file);
-      this.careersService.downloadFile(url).subscribe((data: HttpResponse < any > ) => {
+      this.careersService.downloadFile(url).subscribe((data: HttpResponse < Blob > ) => {
         saveAs(data.body, file);
       });
     }
   }
 
-  // public downloadCover(url: string) {
-  //   console.log(url);
-  // }
+  public downloadCover(url: string) {
+    if (url) {
+      const fileArray = url.split('/');
+      const file = fileArray[fileArray.length - 1];
+      console.log(file);
+      this.careersService.downloadFile(url).subscribe((data: HttpResponse < Blob > ) => {
+        saveAs(data.body, file);
+      });
+    }
+  }
 }

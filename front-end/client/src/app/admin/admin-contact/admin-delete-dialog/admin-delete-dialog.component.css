@@ -1,0 +1,17 @@
+::ng-deep mat-dialog-container.mat-dialog-container {
+    background-color: black;
+    border: 1px solid #00a4a2;
+    color: #00a4a2;
+    box-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
+    text-align: center;
+}
+
+h2.mat-dialog-title {
+    text-transform: uppercase;
+}
+
+::ng-deep button.mat-button:hover {
+    transform: scale(1.05);
+    transition: 0.4s ease;
+    box-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
+}
