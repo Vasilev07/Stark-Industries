@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Job applications for JOB TITLE</h2>
+  <h2>Job applications for {{jobTitle}}</h2>
   <div class="table-container mat-elevation-z8">
     <!-- <div [ngClass]="'noData'" *ngIf="jobs.length === 0">
       <p>No Data Available, yet!</p>
@@ -11,24 +11,29 @@
       </ng-container>
 
       <ng-container matColumnDef="names">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'namesContainer'"> Names </mat-header-cell>
+        <mat-cell *matCellDef="let users" [ngClass]="'namesContainer'"> {{users?.firstName}} {{users?.lastName}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'namesContainer'"> E-mail </mat-header-cell>
-        <mat-cell *matCellDef="let users" [ngClass]="'namesContainer'"> {{users?.email}}</mat-cell>
+        <mat-cell *matCellDef="let users" [ngClass]="'namesContainer'"><a href="mailto:users?.email">{{users?.email}}</a></mat-cell>
       </ng-container>
       <ng-container matColumnDef="comment">
         <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'commentContainer'"> Comment </mat-header-cell>
         <mat-cell *matCellDef="let users" [ngClass]="'commentContainer'"> {{users?.comment}} </mat-cell>
       </ng-container>
-      
+
       <ng-container matColumnDef="createdAt">
         <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'createdContainer'"> Created At </mat-header-cell>
         <mat-cell *matCellDef="let users" [ngClass]="'createdContainer'"> {{users?.createdAt | date: "fullDate"}} </mat-cell>
       </ng-container>
-      
+
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef [ngClass]="'actionsContainer'"> Actions </mat-header-cell>
         <mat-cell *matCellDef="let users" [ngClass]="'actionsContainer'">
-          <a mat-button (click)="downloadCv(users?.cv)">Download CV</a>
-          <a mat-button (click)="downloadCover(users?.coverLetter)">Download Cover Letter</a>
+          <a mat-button (click)="downloadCv(users?.cv)">CV</a>
+          <a mat-button (click)="downloadCover(users?.coverLetter)">Cover Letter</a>
         </mat-cell>
       </ng-container>
 

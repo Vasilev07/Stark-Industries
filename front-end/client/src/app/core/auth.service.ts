@@ -73,7 +73,8 @@ export class AuthService {
     public logout(): void {
         this.loginEventFunction(false);
         this.userLoggedEventFunction(null);
-        localStorage.removeItem('access_token');
+        localStorage.clear();
+        sessionStorage.clear();
     }
 
     public getUserName(): LoggedUserModel {
