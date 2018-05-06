@@ -71,6 +71,11 @@ export class CareersComponent implements OnInit {
         this.date = '';
         this.byType = '';
         this.filteredJobs = this.jobs.slice();
+        this.onChangePage({
+            pageIndex: 0,
+            length: this.length,
+            pageSize: this.pageSize,
+          })
     }
     private onChange(): void {
         this.filteredJobs = this.jobs.filter((jobCat) => jobCat.type === this.byType);
