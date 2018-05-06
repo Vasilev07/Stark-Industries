@@ -89,4 +89,7 @@ export class AdminJobAdsComponent implements OnInit {
       }
     });
   }
+  public navigateAdminTo(jobId: number): void {
+    this.router.navigate([`admin/careers/jobDetails/${jobId}/applications`]);
+}
 }
