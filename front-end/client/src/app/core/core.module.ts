@@ -14,9 +14,15 @@ import { IsAdminGuard } from './guards/is.admin.guard';
 import { IsAuthenticatedGuard } from './guards/is.authenticated.guard';
 import { PatternValidatorService } from './pattern.validator.service';
 import { CareersResolver } from './resolvers/careers.resolver';
+import { TokenService } from './token.service';
 
 export const tokenGetter = () => {
-    return localStorage.getItem('access_token');
+    const localStorageToken = localStorage.getItem('access_token');
+    const sessionStorageToken = sessionStorage.getItem('access_token');
+    if (localStorageToken) {
+        return localStorageToken;
+    }
+    return sessionStorageToken;
 };
 
 @NgModule({
@@ -43,6 +49,7 @@ export const tokenGetter = () => {
         { provide: AdminButtonsService, useClass: AdminButtonsService},
         { provide: CareersResolver, useClass: CareersResolver},
         { provide: IsAuthenticatedGuard, useClass: IsAuthenticatedGuard},
+        { provide: TokenService, useClass: TokenService},
     ],
 })
 export class CoreModule { }

@@ -165,5 +165,13 @@ button.mat-button {
 }
 
 ::ng-deep .fr-element.fr-view {
-    height: 250px;
+    height: 210px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #00a4a2;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
 }

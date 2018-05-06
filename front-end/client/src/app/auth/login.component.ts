@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../core/auth.service';
+import { TokenService } from '../core/token.service';
 import { UserLoginModel } from '../models/users/userLoginModel';
 
 @Component({
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
     public returnUrl: string;
 
+    public rememberMe: boolean;
+
     constructor(
         private authService: AuthService,
         private toastr: ToastrService,
@@ -23,6 +26,7 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
 
         private route: ActivatedRoute,
+        private tokenSetter: TokenService,
     ) { }
 
     public ngOnInit(): void {
@@ -33,12 +37,16 @@ export class LoginComponent implements OnInit {
     }
 
     private login(user: UserLoginModel): void {
-        this.route.queryParams.subscribe((param) => {
-            this.returnUrl = param['returnURL'];
+        this.route.queryParamMap.subscribe((param) => {
+            this.returnUrl = param.get('returnURL');
         });
         this.authService.login(user).subscribe(
             (res) => {
-                localStorage.setItem('access_token', res.token);
+                if (this.rememberMe) {
+                    this.tokenSetter.setTokenToLocalStorage(res.token);
+                } else {
+                    this.tokenSetter.setTokenToSessionStorage(res.token);
+                }
                 this.authService.loginEventFunction(true);
                 const loggedUserInfo = this.authService.getUserName();
                 this.authService.userLoggedEventFunction(loggedUserInfo);

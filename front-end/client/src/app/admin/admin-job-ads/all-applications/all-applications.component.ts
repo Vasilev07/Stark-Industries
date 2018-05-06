@@ -1,31 +1,13 @@
-import {
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
-import {
-  CareersService
-} from '../../../core/careers.service';
-import {
-  AdminJobsService
-} from '../../../core/admin-services/admin-job.service';
-import {
-  User
-} from '../../../models/user';
-import {
-  MatSort,
-  MatPaginator,
-  MatTableDataSource
-} from '@angular/material';
-import {
-  saveAs
-} from 'file-saver';
-import {
-  HttpResponse
-} from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
+import { saveAs } from 'file-saver';
+
+import { AdminJobsService } from '../../../core/admin-services/admin-job.service';
+import { CareersService } from '../../../core/careers.service';
+import { User } from '../../../models/user';
+
 @Component({
   selector: 'stark-all-applications',
   templateUrl: './all-applications.component.html',
@@ -62,7 +44,7 @@ export class AllApplicationsComponent implements OnInit {
     this.dataSource.filter = formattedSearchValue;
   }
 
-  public downloadCv(url: string) {
+  public downloadCv(url: string): void {
     if (url) {
       const fileArray = url.split('/');
       const file = fileArray[fileArray.length - 1];

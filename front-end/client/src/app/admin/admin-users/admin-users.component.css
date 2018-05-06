@@ -6,9 +6,7 @@ h2 {
     font-size: 30px;
     color: #00a4a2;
     text-transform: uppercase;
-    text-shadow: 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000;
-    margin-top: 5px;
-    margin-bottom: 0px;
+    text-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
 }
 .table-container {
   display: flex;

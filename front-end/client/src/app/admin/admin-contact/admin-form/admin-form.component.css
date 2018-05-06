@@ -104,3 +104,14 @@ mat-hint.mat-hint {
 ::ng-deep div.mat-select-arrow {
     color: #00a4a2 !important;
 }
+
+.primaryAddress {
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #00a4a2;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
+}
