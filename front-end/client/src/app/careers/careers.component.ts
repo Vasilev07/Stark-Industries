@@ -50,11 +50,15 @@ export class CareersComponent implements OnInit {
                 this.filteredJobs = this.jobs.slice(0, this.pageSize);
             }
         });
+        console.log(this.jobs.length);
+        console.log(this.jobs);
     }
 
     public onChangePage(event: PageEvent): void {
         this.pageSize = event.pageSize;
-        this.filteredJobs = this.jobs.slice(event.pageIndex * this.pageSize, event.pageSize * event.pageIndex);
+        const copy = this.jobs;
+        this.filteredJobs = copy.slice(event.pageIndex * this.pageSize, (event.pageSize * event.pageIndex) + this.pageSize);
+        console.log(event)
     }
 
     public filterRepeatingJobsCat(): void {
