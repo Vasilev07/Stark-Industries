@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
     public returnUrl: string;
 
     public rememberMe: boolean;
+    private errorCode: number;
 
     constructor(
         private authService: AuthService,
         private toastr: ToastrService,
         private router: Router,
         private formBuilder: FormBuilder,
-
         private route: ActivatedRoute,
         private tokenSetter: TokenService,
     ) { }
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
                 }
             },
             (err: HttpErrorResponse) => {
-                if (err.status === 401) {
+                if (err.status === this.errorCode) {
                     this.toastr.error(err.error.err);
                 }
             });

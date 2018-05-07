@@ -1,4 +1,5 @@
 export class JobApplication {
+    // tslint:disable-next-line:variable-name
     public UserId: number;
     public firstName: string;
     public lastName: string;

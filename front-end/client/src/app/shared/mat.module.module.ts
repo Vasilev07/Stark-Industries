@@ -11,6 +11,7 @@ import {
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
@@ -32,8 +33,7 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule, 
-    MatFormFieldModule,
+    MatTooltipModule,
 } from '@angular/material';
 
 @NgModule({

@@ -40,13 +40,13 @@ export class CareersComponent implements OnInit {
     public ngOnInit(): void {
         this.activatedRoute.data.subscribe((data) => {
             if (this.authService.isAdmin()) {
-                this.jobs = data['jobs'];
-                this.filteredJobs = data['jobs'];
+                this.jobs = data.jobs;
+                this.filteredJobs = data.jobs;
                 this.filterRepeatingJobsCat();
                 this.length = this.jobs.length;
                 this.filteredJobs = this.jobs.slice(0, this.pageSize);
             } else {
-                this.jobs = data['jobs'].filter((job) => job.status === 'active');
+                this.jobs = data.jobs.filter((job) => job.status === 'active');
                 this.filteredJobs = this.jobs;
                 this.filterRepeatingJobsCat();
                 this.length = this.jobs.length;
@@ -75,7 +75,7 @@ export class CareersComponent implements OnInit {
             pageIndex: 0,
             length: this.length,
             pageSize: this.pageSize,
-          })
+          });
     }
     private onChange(): void {
         this.filteredJobs = this.jobs.filter((jobCat) => jobCat.type === this.byType);

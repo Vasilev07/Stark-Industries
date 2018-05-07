@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 import { AuthService } from '../../core/auth.service';
 import { CareersService } from '../../core/careers.service';
 import { animations } from '../../shared/animations';
@@ -12,7 +13,7 @@ import { animations } from '../../shared/animations';
     templateUrl: './job-application.component.html',
     styleUrls: ['./job-application.component.css'],
     animations: [animations.routerAnimation],
-    host: { '[@routerAnimation]': ''},
+    host: { '[@routerAnimation]': '' },
 })
 export class JobApplicationComponent implements OnInit {
 
@@ -25,6 +26,9 @@ export class JobApplicationComponent implements OnInit {
     private minLength: number = 3;
     private maxLength: number = 100;
     private commentMaxLength: number = 1024;
+    private timeLimit: number = 1000;
+    private fileSizeDivider: number = 1024;
+    private fileSizeLimit: number = 16000;
     constructor(
         private toastr: ToastrService,
         private careerService: CareersService,
@@ -35,6 +39,7 @@ export class JobApplicationComponent implements OnInit {
         private formBuilder: FormBuilder) { }
 
     public ngOnInit(): void {
+        // tslint:disable-next-line:radix
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
         this.firstName = this.authService.getUserName().firstName;
         this.lastName = this.authService.getUserName().lastName;
@@ -43,11 +48,11 @@ export class JobApplicationComponent implements OnInit {
             firstName: this.formBuilder.control({
                 value: '',
                 disabled: true,
-            }, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
+            },                                  [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
             lastName: this.formBuilder.control({
                 value: '',
                 disabled: true,
-            }, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
+            },                                 [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
             comment: ['', [Validators.required, Validators.maxLength(this.commentMaxLength)]],
             cv: ['', [Validators.required]],
             coverLetter: ['', [Validators.required]],
@@ -66,7 +71,7 @@ export class JobApplicationComponent implements OnInit {
 
         setTimeout(() => {
             this.router.navigate(['/careers']);
-        }, 1000);
+        },         this.timeLimit);
     }
 
     public onUpload(event: any): void {
@@ -93,16 +98,17 @@ export class JobApplicationComponent implements OnInit {
 
     private validateExtention(fileFullName: string): boolean {
         const fileExtention = fileFullName.substr(fileFullName.lastIndexOf('.'));
-        if (fileExtention === '.pdf' || fileExtention === '.doc' ||
-            fileExtention === '.docx') {
-            return true;
-        }
-        return false;
+        // if (fileExtention === '.pdf' || fileExtention === '.doc' ||
+        //     fileExtention === '.docx') {
+        //     return true;
+        // }
+        // return false;
+        return fileExtention === '.pdf' || fileExtention === '.doc' || fileExtention === '.docx';
     }
 
     private validateFileSize(fileSize: number): boolean {
-        const fileSizeInKb = fileSize / 1024;
-        if (fileSizeInKb >= 16000) {
+        const fileSizeInKb = fileSize / this.fileSizeDivider;
+        if (fileSizeInKb >= this.fileSizeLimit) {
             return false;
         }
         return true;

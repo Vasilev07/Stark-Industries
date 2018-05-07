@@ -1,7 +1,7 @@
 
-export interface JobCreate {
-    title: string;
-    type: string;
-    description: string;
-    status: string;
+export class JobCreate {
+    public title: string;
+    public type: string;
+    public description: string;
+    public status: string;
 }
