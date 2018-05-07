@@ -1,32 +1,11 @@
-import {
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import {
-  AdminJobsService
-} from '../../core/admin-services/admin-job.service';
-import {
-  Router
-} from '@angular/router';
-import {
-  Job
-} from '../../models/job';
-import {
-  MatSort,
-  MatPaginator,
-  MatTableDataSource,
-  MatDialog
-} from '@angular/material';
-import {
-  ToastrService
-} from 'ngx-toastr';
-import {
-  AdminDeleteDialogComponent
-} from '../admin-contact/admin-delete-dialog/admin-delete-dialog.component';
-import {
-  HttpErrorResponse
-} from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AdminJobsService } from '../../core/admin-services/admin-job.service';
+import { Job } from '../../models/job';
+import { AdminDeleteDialogComponent } from '../admin-contact/admin-delete-dialog/admin-delete-dialog.component';
 @Component({
   selector: 'stark-admin-job-ads',
   templateUrl: './admin-job-ads.component.html',
@@ -39,12 +18,13 @@ export class AdminJobAdsComponent implements OnInit {
 
   @ViewChild(MatSort) public sort: MatSort;
   @ViewChild(MatPaginator) public paginator: MatPaginator;
-  constructor(private adminJobsService: AdminJobsService,
+  constructor(
+    private adminJobsService: AdminJobsService,
     private router: Router,
     private toastr: ToastrService,
     private popup: MatDialog) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.adminJobsService.getAllJobsFromAdmin().subscribe((data) => {
       this.jobs = data;
       console.log(this.jobs);
@@ -59,21 +39,22 @@ export class AdminJobAdsComponent implements OnInit {
     this.dataSource.filter = formattedSearchValue;
   }
 
-  public goToCreateForm() {
+  public goToCreateForm(): void {
     this.router.navigate(['/admin/careers/create']);
   }
 
-  public goToUpdateForm(id: number) {
+  public goToUpdateForm(id: number): void {
     this.router.navigate([`/admin/careers/create/${id}`]);
   }
 
-  public deleteJob(id: number) {
+  public deleteJob(id: number): void {
     const dialogRef = this.popup.open(AdminDeleteDialogComponent, {
       width: '300px',
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.adminJobsService.deleteJob(id).subscribe((res) => {
+        this.adminJobsService.deleteJob(id).subscribe(
+          (res) => {
             this.toastr.success(`Contact deleted!`);
             let i = null;
             const contacToRemove = this.dataSource.data.find((contact, index) => {

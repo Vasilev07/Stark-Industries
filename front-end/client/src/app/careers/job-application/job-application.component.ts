@@ -3,9 +3,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
 import { AuthService } from '../../core/auth.service';
 import { CareersService } from '../../core/careers.service';
+
 
 @Component({
     selector: 'stark-job-application',
@@ -30,7 +30,7 @@ export class JobApplicationComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private authService: AuthService,
-        private formBuilder: FormBuilder,) { }
+        private formBuilder: FormBuilder) { }
 
     public ngOnInit(): void {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -59,7 +59,7 @@ export class JobApplicationComponent implements OnInit {
                 this.toastr.success(`Successfull application`);
             },
             (err: HttpErrorResponse) => {
-                this.toastr.error(`Some error has occured`);
+                this.toastr.error(`You have already applied for this job`);
             });
 
         setTimeout(() => {
@@ -70,9 +70,9 @@ export class JobApplicationComponent implements OnInit {
     public onUpload(event: any): void {
         if (event.currentTarget.files.length > 0) {
             const file = event.target.files[0];
-            if (!this.validateExtention(file.name) && !this.validateFileSize(file.size)) {
+            if (!this.validateExtention(file.name) || !this.validateFileSize(file.size)) {
                 this.toastr.error('Files must be of type pdf, doc or docx and not bigger than 16MB!', 'Invalid File', {
-                    timeOut: 5000
+                    timeOut: 5000,
                 });
             } else {
                 this.applicationForm.get(event.currentTarget.id).setValue(file);

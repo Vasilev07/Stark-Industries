@@ -28,12 +28,12 @@
           Password must contain upperase,digit,special symbols
         </div> -->
         <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
-        <div style='color:#ff7355' *ngIf="registrationForm.get('password').value != registrationForm.get('confirmPassword').value && registrationForm.get('confirmPassword').value != null">
+        <div style='color:#ff7355' *ngIf="(registrationForm.get('password').dirty && registrationForm.get('confirmPassword').dirty) && (registrationForm.get('password').value != registrationForm.get('confirmPassword').value && registrationForm.get('confirmPassword').value != null)">
           Password does not match</div>
         <button mat-button [disabled]="!registrationForm.valid" type="submit">Register</button>
       </div>
     </form>
-  </section>
+  </section>5
 
   <div id="circle1">
     <div id="inner-cirlce1">
