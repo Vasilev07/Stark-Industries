@@ -18,7 +18,6 @@ export class ContactComponent implements OnInit {
     public ngOnInit(): void {
         this.contactService.getAllContacts().subscribe((data) => {
             this.contacts = data.allContacts;
-            console.log(this.contacts);
             this.primaryAddress = data.primaryAddress;
             this.displayLongtitude = this.primaryAddress.longtitude;
             this.displayLatitude = this.primaryAddress.latitude;

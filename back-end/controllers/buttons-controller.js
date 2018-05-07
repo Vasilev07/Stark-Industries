@@ -5,9 +5,7 @@ class ButtonsController {
 
     async getById(id) {
         let button = await this.data.buttons.getById(id);
-        console.log(button);
         button = button.dataValues;
-        console.log(button);
         if (button) {
             return button;
         }

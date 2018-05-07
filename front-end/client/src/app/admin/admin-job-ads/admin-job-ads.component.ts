@@ -29,7 +29,6 @@ export class AdminJobAdsComponent implements OnInit {
     public ngOnInit(): void {
         this.adminJobsService.getAllJobsFromAdmin().subscribe((data) => {
             this.jobs = data;
-            console.log(this.jobs);
             this.dataSource = new MatTableDataSource(this.jobs);
             this.dataSource.sort = this.sort;
             setTimeout(() => this.dataSource.paginator = this.paginator);

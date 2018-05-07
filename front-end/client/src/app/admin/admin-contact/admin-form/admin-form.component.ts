@@ -38,10 +38,8 @@ export class AdminFormComponent implements OnInit {
     public ngOnInit(): void {
         this.activatedRouted.params.subscribe((param) => {
             this.paramsId = param.id;
-            console.log(param.id);
             if (param.id) {
                 this.adminContactService.getById(+this.paramsId).subscribe((contact) => {
-                    console.log(contact);
                     this.contactToEdit = contact;
                     this.name = contact.name;
                     this.value = contact.value;
@@ -50,11 +48,8 @@ export class AdminFormComponent implements OnInit {
                     this.isMappable = contact.isMappable;
                     this.longtitude = contact.longtitude;
                     this.latitude = contact.latitude;
-                    console.log(`this.longtitude: ${this.longtitude}`);
-                    console.log(`this.latitude: ${contact.latitude}`);
                 });
             }
-            // console.log(typeof this.paramsId);
         });
         this.form = this.formBuilder.group({
             name: [this.name, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLengthName), Validators.required]],
@@ -65,8 +60,6 @@ export class AdminFormComponent implements OnInit {
             longtitude: this.longtitude,
             latitude: this.latitude,
         });
-        // console.log(this.activatedRouted.params);
-        // console.log(this.activatedRouted.params.value);
 
     }
     public onSubmit(contact: ContactCreateModel): void {

@@ -47,7 +47,7 @@ const init = (app, data) => {
             const buttonId = req.params.id;
             const newButtonInfo = req.body;
             const updatedButton =
-                await controller.updatedButton(newButtonInfo, buttonId);
+                await controller.updateButton(newButtonInfo, buttonId);
             if (updatedButton) {
                 res.status(200).end();
             } else {

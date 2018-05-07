@@ -30,7 +30,6 @@ export class AdminContactComponent implements OnInit {
     public ngOnInit(): void {
         this.contactGetService.getAllContacts().subscribe((data) => {
             this.contacts = data.allContacts;
-            console.log(this.contacts);
             this.dataSource = new MatTableDataSource(this.contacts);
             this.dataSource.sort = this.sort;
             setTimeout(() => this.dataSource.paginator = this.paginator);
@@ -57,7 +56,6 @@ export class AdminContactComponent implements OnInit {
                 this.adminContactService.deleteContact(id).subscribe(
                     (res) => {
                         this.toastr.success(`Contact deleted!`);
-                        console.log(table);
                         // setTimeout(()=> table.renderRows());
                         let i = null;
                         const contacToRemove = this.dataSource.data.find((contact, index) => {

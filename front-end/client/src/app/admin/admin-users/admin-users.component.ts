@@ -13,7 +13,6 @@ import { User } from '../../models/user';
 export class AdminUsersComponent implements OnInit {
 
     public users: User[] = [];
-    
     public dataSource;
     public displayedColumns = ['id', 'firstName', 'email', 'createdAt', 'applicationsCount', 'roleId'];
 
@@ -25,10 +24,8 @@ export class AdminUsersComponent implements OnInit {
 
     public ngOnInit(): void {
         this.adminUsersService.getAllUsers().subscribe((data) => {
-            console.log(data);
             this.users = data;
             this.dataSource = new MatTableDataSource(this.users);
-            console.log(this.dataSource);
             this.dataSource.sort = this.sort;
             setTimeout(() => this.dataSource.paginator = this.paginator);
         });
