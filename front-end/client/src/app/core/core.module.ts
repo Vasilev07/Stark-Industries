@@ -12,7 +12,6 @@ import { ContactService } from './contact.service';
 import { AlreadyLoggedInGuard } from './guards/already.logged.in.guard';
 import { IsAdminGuard } from './guards/is.admin.guard';
 import { IsAuthenticatedGuard } from './guards/is.authenticated.guard';
-import { PatternValidatorService } from './pattern.validator.service';
 import { CareersResolver } from './resolvers/careers.resolver';
 import { TokenService } from './token.service';
 
@@ -39,7 +38,6 @@ export const tokenGetter = () => {
     providers: [
         { provide: AuthService, useClass: AuthService },
         { provide: AlreadyLoggedInGuard, useClass: AlreadyLoggedInGuard },
-        { provide: PatternValidatorService, useClass: PatternValidatorService },
         { provide: ContactService, useClass: ContactService },
         { provide: CareersService, useClass: CareersService },
         { provide: IsAdminGuard, useClass: IsAdminGuard },
