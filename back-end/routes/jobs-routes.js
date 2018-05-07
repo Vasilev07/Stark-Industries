@@ -77,7 +77,7 @@ const init = (app, data) => {
                         userApplication, jobId, cvFile, coverFile);
                 res.status(200).end();
             } catch (error) {
-                res.json(error.toString());
+                res.status(500).send({ errMsg: error.message });
             }
         });
 };

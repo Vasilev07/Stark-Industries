@@ -3,9 +3,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
 import { AuthService } from '../../core/auth.service';
 import { CareersService } from '../../core/careers.service';
+
 
 @Component({
     selector: 'stark-job-application',
@@ -59,7 +59,7 @@ export class JobApplicationComponent implements OnInit {
                 this.toastr.success(`Successfull application`);
             },
             (err: HttpErrorResponse) => {
-                this.toastr.error(`Some error has occured`);
+                this.toastr.error(`You have already applied for this job`);
             });
 
         setTimeout(() => {
