@@ -1,0 +1,8 @@
+.appContent {
+    /* position: relative; */
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+.appContent > * {
+    display: block;
+}

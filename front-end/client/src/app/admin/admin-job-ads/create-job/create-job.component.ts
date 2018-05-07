@@ -6,11 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AdminJobsService } from '../../../core/admin-services/admin-job.service';
 import { JobCreate } from '../../../models/job/job-create/job-create';
+import { animations } from '../../../shared/animations';
 
 @Component({
     selector: 'stark-create-job',
     templateUrl: './create-job.component.html',
     styleUrls: ['./create-job.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class CreateJobComponent implements OnInit {
     public createJobForm: FormGroup;

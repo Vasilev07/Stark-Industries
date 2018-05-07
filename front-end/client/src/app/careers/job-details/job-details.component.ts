@@ -4,11 +4,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { CareersService } from '../../core/careers.service';
 import { Job } from '../../models/job';
+import { animations } from '../../shared/animations';
 
 @Component({
     selector: 'stark-job-details',
     templateUrl: './job-details.component.html',
     styleUrls: ['./job-details.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class JobDetailsComponent implements OnInit {
     @Input()

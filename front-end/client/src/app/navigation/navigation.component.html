@@ -20,7 +20,7 @@
         <a *ngIf="!isAuth()" [routerLink]="['/auth/register']" mat-button>Register</a>
       </div>
     </mat-toolbar-row>
-    <mat-toolbar-row [ngClass]="'adminNav'" *ngIf="adminNavVisible" fxLayout="row" fxLayoutAlign="center center">
+    <mat-toolbar-row [ngClass]="'adminNav'" *ngIf="adminNavVisible" fxLayout="row" fxLayoutAlign="center center" [@rowAnimation]>
       <div fxShow="true">
         <a [routerLink]="['/admin/users']" [routerLinkActive]="['activeRoute']" mat-button>Users</a>
         <a [routerLink]="['/admin/careers']" [routerLinkActive]="['activeRoute']" mat-button>Jobs</a>

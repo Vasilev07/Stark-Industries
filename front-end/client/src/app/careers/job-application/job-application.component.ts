@@ -5,12 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/auth.service';
 import { CareersService } from '../../core/careers.service';
-
+import { animations } from '../../shared/animations';
 
 @Component({
     selector: 'stark-job-application',
     templateUrl: './job-application.component.html',
     styleUrls: ['./job-application.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class JobApplicationComponent implements OnInit {
 

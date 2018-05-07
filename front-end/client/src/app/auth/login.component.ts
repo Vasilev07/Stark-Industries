@@ -7,11 +7,14 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../core/auth.service';
 import { TokenService } from '../core/token.service';
 import { UserLoginModel } from '../models/users/userLoginModel';
+import { animations } from '../shared/animations';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
+    animations: [animations.routerTopAnimation],
+    host: { '[@routerTopAnimation]': ''},
 })
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;

@@ -4,11 +4,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthService } from '../core/auth.service';
 import { LoggedUserModel } from '../models/users/loggedUserModel';
+import { animations } from '../shared/animations';
 
 @Component({
     selector: 'stark-navigation',
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.css'],
+    animations: [
+        animations.rowAnimation,
+    ],
 })
 export class NavigationComponent implements OnInit {
     public adminNavVisible: boolean = false;

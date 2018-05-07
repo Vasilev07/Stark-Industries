@@ -7,11 +7,14 @@ import { saveAs } from 'file-saver';
 import { AdminJobsService } from '../../../core/admin-services/admin-job.service';
 import { CareersService } from '../../../core/careers.service';
 import { JobApplication } from '../../../models/job/job-applications/job-applications';
+import { animations } from '../../../shared/animations';
 
 @Component({
     selector: 'stark-all-applications',
     templateUrl: './all-applications.component.html',
     styleUrls: ['./all-applications.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class AllApplicationsComponent implements OnInit {
     public users: JobApplication[];

@@ -6,12 +6,15 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AdminJobsService } from '../../core/admin-services/admin-job.service';
 import { Job } from '../../models/job';
+import { animations } from '../../shared/animations';
 import { AdminDeleteDialogComponent } from '../admin-contact/admin-delete-dialog/admin-delete-dialog.component';
 
 @Component({
     selector: 'stark-admin-job-ads',
     templateUrl: './admin-job-ads.component.html',
     styleUrls: ['./admin-job-ads.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class AdminJobAdsComponent implements OnInit {
     public jobs: Job[];

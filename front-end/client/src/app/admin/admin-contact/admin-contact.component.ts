@@ -7,12 +7,15 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminContactService } from '../../core/admin-services/admin-contact.service';
 import { ContactService } from '../../core/contact.service';
 import { ContactGetModel } from '../../models/contacts/contactGetModel';
+import { animations } from '../../shared/animations';
 import { AdminDeleteDialogComponent } from './admin-delete-dialog/admin-delete-dialog.component';
 
 @Component({
     selector: 'stark-admin-contact',
     templateUrl: './admin-contact.component.html',
     styleUrls: ['./admin-contact.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class AdminContactComponent implements OnInit {
     public contacts: ContactGetModel[] = [];

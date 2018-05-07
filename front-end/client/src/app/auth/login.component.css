@@ -3,7 +3,9 @@
 * {
   box-sizing: border-box;
 }
-
+/* .container {
+  animation-delay: 3s;    
+} */
 html {
   background: #000;
   background-size: cover;
@@ -18,6 +20,7 @@ html {
 /* =========================================
 Stark Industries Logo
 ========================================= */
+
 #logo {
   animation: logo-entry 2s ease-in;
   width: 500px;
@@ -39,6 +42,7 @@ h1 {
   top: 50px;
   margin-top: 100px;
 }
+
 h1:before {
   animation: before-glow 2s ease-out infinite alternate;
   border-left: 535px solid transparent;
@@ -51,6 +55,7 @@ h1:before {
   width: 0;
   margin-right: 44px;
 }
+
 h1:after {
   animation: after-glow 2s ease-out infinite alternate;
   border-left: 100px solid transparent;
@@ -68,15 +73,18 @@ h1:after {
 /* =========================================
 Log in form
 ========================================= */
+
 #fade-box {
   animation: input-entry 1.5s ease-in;
   z-index: 4;
 }
+
 .stark-login {
-    opacity: 0.9;
+  opacity: 0.9;
 }
+
 .stark-login form {
-  animation: form-entry 1.5s ease-in-out;
+  animation: login-entry 1.5s ease-in-out;
   background: #111;
   background: linear-gradient(#004746, #111111);
   border: 6px solid #00a4a2;
@@ -91,11 +99,13 @@ Log in form
   transition: 0.5s all;
   margin-top: 20px;
 }
+
 .stark-login form:hover {
   border: 6px solid #00fffd;
   box-shadow: 0 0 25px #00fffd;
   transition: 0.5s all;
 }
+
 .stark-login input {
   background: #222;
   background: linear-gradient(#333333, #222222);
@@ -113,6 +123,7 @@ Log in form
   text-shadow: 0 -1px 0 #000;
   width: 400px;
 }
+
 .stark-login input:focus {
   animation: box-glow 1.8s ease-out infinite alternate;
   background: #0B4252;
@@ -122,10 +133,12 @@ Log in form
   color: #efe;
   outline: none;
 }
+
 .stark-login input:invalid {
   border: 2px solid red;
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.2), inset 0 0 5px rgba(255, 0, 0, 0.1), 0 2px 0 #000;
 }
+
 .stark-login button {
   animation: input-entry 1s ease-in;
   background: #222;
@@ -149,6 +162,7 @@ Log in form
   width: 400px;
   transition: 1s all;
 }
+
 .stark-login button:hover,
 .stark-login button:focus {
   background: #0C6125;
@@ -157,41 +171,49 @@ Log in form
   outline: none;
   transition: 1s all;
 }
+
 .stark-login button:active {
   background: #292929;
   background: linear-gradient(#393939, #292929);
   box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
   top: 1px;
 }
+
 ::ng-deep .mat-checkbox-frame {
-    background-color: #004746;
+  background-color: #004746;
 }
+
 /* ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background:checked {
     color: #00fffd;
 } */
+
 /* ::ng-deep .mat-checkbox:checked .mat-checkbox-background svg.mat-checkbox-checkmark {
     color: #00fffd !important;
 } */
+
 /* .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
     color: #00fffd !important;
 } */
+
 ::ng-deep .mat-checkbox-label {
-    color: #00a4a2
+  color: #00a4a2
 }
+
 /* =========================================
 Spinner
 ========================================= */
+
 #circle1 {
-  animation: circle1 4s linear infinite, circle-entry 6s ease-in-out;
+  animation: circle1 4s linear infinite, circle-entry 4s ease-in-out;
   background: #000;
   border-radius: 50%;
   border: 10px solid #00a4a2;
   box-shadow: 0 0 0 2px black, 0 0 0 6px #00fffc;
-  height: 500px;
-  width: 500px;
+  height: 450px;
+  width: 450px;
   position: absolute;
-  top: 20px;
-  left: 50%;
+  top: 30px;
+  left: 51%;
   margin-left: -250px;
   overflow: hidden;
   opacity: 0.4;
@@ -203,22 +225,24 @@ Spinner
   background: #000;
   border-radius: 50%;
   border: 36px solid #00fffc;
-  height: 460px;
-  width: 460px;
+  height: 410px;
+  width: 410px;
   margin: 10px;
 }
+
 #inner-cirlce1:before {
   content: ' ';
   width: 240px;
-  height: 480px;
+  height: 420px;
   background: #000;
   position: absolute;
   top: 0;
   left: 0;
 }
+
 #inner-cirlce1:after {
   content: ' ';
-  width: 480px;
+  width: 420px;
   height: 240px;
   background: #000;
   position: absolute;
@@ -226,28 +250,10 @@ Spinner
   left: 0;
 }
 
-
-/* =========================================
-Hexagon Mesh
-========================================= */
-.hexagons {
-  animation: logo-entry 4s ease-in;
-  color: #000;
-  font-size: 52px;
-  font-size: 5.1rem;
-  letter-spacing: -0.2em;
-  line-height: 0.7;
-  position: absolute;
-  text-shadow: 0 0 6px #00fffc;
-  top: 310px;
-  width: 100%;
-  transform: perspective(600px) rotateX(60deg) scale(1.4);
-  z-index: -3;
-}
-
 /* =========================================
 Animation Keyframes
 ========================================= */
+
 @keyframes logo-entry {
   0% {
     opacity: 0;
@@ -259,6 +265,7 @@ Animation Keyframes
     opacity: 1;
   }
 }
+
 @keyframes circle-entry {
   0% {
     opacity: 0;
@@ -270,6 +277,7 @@ Animation Keyframes
     opacity: 0.4;
   }
 }
+
 @keyframes input-entry {
   0% {
     opacity: 0;
@@ -281,7 +289,8 @@ Animation Keyframes
     opacity: 1;
   }
 }
-@keyframes form-entry {
+
+@keyframes login-entry {
   0% {
     height: 0;
     width: 0;
@@ -303,13 +312,14 @@ Animation Keyframes
     padding: 0;
   }
   80% {
-      height: 240px;
+    height: 240px;
   }
   100% {
     /* height: 220px; */
     width: 500px;
   }
 }
+
 @keyframes box-glow {
   0% {
     border-color: #00b8b6;
@@ -320,6 +330,7 @@ Animation Keyframes
     box-shadow: 0 0 20px rgba(0, 255, 253, 0.6), inset 0 0 10px rgba(0, 255, 253, 0.4), 0 2px 0 #000;
   }
 }
+
 @keyframes text-glow {
   0% {
     color: #00a4a2;
@@ -330,6 +341,7 @@ Animation Keyframes
     text-shadow: 0 0 20px rgba(0, 255, 253, 0.6), 0 0 10px rgba(0, 255, 253, 0.4), 0 2px 0 #000;
   }
 }
+
 @keyframes before-glow {
   0% {
     border-bottom: 10px solid #00a4a2;
@@ -338,6 +350,7 @@ Animation Keyframes
     border-bottom: 10px solid #00fffc;
   }
 }
+
 @keyframes after-glow {
   0% {
     border-top: 16px solid #00a4a2;
@@ -346,6 +359,7 @@ Animation Keyframes
     border-top: 16px solid #00fffc;
   }
 }
+
 @keyframes circle1 {
   0% {
     -moz-transform: rotate(0deg);
@@ -362,6 +376,6 @@ Animation Keyframes
 }
 
 .container {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  /* margin-top: 50px; */
 }

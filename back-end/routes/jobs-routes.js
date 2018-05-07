@@ -59,7 +59,7 @@ const init = (app, data) => {
             console.log(__dirname);
             const filePath = path.join(__dirname, '..', file);
             console.log('-'.repeat(40));
-            console.log(filePath);
+            console.log(file);
             console.log('-'.repeat(40));
             return res.download(filePath, file);
         })

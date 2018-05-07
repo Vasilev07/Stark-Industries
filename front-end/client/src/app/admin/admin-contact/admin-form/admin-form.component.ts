@@ -7,11 +7,14 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminContactService } from '../../../core/admin-services/admin-contact.service';
 import { ContactCreateModel } from '../../../models/contacts/contactCreateModel';
 import { ContactGetModel } from '../../../models/contacts/contactGetModel';
+import { animations } from '../../../shared/animations';
 
 @Component({
     selector: 'stark-admin-form',
     templateUrl: './admin-form.component.html',
     styleUrls: ['./admin-form.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class AdminFormComponent implements OnInit {
     public form: FormGroup;

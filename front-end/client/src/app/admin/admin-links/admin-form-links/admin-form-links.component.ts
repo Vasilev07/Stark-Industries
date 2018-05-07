@@ -7,11 +7,14 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminButtonsService } from '../../../core/admin-services/admin-button.service';
 import { ButtonCreateModel } from '../../../models/buttons/buttonCreateModel';
 import { ButtonGetModel } from '../../../models/buttons/buttonsGetModel';
+import { animations } from '../../../shared/animations';
 
 @Component({
   selector: 'stark-admin-form-links',
   templateUrl: './admin-form-links.component.html',
   styleUrls: ['./admin-form-links.component.css'],
+  animations: [animations.routerAnimation],
+  host: { '[@routerAnimation]': ''},
 })
 export class AdminFormLinksComponent implements OnInit {
 

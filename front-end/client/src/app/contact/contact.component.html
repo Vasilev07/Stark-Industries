@@ -1,30 +1,35 @@
-<h2 class="header">CONTACTS</h2>
+<div class="containerContacts">
 
-<div class="container">
-  <div fxLayout="row" fxLayoutAlign="start start" class="content">
-    <div class="map" fxFlex="50%">
-      <agm-map [longitude]='displayLongtitude' [latitude]='displayLatitude' style="height: 400px;">
-        <agm-marker [longitude]='displayLongtitude' [latitude]='displayLatitude'></agm-marker>
-      </agm-map>
-    </div>
-    <div fxFlex="10%"></div>
-    <div fxLayout="column">
-      <div class="contactsContainer" fxFlex="40%" *ngFor="let contact of contacts">
-        <br>
-        <mat-expansion-panel class="contact">
-          <mat-expansion-panel-header class="contactHeader">
-            <mat-panel-title>
-                <mat-icon class="primaryAddress" *ngIf="contact.isPrimary">stars</mat-icon><mat-icon>{{contact.icon}}</mat-icon>{{ contact.name }}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div>
-            <p *ngIf="contact.isMappable">Address: {{contact.value}}</p>
-            <p *ngIf="!contact.isMappable">{{contact.value}}</p>
-            <p *ngIf="contact.isMappable">Longtidue: {{contact.longtitude}}</p>
-            <p *ngIf="contact.isMappable">Latitude: {{contact.latitude}}</p>
-            <button *ngIf="contact.isMappable" mat-raised-button (click)="mapIt(contact.longtitude, contact.latitude)">Show On Map</button>
-          </div>
-        </mat-expansion-panel>
+
+  <h2 class="header">CONTACTS</h2>
+
+  <div class="container">
+    <div fxLayout="row" fxLayoutAlign="start start" class="content">
+      <div class="map" fxFlex="50%">
+        <agm-map [longitude]='displayLongtitude' [latitude]='displayLatitude' style="height: 400px;">
+          <agm-marker [longitude]='displayLongtitude' [latitude]='displayLatitude'></agm-marker>
+        </agm-map>
+      </div>
+      <div fxFlex="10%"></div>
+      <div fxLayout="column">
+        <div class="contactsContainer" fxFlex="40%" *ngFor="let contact of contacts">
+          <br>
+          <mat-expansion-panel class="contact">
+            <mat-expansion-panel-header class="contactHeader">
+              <mat-panel-title>
+                <mat-icon class="primaryAddress" *ngIf="contact.isPrimary">stars</mat-icon>
+                <mat-icon>{{contact.icon}}</mat-icon>{{ contact.name }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>
+              <p *ngIf="contact.isMappable">Address: {{contact.value}}</p>
+              <p *ngIf="!contact.isMappable">{{contact.value}}</p>
+              <p *ngIf="contact.isMappable">Longtidue: {{contact.longtitude}}</p>
+              <p *ngIf="contact.isMappable">Latitude: {{contact.latitude}}</p>
+              <button *ngIf="contact.isMappable" mat-raised-button (click)="mapIt(contact.longtitude, contact.latitude)">Show On Map</button>
+            </div>
+          </mat-expansion-panel>
+        </div>
       </div>
     </div>
   </div>

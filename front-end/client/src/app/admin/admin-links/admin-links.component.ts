@@ -6,12 +6,15 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AdminButtonsService } from '../../core/admin-services/admin-button.service';
 import { ButtonGetModel } from '../../models/buttons/buttonsGetModel';
+import { animations } from '../../shared/animations';
 import { AdminDeleteDialogComponent } from '../admin-contact/admin-delete-dialog/admin-delete-dialog.component';
 
 @Component({
   selector: 'stark-admin-links',
   templateUrl: './admin-links.component.html',
   styleUrls: ['./admin-links.component.css'],
+  animations: [animations.routerAnimation],
+  host: { '[@routerAnimation]': ''},
 })
 export class AdminLinksComponent implements OnInit {
 

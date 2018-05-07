@@ -1,3 +1,9 @@
+.containerContacts {
+    position: relative;
+}
+.containerContacts > * {
+    display:block;
+}
 .map {
   color: #00FFFF;
   border: 6px solid #00a4a2;

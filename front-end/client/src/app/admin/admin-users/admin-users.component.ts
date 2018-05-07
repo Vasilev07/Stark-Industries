@@ -4,11 +4,14 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { AdminUsersService } from '../../core/admin-services/admin-users.service';
 import { Roles } from '../../models/roles.enum';
 import { User } from '../../models/user';
+import { animations } from '../../shared/animations';
 
 @Component({
     selector: 'stark-admin-users',
     templateUrl: './admin-users.component.html',
     styleUrls: ['./admin-users.component.css'],
+    animations: [animations.routerAnimation],
+    host: { '[@routerAnimation]': ''},
 })
 export class AdminUsersComponent implements OnInit {
 

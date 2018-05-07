@@ -5,13 +5,16 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../core/auth.service';
-import { UserRegisterModel } from '../models/users/userRegisterModel';
 import { TokenService } from '../core/token.service';
+import { UserRegisterModel } from '../models/users/userRegisterModel';
+import { animations } from '../shared/animations';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
+    animations: [animations.routerTopAnimation],
+    host: { '[@routerTopAnimation]': ''},
 })
 export class RegisterComponent implements OnInit {
     public emailMaxLength: number = 1024;
