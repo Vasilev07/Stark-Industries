@@ -57,21 +57,18 @@ const init = (app, data) => {
         .get('/careers/download/:fileName', async (req, res) => {
             const file = req.params.fileName;
             const filePath = path.join(__dirname, '..', 'uploads', file);
-            console.log(__dirname);
-            console.log(file);
+
 
             return res.download(filePath, file);
         })
         .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {
             session: false,
         }), uploadFields, async (req, res) => {
-            console.log(req.body);
             const cvFile = req.files.cv[0].path;
             const coverFile = req.files.coverLetter[0].path;
             const userInformation = req.user;
             const userApplication = req.body;
             const jobId = req.params;
-            console.log('-'.repeat(40));
             try {
                 await applicationController
                     .createNewApplication(userInformation,

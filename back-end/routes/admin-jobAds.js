@@ -23,7 +23,6 @@ const init = (app, data) => {
         .post('/admin/careers/create', passport.authenticate('jwt-admin',
         { session: false }), async (req, res) => {
             const newJobObj = req.body;
-            console.log(newJobObj);
             await controller.createJobAd(newJobObj);
             res.status(200).end();
         })

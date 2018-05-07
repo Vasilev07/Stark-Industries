@@ -1,13 +1,15 @@
 .container {
-    margin: 0 auto;
-    max-width: 80vw;
+  margin: 0 auto;
+  max-width: 80vw;
 }
+
 h2 {
-    font-size: 30px;
-    color: #00a4a2;
-    text-transform: uppercase;
-    text-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
+  font-size: 30px;
+  color: #00a4a2;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
 }
+
 .table-container {
   display: flex;
   flex-direction: column;
@@ -19,16 +21,17 @@ h2 {
   box-shadow: 0 0 15px #00fffd;
 }
 
-.mat-table {
-  color: #00fffd;
-  /* background-color: black; */
-  overflow: auto;
-  /* max-height: 800px; */
+.idContainer {
+  flex: 0 0 60px !important;
 }
+
+.applicationsContainer {
+    flex: 0 0 auto !important;
+}
+
 
 .mat-header-cell {
   margin: 0 10px;
-  /* color: white !important; */
   font-weight: bold;
   text-align: center;
 }
@@ -39,27 +42,42 @@ h2 {
   transition: 0.2s;
 }
 
-::ng-deep .mat-header-cell {
-      margin: 0 10px;
-      /* color: white !important; */
-      font-weight: bold;
-      text-align: center;
-      font-size: 14px;
-  }
-  .mat-header-cell:hover {
-    color: #00a4a2 !important;
-    transform: scale(1.03);
-    transition: 0.2s;
+/* ::ng-deep .mat-header-cell {
+  margin: 0 10px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
 }
 
-  .tableFooter{
-      display: flex;
-      /* padding: 5px; */
-      background-color: white;
-      border-top: 2px solid #00a4a2;
-      box-shadow: 0 0 10px #00fffd;
-      text-align: center;
+.mat-header-cell:hover {
+  color: #00a4a2 !important;
+  transform: scale(1.03);
+  transition: 0.2s;
+} */
+
+::ng-deep .mat-cell {
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
   }
+  
+  ::ng-deep .mat-header-cell {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+.tableFooter {
+  display: flex;
+  /* padding: 5px; */
+  background-color: white;
+  border-top: 2px solid #00a4a2;
+  box-shadow: 0 0 10px #00fffd;
+  text-align: center;
+}
 
 .tableFooter {
   display: flex;

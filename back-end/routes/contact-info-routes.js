@@ -37,8 +37,9 @@ const init = (app, data) => {
                     await controller.createNewContact(newAddress);
                 if (newAddressObj) {
                     res.status(200).end();
+                } else {
+                    res.status(401).end();
                 }
-                res.status(401).end();
             })
         .put('/contact/:id', passport.authenticate('jwt-admin', {
                 session: false,
@@ -50,8 +51,9 @@ const init = (app, data) => {
                     .updateExistingContact(newContactInfo, contactId);
                 if (updatedContactInfo) {
                     res.status(200).end();
+                } else {
+                    res.status(401).end();
                 }
-                res.status(401).end();
             })
         .delete('/contact/:id', passport.authenticate('jwt-admin', {
                 session: false,
@@ -61,8 +63,9 @@ const init = (app, data) => {
                 const result = await controller.deleteContact(contactId);
                 if (result) {
                     res.status(200).end();
+                } else {
+                    res.status(401).end();
                 }
-                res.status(401).end();
             });
 };
 

@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
                 }
             },
             (err: HttpErrorResponse) => {
-                console.log(err);
                 if (err.status === 401) {
                     this.toastr.error(err.error.err);
                 }

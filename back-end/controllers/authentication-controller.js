@@ -53,7 +53,6 @@ class AuthenticationController {
     }
 
     async login(req, res) {
-        console.log(req.body);
         const userFound = await this.data.users
             .getByValue('userName', req.body.userName);
         if (userFound) {
