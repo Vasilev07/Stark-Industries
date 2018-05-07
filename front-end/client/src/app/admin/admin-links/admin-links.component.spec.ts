@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminButtonsComponent } from './admin-buttons.component';
+// import { AdminButtonsComponent } from './admin-buttons.component';
 
-describe('AdminButtonsComponent', () => {
-  let component: AdminButtonsComponent;
-  let fixture: ComponentFixture<AdminButtonsComponent>;
+// describe('AdminButtonsComponent', () => {
+//   let component: AdminButtonsComponent;
+//   let fixture: ComponentFixture<AdminButtonsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AdminButtonsComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ AdminButtonsComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AdminButtonsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(AdminButtonsComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

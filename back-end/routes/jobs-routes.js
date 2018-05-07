@@ -54,11 +54,13 @@ const init = (app, data) => {
                 await applicationController.getAllJobApplications(jobId);
             res.send(allJobsById);
         })
-        .get('/careers/download/:fileName', async (req, res) => {
-            const file = req.params.fileName;
-            const filePath = path.join(__dirname, '..', 'uploads', file);
-
-
+        .post('/careers/download', async (req, res) => {
+            const file = req.body.fileName;
+            console.log(__dirname);
+            const filePath = path.join(__dirname, '..', file);
+            console.log('-'.repeat(40));
+            console.log(filePath);
+            console.log('-'.repeat(40));
             return res.download(filePath, file);
         })
         .post('/careers/jobDetails/:id/apply', passport.authenticate('jwt', {

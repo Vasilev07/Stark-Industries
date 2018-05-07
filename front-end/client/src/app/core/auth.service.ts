@@ -2,7 +2,6 @@ import 'rxjs/add/operator/map';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -24,7 +23,7 @@ export class AuthService {
 
     private userLoggedEvent: BehaviorSubject<LoggedUserModel>;
 
-    constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService, private router: Router) {
+    constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) {
 
         this.loginEvent = new BehaviorSubject<boolean>(this.isAuthenticated());
         this.loginDone = this.loginEvent.asObservable();

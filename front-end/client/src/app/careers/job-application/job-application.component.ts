@@ -30,7 +30,7 @@ export class JobApplicationComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private authService: AuthService,
-        private formBuilder: FormBuilder,) { }
+        private formBuilder: FormBuilder) { }
 
     public ngOnInit(): void {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -47,12 +47,12 @@ export class JobApplicationComponent implements OnInit {
                 disabled: true,
             }, [Validators.minLength(this.minLength), Validators.maxLength(this.maxLength)]),
             comment: ['', [Validators.required, Validators.maxLength(this.commentMaxLength)]],
-            cv: ['', [Validators.required,]],
-            coverLetter: ['', [Validators.required,]],
+            cv: ['', [Validators.required]],
+            coverLetter: ['', [Validators.required]],
         });
     }
 
-    public apply(userInput) {
+    public apply(userInput: any): void {
         const userApplicationObject = this.appendValues();
         this.careerService.createNewApplication(userApplicationObject, this.id).subscribe(
             (res) => {
@@ -70,9 +70,9 @@ export class JobApplicationComponent implements OnInit {
     public onUpload(event: any): void {
         if (event.currentTarget.files.length > 0) {
             const file = event.target.files[0];
-            if (!this.validateExtention(file.name) && !this.validateFileSize(file.size)) {
+            if (!this.validateExtention(file.name) || !this.validateFileSize(file.size)) {
                 this.toastr.error('Files must be of type pdf, doc or docx and not bigger than 16MB!', 'Invalid File', {
-                    timeOut: 5000
+                    timeOut: 5000,
                 });
             } else {
                 this.applicationForm.get(event.currentTarget.id).setValue(file);
