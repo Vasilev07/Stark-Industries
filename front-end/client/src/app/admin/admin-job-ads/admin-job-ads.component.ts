@@ -35,6 +35,7 @@ export class AdminJobAdsComponent implements OnInit {
             this.dataSource = new MatTableDataSource(this.jobs);
             this.dataSource.sort = this.sort;
             setTimeout(() => this.dataSource.paginator = this.paginator);
+            console.log(this.dataSource.paginator);
         });
     }
 

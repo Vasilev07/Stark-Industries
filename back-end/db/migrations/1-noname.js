@@ -17,7 +17,7 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2018-05-04T20:52:03.102Z",
+    "created": "2018-05-07T18:20:28.332Z",
     "comment": ""
 };
 
@@ -304,6 +304,7 @@ module.exports = {
                 if (index < migrationCommands.length)
                 {
                     let command = migrationCommands[index];
+                    console.log("[#"+index+"] execute: " + command.fn);
                     index++;
                     queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
                 }
