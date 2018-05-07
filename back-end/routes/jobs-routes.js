@@ -57,7 +57,8 @@ const init = (app, data) => {
         .get('/careers/download/:fileName', async (req, res) => {
             const file = req.params.fileName;
             const filePath = path.join(__dirname, '..', 'uploads', file);
-
+            console.log('-'.repeat(40));
+            console.log(path.join(__dirname, '..', 'uploads', file));
 
             return res.download(filePath, file);
         })
