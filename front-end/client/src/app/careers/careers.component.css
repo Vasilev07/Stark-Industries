@@ -162,13 +162,13 @@ mat-hint.mat-hint {
     text-shadow: 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd, 0 0 5px #00fffd;
 }
 
-::ng-deep mat-paginator.mat-paginator {
+::ng-deep mat-paginator.mat-paginator.careersPaginator {
     width: 50%;
     margin: 0 auto;
     background-color: #000 !important;
     color: #00a4a2 !important;
 }
-::ng-deep .mat-paginator div.mat-paginator-container {
+::ng-deep .mat-paginator.careersPaginator div.mat-paginator-container {
     background-color: #000 !important;
     color: #00a4a2 !important;
 }

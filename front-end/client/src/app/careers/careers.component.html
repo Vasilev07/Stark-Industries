@@ -39,6 +39,6 @@
     </div>
   </div>
 </div>
-<mat-paginator *ngIf="jobs?.length > 5" (page)="onChangePage($event)" [length]="length" [pageSize]="pageSize"
+<mat-paginator *ngIf="jobs?.length > 5" (page)="onChangePage($event)" [ngClass]="{'careersPaginator': true}" [length]="length" [pageSize]="pageSize"
   [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>
