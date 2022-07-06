@@ -37,7 +37,7 @@
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
     "jwt-simple": "^0.5.1",
-    "moment": "^2.22.1",
+    "moment": "^2.29.4",
     "morgan": "^1.9.0",
     "multer": "^1.3.0",
     "mysql2": "^1.5.3",
